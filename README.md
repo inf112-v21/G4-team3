@@ -9,15 +9,15 @@ Simple skeleton with libgdx.
 3. Flytte brikke(vha taster):
    
 4. Robot besøker flagg:
-   -Brukerhistorie: 
+   - Brukerhistorie: 
    Som robot   
    vil jeg kunne besøke flagg
    slik at det registreres ved besøk gjennom for eksempel
    en enum som markerer et flagg ved besøk.
-   -Løsningsbeskrivelse:
+   - Løsningsbeskrivelse:
    Lage en flagg-enum som aktiveres når koordinater 
    til roboten overlapper med koordinater til flagget.
-   -Akseptansekriterier
+   - Akseptansekriterier
    Gitt at roboten besøker et flag, 
    så skal: 
    1. Flagget bli registrert som besøkt 
