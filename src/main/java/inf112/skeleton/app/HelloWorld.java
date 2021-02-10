@@ -50,7 +50,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         font.setColor(Color.RED);
 
         // Create map layers
-        map = new TmxMapLoader().load("assets/example.tmx");
+        map = new TmxMapLoader().load("assets/Testmap.tmx");
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
