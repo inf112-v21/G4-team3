@@ -3,7 +3,13 @@ Simple skeleton with libgdx.
 
 ## Brukerhistorier
 1. Vise et spillebrett:
-   
+   - Brukerhistorie:
+     Som bruker av applikasjonen må jeg ha en visuell / logisk representasjon av spillebrettet for å kunne bruke applikasjonen I det hele tatt.
+   - Løsningsbeskrivelse:
+     Ved å følge instrukser gitt av Libgdx and Tiled Tutorial.pdf tar vi i bruk programvaren Tiled for å sette opp et bredt ved å følge utdelt spreadsheet.
+   - Akseptansekriterier:
+     Gitt at vi starter applikasjonen så skal
+   1. Vi få opp en visuell representasjon av spillebrettet
 2. Vise brikke på spillebrett:
    
 3. Flytte brikke(vha taster):
