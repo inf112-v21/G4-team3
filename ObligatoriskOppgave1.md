@@ -1,11 +1,6 @@
 # Obligatorisk Oppgave1
 
 ##Deloppgave: Organiser teamet
-Sigurd Loennechen - kiq013:
-- IKT 4. semester
-- har tatt INF100, INF101, INF102
-- erfaring med python og java
-- har også hatt litt om kunstig intelligens og diskret matematikk
 
 
 ##Deloppgave 2 Velg og tilpass en prosess for laget
