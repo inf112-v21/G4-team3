@@ -1,5 +1,14 @@
-# INF112 Maven template 
-Simple skeleton with libgdx. 
+# Obligatorisk Oppgave1
+
+##Deloppgave: Organiser teamet
+
+##Deloppgave 2 Velg og tilpass en prosess for laget
+
+##Deloppgave 3 Få oversikt over forventet produkt 
+
+## Deloppgave 4: Kode 
+
+
 
 ## Brukerhistorier
 1. Vise et spillebrett:
