@@ -14,6 +14,13 @@ Jan Malte Brunner: - caq008
 - Kodespråk erfaring innenfor Java, Python
 - Diskret matematikk og generell tech-interesse
 
+Eivind Skarstein - nit005
+- har tatt INF109, INF101, INF102, INF264
+- har erfaring med python, java og MATLAB
+- går siste semester i Data Science
+- har fullført en bachelorgrad i geofysikk, med mye programmering i MATLAB
+
+
 ###Roller innenfor prosjektet
 - Team leader: Jan Malte Brunner
 1. Hovedjobben til Team leader overse den agile prosessen for både
@@ -32,6 +39,11 @@ Jan Malte Brunner: - caq008
 1. Hovedansvaret for designansvarlig er først og fremst å tilrettelegge for
    så intuitivt program som mulig for kunden/bruker. Programmet skal ikke bare se bra
    ut men også være lett å navigere gjennom. 
+
+- Tester: Eivind Skarstein
+1. For å vite om programmet fungerer som ønsket er det nødvendig å ha gode og 
+   omfattende tester. Rollen som Tester setter opp tester og har ansvar for at 
+   testene til programmet fungerer og dekker situasjoner programmet vil møte.
 
 
 
