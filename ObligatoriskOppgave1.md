@@ -14,6 +14,26 @@ Jan Malte Brunner: - caq008
 - Kodespråk erfaring innenfor Java, Python
 - Diskret matematikk og generell tech-interesse
 
+###Roller innenfor prosjektet
+- Team leader: Jan Malte Brunner
+1. Hovedjobben til Team leader overse den agile prosessen for både
+   teamet og kunden. En av oppgavene til team leader er å være et mellomledd
+   mellom de forskjellige aktørene involvert i prosjektet og holde styr på
+   det helhetlige bildet av prosjektet. Team leader jobber også som teamets
+   ansikt utad og har hovedansvaret for kommunikasjonen for teamet.
+
+- Kundekontakt: Jan Malte Brunner
+1. Team leader er også satt opp som kundekontakt ettersom en stor del av 
+   team leaders rolle går ut på kommunikasjon både innenfor teamet og med kunden.
+   Jevnlig tilbakemeldinger mellom teamet og kunden i forhold til fremgang av prosjekt
+   og eventuelle problemer som kan oppstå.
+   
+- Design: Sigurd Loennechen
+1. Hovedansvaret for designansvarlig er først og fremst å tilrettelegge for
+   så intuitivt program som mulig for kunden/bruker. Programmet skal ikke bare se bra
+   ut men også være lett å navigere gjennom. 
+
+
 
 
 ##Deloppgave 2 Velg og tilpass en prosess for laget
