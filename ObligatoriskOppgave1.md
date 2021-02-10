@@ -1,6 +1,7 @@
 # Obligatorisk Oppgave1
 
 ##Deloppgave: Organiser teamet
+###Kompetanse
 
 ##Deloppgave 2 Velg og tilpass en prosess for laget
 
