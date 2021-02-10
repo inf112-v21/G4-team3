@@ -7,6 +7,13 @@ Sigurd Loennechen - kiq013:
 - erfaring med python og java
 - har også hatt litt om kunstig intelligens og diskret matematikk
 
+Jan Malte Brunner: - caq008
+- 4 semester IKT
+- har hatt kurs I INF100, INF101, INF102 diverse info fag
+- Kodespråk erfaring innenfor Java, Python
+- Diskret matematikk og generell tech-interesse
+
+
 
 ##Deloppgave 2 Velg og tilpass en prosess for laget
 
