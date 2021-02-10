@@ -1,11 +1,11 @@
 # Obligatorisk Oppgave1
 
-##Deloppgave: Organiser teamet
+##Deloppgave 1: Organiser teamet
 ###Kompetanse
 
-##Deloppgave 2 Velg og tilpass en prosess for laget
+##Deloppgave 2: Velg og tilpass en prosess for laget
 
-##Deloppgave 3 Få oversikt over forventet produkt 
+##Deloppgave 3: Få oversikt over forventet produkt 
 
 ## Deloppgave 4: Kode 
 
