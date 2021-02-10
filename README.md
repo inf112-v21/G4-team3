@@ -21,6 +21,11 @@ Simple skeleton with libgdx.
    1. Brikken ha en tydelig visuell representasjon på spillbrettet.
  
 3. Flytte brikke(vha taster):
+   - Brukerhistorie: som spiller ønsker eg å kunne flytte roboten, slik at eg kan nå plassene eg ønsker.
+   - løsningsbeskrivelse: iplimentere en getinnput fra taste trykk og bruke det til å snu deg/ bevege seg i rettingen du står i.
+   - Akseptansekriterier:
+      1. git en robot med vending nord, og får innput til aust, så endrer vendingen seg.
+      2. git at robot står vendt mot nord pos(1,1) og får innput nord beveger seg ett steg frem i nordretning(2,1)
    
 4. Robot besøker flagg:
    - Brukerhistorie: 
