@@ -1,6 +1,7 @@
 # Obligatorisk Oppgave1
 
 ##Deloppgave: Organiser teamet
+###Kompetanse 
 Sigurd Loennechen - kiq013:
 - IKT 4. semester
 - har tatt INF100, INF101, INF102
