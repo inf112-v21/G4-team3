@@ -10,8 +10,16 @@ Simple skeleton with libgdx.
    - Akseptansekriterier:
      Gitt at vi starter applikasjonen så skal
    1. Vi få opp en visuell representasjon av spillebrettet
-2. Vise brikke på spillebrett:
    
+2. Vise brikke på spillebrett:
+   - Brukerhistorie:
+   Som bruker av applikasjonen, vil jeg ha tydelige visuelle representasjoner av brikker på spillbrettet, slik at det er mulig å bruke applikasjonen.
+   - Løsningsbeskrivelse:
+   Bruker Libgdx og Tiled til å vise brikker på spillbrettet.
+   - Akseptansekriterier:
+   Gitt at en brikke skal være synlig på spillbrettet, så skal:
+   1. Brikken ha en tydelig visuell representasjon på spillbrettet.
+ 
 3. Flytte brikke(vha taster):
    
 4. Robot besøker flagg:
