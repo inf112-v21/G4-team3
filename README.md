@@ -34,6 +34,6 @@ Simple skeleton with libgdx.
    Gitt at robot besøker flagg, 
    så skal:
     1. flagget bli registrert som besøkt.
-    2. spillet blir vunnet av den som tar flagget.
+    2. spillet bli vunnet av den som tar flagget.
    
 ## Known bugs
