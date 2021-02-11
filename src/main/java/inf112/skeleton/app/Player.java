@@ -59,23 +59,18 @@ public class Player{
         playerWonCell = new TiledMapTileLayer.Cell().setTile(playerWonTile);
     }
 
-    public static void move(int keyCode){
-        // -------- Placeholder movement --------
-        // Using arrow keys
-        // Move up
-        if (keyCode == 19) {
+    public static void move(String direction){
+        // -------- Placeholder movement for part 1--------
+        if (direction == "up") {
             playerPos.y = playerPos.y + 1;
         }
-        // Move down
-        else if (keyCode == 20) {
+        else if (direction == "down") {
             playerPos.y = playerPos.y - 1;
         }
-        // Move left
-        else if (keyCode == 22) {
+        else if (direction == "right") {
             playerPos.x = playerPos.x + 1;
         }
-        // Move right
-        else if (keyCode == 21) {
+        else if (direction == "left") {
             playerPos.x = playerPos.x - 1;
         }
     }

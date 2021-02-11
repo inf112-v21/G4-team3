@@ -27,8 +27,6 @@ public class Render extends InputAdapter implements ApplicationListener {
     private BitmapFont font;
 
     // Displaying player
-
-
     private OrthographicCamera camera;
     private OrthogonalTiledMapRenderer renderer;
     public static final int widthPixels = 300;
@@ -46,7 +44,7 @@ public class Render extends InputAdapter implements ApplicationListener {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
-        // Create map layers
+        // Load in map layers from tmx file
         board.createMap();
 
         // Setup camera
@@ -60,6 +58,7 @@ public class Render extends InputAdapter implements ApplicationListener {
         renderer = new OrthogonalTiledMapRenderer(board.map, 1F/widthPixels);
         renderer.setView(camera);
 
+        // Setup player cell states, including textures
         player.setPlayerState();
 
         // Get key input
@@ -79,8 +78,25 @@ public class Render extends InputAdapter implements ApplicationListener {
 
         renderer.render();
         board.updatePlayer();
-    }
 
+        if (player.winCondition){
+            endGame();
+            // End win screen
+            batch.begin();
+            font.getData().setScale(4, 4);
+            font.draw(batch, "You won", 140, 250);
+            batch.end();
+        }
+
+        else if (player.loseCondition){
+            endGame();
+            // End lose screen
+            batch.begin();
+            font.getData().setScale(4, 4);
+            font.draw(batch, "You lost", 140, 250);
+            batch.end();
+        }
+    }
 
     public void endGame(){
         pause = true;
@@ -98,10 +114,29 @@ public class Render extends InputAdapter implements ApplicationListener {
     }
     @Override
     public boolean keyUp(int keyCode){
-        int key = keyCode;
-        playerLayer.setCell((int) playerPos.x, (int) playerPos.y, null); // Remove player sprite before moving
+        // Remove player sprite before moving
+        playerLayer.setCell((int) playerPos.x, (int) playerPos.y, null);
+
+        String direction = "none";
+        // Move up
+        if (keyCode == 19) {
+            direction = "up";
+        }
+        // Move down
+        else if (keyCode == 20) {
+            direction = "down";
+        }
+        // Move left
+        else if (keyCode == 22) {
+            direction = "right";
+        }
+        // Move right
+        else if (keyCode == 21) {
+            direction = "left";
+        }
+
         if(!pause) {
-            player.move(key);
+            player.move(direction);
         }
         return true;
     }
