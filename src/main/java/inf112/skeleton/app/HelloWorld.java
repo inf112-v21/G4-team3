@@ -90,7 +90,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener {
         playerDiedCell = new Cell().setTile(playerDiedCellTile);
         playerWonCell = new Cell().setTile(playerWonTile);
 
-        // Get key input(?)
+        // Get key input
         Gdx.input.setInputProcessor(this);
     }
 
