@@ -45,9 +45,11 @@ Daan van Kessel - dke004
    så intuitivt program som mulig for kunden/bruker. Programmet skal ikke bare se bra
    ut men også være lett å navigere gjennom.
    
-- Kodar: Daan van Kessel
-1. I en Koder ser vi etter en som kan sett om designet som vi har valgt, 
-   om til ein fungerend Program.
+- Koder: Daan van Kessel
+1. Koderen i et prosjekt skal ikke bare bygge leveranser, men har også ansvar for å kommunisere
+   statusen til prosjektet til Team leader. Koderen er avhengig av at de andre medlemmene
+   i laget også kommuniserer de tekniske kravene effektivt til koderen slik at han får de 
+   beste forutsetningene som mulig. 
    
 - Tester: Eivind Skarstein
 1. For å vite om programmet fungerer som ønsket er det nødvendig å ha gode og 
