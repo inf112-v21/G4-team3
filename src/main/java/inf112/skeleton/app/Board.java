@@ -37,11 +37,13 @@ public class Board {
     // Create map layers
     public static void createMap(){
         map = new TmxMapLoader().load("assets/Testmap.tmx");
+        System.out.println(map);
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
     }
+
 
     //Player player = new Player();
 

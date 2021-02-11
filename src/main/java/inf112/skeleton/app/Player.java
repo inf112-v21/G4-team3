@@ -79,41 +79,5 @@ public class Player{
             playerPos.x = playerPos.x - 1;
         }
     }
-/*
-    @Override
-    public boolean keyUp(int keyCode){
-
-        if(!pause) {
-            // -------- Placeholder movement --------
-            // Using arrow keys
-            playerLayer.setCell((int) playerPos.x, (int) playerPos.y, null); // Remove player sprite before moving
-            // Move up
-            if (keyCode == 19) {
-                playerPos.y = playerPos.y + 1;
-            }
-            // Move down
-            else if (keyCode == 20) {
-                playerPos.y = playerPos.y - 1;
-            }
-            // Move left
-            else if (keyCode == 22) {
-                playerPos.x = playerPos.x + 1;
-            }
-            // Move right
-            else if (keyCode == 21) {
-                playerPos.x = playerPos.x - 1;
-            }
-        }
-        // --------------------------------------------
-        return true;
-    }
-*/
-    /*
-    public boolean validPlayerMapPos(Vector2 pos){
-        boolean checkX = playerPos.x<Board.MAP_SIZE_X && playerPos.x>=0;
-        boolean checkY = playerPos.y<Board.MAP_SIZE_Y && playerPos.y>=0;
-        return checkX && checkY;
-    }
-    */
 
 }

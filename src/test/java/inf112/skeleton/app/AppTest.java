@@ -4,9 +4,17 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.tiled.*;
+import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import com.badlogic.gdx.math.Vector2;
+
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 /**
  * Unit test for simple App.
@@ -49,16 +57,25 @@ public class AppTest {
         assertEquals(player.playerPos, expectedPosition);
     }
 
+
+
     @Test
-    public void testIfRobotDiesOfFaling(){
+    public void testIfRobotDiesOfFalling(){
         Board board = new Board();
-        board.createMap();
+        System.out.println(board.map);
+        //TiledMapTileLayer tile = new TiledMapTileLayer(1,1,1,1);
+
+
+        //TiledMap map = new TiledMapTileLayer.Cell();
+        player.setPlayerState();
 
         player.playerPos = new Vector2(2,2);
 
         //assertEquals();
         assertTrue(true);
     }
+
+
 
 
 }
