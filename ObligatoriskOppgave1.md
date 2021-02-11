@@ -79,18 +79,36 @@ Daan van Kessel - dke004
    om sprinten og hva som kan bli gjort bedre neste sprint. Vi prøver å holde review og retrospektiv i underkanten av
    en time. Vi tar i bruk par-programmering hvor code-with-me hovedsaklig er verktøyet det fører til en
    mer agil programmeringsprosess ettersom det blir konstant gitt feedback mellom parene. Vi bruker git-repoet
-   for deling av dokumenter, diagram og som kodebase. 
+   for deling av dokumenter, diagram og som kodebase. Vi følger test-drevet utvikling hvor tester skrives før 
+   koden og koden skal være så enkel som mulig og kun oppfylle kravene for å bestå testen. Etter det refaktoreres
+   først testene og så koden.
    
 ##Deloppgave 3 Få oversikt over forventet produkt 
-- 
+### - Overordnete målet for applikasjonen: 
+- Fullfører 9 mvp-kravene:
+  Vise et spillebrett
+  Vise brikke på spillebrett
+  Flytte brikke (vha taster e.l. for testing)
+  Robot besøker flagg
+  Robot vinner ved å besøke flagg
+  
+  Spille fra flere maskiner (vise brikker for alle spillere, flytte brikker for alle spillere)
+  Dele ut kort
+  Velge 5 kort
+  Bevege robot ut fra valgte kort
 
+- Det overordnete målet for vår applikasjon ved slutten av prosessen kan deles opp i X deler:
+1. Applikasjonen skal kjøre feilfritt med minimalt med bugs og oppfylle minst alle MVP-kravene.
+2. Har god kodepraksis med abstrahering, innkapsling, arv og generelt hovedtrekkende fra objektorientert
+programmering.
+3. Hensiktsmessige tester med god kodedekkelse og som sørger for at krav blir oppfylt og at kodebyggingen
+   basert på testene blir mer effektiv.
+4. Levere et resultat, hver enkelt i teamet kan stå bak og være fornøyd med. 
 
-
-## Deloppgave 4: Kode 
-
-
-
-## Brukerhistorier
+### Brukerhistorier
+Vi vil basere oss på brukerhistorie formatet vist av [ENTUR](https://design.entur.org/kom-i-gang/for-designere/brukerhistorier) 09.02.2021
+Siden den virker klar og tydelig og viser oss steg for steg hvordan vi skal sette opp våre brukerhistorier.
+Brukerhistoriene er numerert etter hvilket MVP-krav de oppfyller og prioritet.
 1. Vise et spillebrett:
    - Brukerhistorie:
      Som bruker av applikasjonen må jeg ha en visuell / logisk representasjon av spillebrettet for å kunne bruke applikasjonen I det hele tatt.
@@ -99,52 +117,66 @@ Daan van Kessel - dke004
    - Akseptansekriterier:
      Gitt at vi starter applikasjonen så skal
    1. Vi få opp en visuell representasjon av spillebrettet
-   
+
 2. Vise brikke på spillebrett:
    - Brukerhistorie:
-   Som bruker av applikasjonen, vil jeg ha tydelige visuelle representasjoner av brikker på spillbrettet, slik at det er mulig å bruke applikasjonen.
+     Som bruker av applikasjonen, vil jeg ha tydelige visuelle representasjoner av brikker på spillbrettet, slik at det er mulig å bruke applikasjonen.
    - Løsningsbeskrivelse:
-   Bruker Libgdx og Tiled til å vise brikker på spillbrettet.
+     Bruker Libgdx og Tiled til å vise brikker på spillbrettet.
    - Akseptansekriterier:
-   Gitt at en brikke skal være synlig på spillbrettet, så skal:
+     Gitt at en brikke skal være synlig på spillbrettet, så skal:
    1. Brikken ha en tydelig visuell representasjon på spillbrettet.
- 
+
 3. Flytte brikke(vha taster):
-   - Brukerhistorie: som spiller ønsker eg å kunne flytte roboten, 
+   - Brukerhistorie: som spiller ønsker eg å kunne flytte roboten,
      slik at eg kan nå plassene eg ønsker.
-   - løsningsbeskrivelse: iplimentere en getinnput fra taste trykk og 
+   - løsningsbeskrivelse: iplimentere en getinnput fra taste trykk og
      bruke det til å bevege seg.
    - Akseptansekriterier:
       1. git en robot pos(1,1) som får innput til høgrepill, så beveger den til høgre.
-      2. git at robot pos(1,1) og får ikkje et innput 
+      2. git at robot pos(1,1) og får ikkje et innput
          så beveger den seg ikkje i noen rettning.
-   
+
 4. Robot besøker flagg:
-   - Brukerhistorie: 
-   Som robot   
-   vil jeg kunne besøke flagg
-   slik at det registreres ved besøk gjennom for eksempel
-   en enum som markerer et flagg ved besøk.
+   - Brukerhistorie:
+     Som robot   
+     vil jeg kunne besøke flagg
+     slik at det registreres ved besøk gjennom for eksempel
+     en enum som markerer et flagg ved besøk.
    - Løsningsbeskrivelse:
-   Lage en flagg-enum som aktiveres når koordinater 
-   til roboten overlapper med koordinater til flagget.
+     Sjekker om flagget eksisterer i samme celle som spiller
    - Akseptansekriterier
-   Gitt at roboten besøker et flag, 
-   så skal: 
-   1. Flagget bli registrert som besøkt 
+     Gitt at roboten besøker et flag,
+     så skal:
+   1. Flagget bli registrert som besøkt
 
 5. Robot vinner ved å besøke flagg:
    - Brukerhistorie:
-   Som robot 
-   vil jeg kunne vinne ved å besøke flagg, 
-   slik at spillet blir over.
+     Som robot
+     vil jeg kunne vinne ved å besøke flagg,
+     slik at spillet blir over.
    - Løsningsbeskrivelse:
-   Lager en flagg-enum som holder styr på om flagget er besøkt eller ikke
-   og om flagget blir besøkt i dette tilfellet blir game-enum til ferdig og avslutter.
+     Setter win-condition til true om flagget eksisterer i samme celle som spiller. 
    - Aksepteansekriterier:
-   Gitt at robot besøker flagg, 
-   så skal:
-    1. flagget bli registrert som besøkt.
-    2. spillet bli vunnet av den som tar flagget.
+     Gitt at robot besøker flagg,
+     så skal:
+   1. flagget bli registrert som besøkt.
+   2. spillet bli vunnet av den som tar flagget.
    
-## Known bugs
+###Prioriteringer
+- Vi har prioritert brukerhistoriene/kravene ut fra den viste rekkefølgen i oppgaveteksten, grunnet
+det er en naturlig fremgangsmåte med tanke på utviklingen av MVP for eksempel vil det være vankselig å vise
+  en brikke på spillebrettet uten å ha fullført kravet: "Vise et spillbrett".
+1. Vise et spillbrett
+2. Vise brikke på spillebrett
+3. Flytte brikke(vha. taster)
+4. Robot besøker flagg
+5. Robot vinner ved å besøke flagg 
+
+Vi har valgt å ikke oppfylle flere MVP-krav enn gitt, ettersom vi bruker perioden til første innlevering
+som prøve-periode på måten vi jobber sammen på. 
+
+
+## Deloppgave 4: Kode 
+
+
