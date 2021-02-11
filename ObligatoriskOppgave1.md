@@ -56,12 +56,35 @@ Daan van Kessel - dke004
    omfattende tester. Rollen som Tester setter opp tester og har ansvar for at 
    testene til programmet fungerer og dekker situasjoner programmet vil møte.
 
-
-
-
+   
 ##Deloppgave 2 Velg og tilpass en prosess for laget
-
+- Prosjektmetodikk:
+1. Vi baserer oss på scrum som den hovedsaklige prosjektmetodikken, men vi tilpasser den
+   til formålet til prosjektet ettersom det er noen forskjeller på et standard scrum team
+   og en liten gruppe av 4 studenter. Vi gjennomfører ukentlige sprints på en mandag-fredag syklus.
+   I sprint-planning setter vi oppgavene som skal bli gjennomført innenfor tidsrammen av sprinten. Planleggingen av 
+   ukens sprint skjer mandager på et online-møte hvor vi tar sikt på at planleggingen blir gjort
+   på en time. Under sprint-planning fordeles arbeidsoppgavene for sprinten. Vi setter opp sprinten på project board i git-repoet vårt. Den daglige scrumen blir gjennomført 
+   annenhver dag ettersom alle gruppemedlemmene har andre fag og oppgaver å forholde seg til parallelt. Det er 
+   korte møter hvor vi oppdaterer hverandre om progresjonen i prosjektet og de forskjellige oppgavene før neste møte. 
+   Vi gir hyppige tilbakemeldinger 
+   hvilket gjør selve arbeidsprosessen mer agil. Vi prøver å få TA - Knut, til å være med på noen scrumsene
+   ettersom han spiller rollen som kunde i dette tilfellet og kan også gi verdifull tilbakemelding på hvor 
+   vi står. Denne syklusen med tilbakemelding hvor TA er involvert gjør at vi kan oppdage antagelser
+   eller eventuelle dårlige retninger før vi begynner på dem. På fredager har vi et sprint-review og 
+   sprint-retrospektiv, i starten ble møtet holdt fysisk, men pga. situasjonen til universitetet kan de også
+   bli holdt over discord. I sprint-review ser vi hva som har blitt gjort og ikke iløpet av sprinten. Sprint-review 
+   skal også oppdatere kunden om prosjektets standpunkt og progresjon i løpet av sprinten. Rett etter sprint-review 
+   går vi inn i sprint-retrospektiv delen av møtet. I denne delen prøver vi å gi hverandre tilbakemeldinger
+   om sprinten og hva som kan bli gjort bedre neste sprint. Vi prøver å holde review og retrospektiv i underkanten av
+   en time. Vi tar i bruk par-programmering hvor code-with-me hovedsaklig er verktøyet det fører til en
+   mer agil programmeringsprosess ettersom det blir konstant gitt feedback mellom parene. Vi bruker git-repoet
+   for deling av dokumenter, diagram og som kodebase. 
+   
 ##Deloppgave 3 Få oversikt over forventet produkt 
+- 
+
+
 
 ## Deloppgave 4: Kode 
 
