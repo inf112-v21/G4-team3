@@ -20,7 +20,12 @@ Eivind Skarstein - nit005
 - går siste semester i Data Science
 - har fullført en bachelorgrad i geofysikk, med mye programmering i MATLAB
 
-
+Daan van Kessel - dke004
+- har tatt INF100
+- tar INF101
+- litt erfaring med c++ og arduino boards
+- sett java tutorial
+  
 ###Roller innenfor prosjektet
 - Team leader: Jan Malte Brunner
 1. Hovedjobben til Team leader overse den agile prosessen for både
@@ -38,8 +43,12 @@ Eivind Skarstein - nit005
 - Design: Sigurd Loennechen
 1. Hovedansvaret for designansvarlig er først og fremst å tilrettelegge for
    så intuitivt program som mulig for kunden/bruker. Programmet skal ikke bare se bra
-   ut men også være lett å navigere gjennom. 
-
+   ut men også være lett å navigere gjennom.
+   
+- Kodar: Daan van Kessel
+1. I en Koder ser vi etter en som kan sett om designet som vi har valgt, 
+   om til ein fungerend Program.
+   
 - Tester: Eivind Skarstein
 1. For å vite om programmet fungerer som ønsket er det nødvendig å ha gode og 
    omfattende tester. Rollen som Tester setter opp tester og har ansvar for at 
@@ -76,11 +85,14 @@ Eivind Skarstein - nit005
    1. Brikken ha en tydelig visuell representasjon på spillbrettet.
  
 3. Flytte brikke(vha taster):
-   - Brukerhistorie: som spiller ønsker eg å kunne flytte roboten, slik at eg kan nå plassene eg ønsker.
-   - løsningsbeskrivelse: iplimentere en getinnput fra taste trykk og bruke det til å snu deg/ bevege seg i rettingen du står i.
+   - Brukerhistorie: som spiller ønsker eg å kunne flytte roboten, 
+     slik at eg kan nå plassene eg ønsker.
+   - løsningsbeskrivelse: iplimentere en getinnput fra taste trykk og 
+     bruke det til å bevege seg.
    - Akseptansekriterier:
-      1. git en robot med vending nord, og får innput til aust, så endrer vendingen seg.
-      2. git at robot står vendt mot nord pos(1,1) og får innput nord beveger seg ett steg frem i nordretning(2,1)
+      1. git en robot pos(1,1) som får innput til høgrepill, så beveger den til høgre.
+      2. git at robot pos(1,1) og får ikkje et innput 
+         så beveger den seg ikkje i noen rettning.
    
 4. Robot besøker flagg:
    - Brukerhistorie: 
