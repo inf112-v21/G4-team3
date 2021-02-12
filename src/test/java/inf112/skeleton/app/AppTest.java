@@ -100,7 +100,7 @@ public class AppTest {
     }
 
     @Test
-    public void testIfRobotWinnsByWisiting(){
+    public void testIfRobotWinnsByWisitingFlag(){
        player.playerPos = new Vector2(4,4); //flag position
         board.updatePlayer(player);
         //assertEquals();
