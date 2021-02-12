@@ -6,20 +6,9 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
-
-import static inf112.skeleton.app.Board.flagLayer;
-import static inf112.skeleton.app.Board.playerLayer;
-import static inf112.skeleton.app.Player.playerPos;
 
 
 public class Render extends InputAdapter implements ApplicationListener {
@@ -31,7 +20,6 @@ public class Render extends InputAdapter implements ApplicationListener {
     private OrthogonalTiledMapRenderer renderer;
     public static final int widthPixels = 300;
     public static final int heightPixels = 300;
-
     public boolean pause = false;
 
     public Player player = new Player();
@@ -114,8 +102,8 @@ public class Render extends InputAdapter implements ApplicationListener {
     }
     @Override
     public boolean keyUp(int keyCode){
-        // Remove player sprite before moving
-        playerLayer.setCell((int) playerPos.x, (int) playerPos.y, null);
+        // Remove player texture before moving
+        board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
 
         String direction = "none";
         // Move up
