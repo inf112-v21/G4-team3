@@ -64,14 +64,20 @@ public class AppTest {
 
     @Test
     public void testIfPlayerIsOnMap(){
-        player.playerPos = new Vector2(1,1);
-        assertTrue(player.validPlayerMapPos(player.playerPos));
+        Board board = new Board();
+        board.MAP_SIZE_X = 4;
+        board.MAP_SIZE_X = 4;
+        player.playerPos = new Vector2(3,1);
+        assertTrue(board.validPlayerMapPos(player.playerPos));
     }
 
     @Test
     public void testIfPlayerIsNotOnMap(){
+        Board board = new Board();
+        board.MAP_SIZE_X = 4;
+        board.MAP_SIZE_X = 4;
         player.playerPos = new Vector2(-1,-1);
-        assertTrue(!player.validPlayerMapPos(player.playerPos));
+        assertTrue(!board.validPlayerMapPos(player.playerPos));
     }
 
     /*

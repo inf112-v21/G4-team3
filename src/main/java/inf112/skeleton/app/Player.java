@@ -35,13 +35,6 @@ public class Player{
     public static Cell playerWonCell;
     public static Cell playerDiedCell;
 
-    // Check if player is positioned on the map
-    public static boolean validPlayerMapPos(Vector2 pos){
-        boolean checkX = playerPos.x<Board.MAP_SIZE_X && playerPos.x>=0;
-        boolean checkY = playerPos.y<Board.MAP_SIZE_Y && playerPos.y>=0;
-        return checkX && checkY;
-    }
-
     public static void setPlayerState(){
         // Split player.png into 3 textures
         Texture texture = new Texture("assets/player.png");

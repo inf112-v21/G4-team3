@@ -77,7 +77,7 @@ public class Render extends InputAdapter implements ApplicationListener {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         renderer.render();
-        board.updatePlayer();
+        board.updatePlayer(player);
 
         if (player.winCondition){
             endGame();

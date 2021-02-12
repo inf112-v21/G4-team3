@@ -42,24 +42,31 @@ public class Board {
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
     }
 
-    public void updatePlayer(){
+    // Check if player is positioned on the map
+    public static boolean validPlayerMapPos(Vector2 pos){
+        boolean checkX = pos.x<Board.MAP_SIZE_X && pos.x>=0;
+        boolean checkY = pos.y<Board.MAP_SIZE_Y && pos.y>=0;
+        return checkX && checkY;
+    }
+
+    public void updatePlayer(Player player){
         // Set the player on the layer
-        playerLayer.setCell((int) playerPos.x, (int) playerPos.y, Player.playerCell);
+        playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell);
 
         // Checks if the player is on one of the layer types. Cell is null if player is not on the layer type
-        Cell boardCell = boardLayer.getCell((int) playerPos.x, (int) playerPos.y);
-        Cell holeCell = holeLayer.getCell((int) playerPos.x, (int) playerPos.y);
-        Cell flagCell = flagLayer.getCell((int) playerPos.x, (int) playerPos.y);
+        Cell boardCell = boardLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell holeCell = holeLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell flagCell = flagLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
 
         // Check if player is in a hole or is outside the map. If true ends the game.
-        if (holeCell != null || !Player.validPlayerMapPos(playerPos)) {
-            playerLayer.setCell((int) playerPos.x, (int) playerPos.y, Player.playerDiedCell);
-            Player.loseCondition = true;
+        if (holeCell != null || !validPlayerMapPos(player.playerPos)) {
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerDiedCell);
+            player.loseCondition = true;
 
             // Check if player has reached a flag. If true ends the game.
         } else if (flagCell != null) {
-            playerLayer.setCell((int) playerPos.x, (int) playerPos.y, Player.playerWonCell);
-            Player.winCondition = true;
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerWonCell);
+            player.winCondition = true;
         }
     }
 }
