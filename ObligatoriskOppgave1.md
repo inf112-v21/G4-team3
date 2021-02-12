@@ -193,22 +193,23 @@ De andre rutene med objekter på har ikke blitt gitt noen funksjoner foreløpig.
 ###Mandag: 01.02.2021
 ###Første møte for prosjektet: Møtes i DC kl 12-14
 
-Prosjektplanlegging: Finne ut hva vi trenger å gjøre til første innlevering ut fra oppgaveteksten.
+- Prosjektplanlegging: Finne ut hva vi trenger å gjøre til første innlevering ut fra oppgaveteksten.
 
-Sprint planning: I første sprint siktet vi på å få gjort deloppgave 1: Organiser teamet og deloppgave 2: Velg og tilpass en prosess for laget.
-Fordeling av arbeidsoppgaver første sprint:
-- Gruppe navn ble vi raskt enig om på første møte: SMED
-- Hvert team medlem skal skrive om egen kompetanse. (alle)
-- Tildele roller ut fra kompetanse og villighet, utdype om arbeidsoppgaver og  krav til valgt rolle. (alle)
-- Opprette project board på github (Daan) lære bruk av project board(Alle)
-- Deloppgave 1 skal ideelt sett være ferdig til onsdag før gruppetimen slik at alle kan begynne på egne arbeidsoppgaver innenfor deloppgave 2.
-Deloppgave 2 begynnes å jobbe med I gruppetimen på onsdag.
-- Vurdere hvilken arbeidsmetodikk vi vil følge og hvordan de må tilpasses for et studentprosjekt (alle).
-- Få tilbakemelding av TA på progresjon så langt (alle)
-- Diskutere i team om: Møter og hyppighet, Kommunikasjon mellom møter, Arbeidsfordeling, Oppfølging av arbeid, Deling og oppbevaring av felles dokumenter (alle). Skrive kort oppsummering av konklusjon (Sigurd/Malte)
+- Sprint planning: I første sprint siktet vi på å få gjort deloppgave 1: Organiser teamet og deloppgave 2: 
+elg og tilpass en prosess for laget.
 
-
-
+- Fordeling av arbeidsoppgaver første sprint:
+    - Gruppe navn ble vi raskt enig om på første møte: SMED
+    - Hvert team medlem skal skrive om egen kompetanse. (alle)
+    - Tildele roller ut fra kompetanse og villighet, utdype om arbeidsoppgaver og  krav til valgt rolle. (alle)
+    - Opprette project board på github (Daan) lære bruk av project board(Alle)
+    - Deloppgave 1 skal ideelt sett være ferdig til onsdag før gruppetimen slik at alle kan begynne på egne 
+      arbeidsoppgaver innenfor deloppgave 2.
+    - Deloppgave 2 begynnes å jobbe med I gruppetimen på onsdag.
+    - Vurdere hvilken arbeidsmetodikk vi vil følge og hvordan de må tilpasses for et studentprosjekt (alle).
+    - Få tilbakemelding av TA på progresjon så langt (alle)
+    - Diskutere i team om: Møter og hyppighet, Kommunikasjon mellom møter, Arbeidsfordeling, Oppfølging av arbeid, 
+      Deling og oppbevaring av felles dokumenter (alle). Skrive kort oppsummering av konklusjon (Sigurd/Malte)
 
 ###Onsdag 03.02.2021
 
@@ -220,7 +221,8 @@ Konklusjon:
 ###Gruppetime felles arbeid med tilgang til TA for tilbakemelding 12.15-14.00
 Konklusjon:
 - Ferdigstilling av valgte arbeidsmetodikk (alle)
-- Laget plan om: Møter og hyppighet, Kommunikasjon mellom møter, Arbeidsfordeling, Oppfølging av arbeid, Deling og oppbevaring av felles dokumenter (alle).
+- Laget plan om: Møter og hyppighet, Kommunikasjon mellom møter, Arbeidsfordeling, Oppfølging av arbeid, Deling og 
+  oppbevaring av felles dokumenter (alle).
 - Skrive kort oppsummering av konklusjon (Sigurd/Malte)
 
 ###Fredag 05.02.2021 
@@ -232,6 +234,52 @@ Konklusjon:
 ###Retrospektiv konklusjon:
 - God fordeling av oppgaver og mengde
 - God kommunikasjon og oppfølging
-- Usikkerhet rundt valgt arbeidsmetodikk og omsetting av den. Flere metodikker må eventuelt legges til, bli tatt vekk eller forandres i løpet av prosjektet.
+- Usikkerhet rundt valgt arbeidsmetodikk og omsetting av den. Flere metodikker må eventuelt legges til, bli tatt 
+  vekk eller forandres i løpet av prosjektet.
 - Usikkerhet angående commit meldinger og hvordan disse skal se ut. 
 
+###Mandag 08.02.2021
+###Sprintplanning møtes på Discord 12-13
+
+- Sprint planlegging: Dette møtet gikk ut på planlegging av ukens sprint, tar sikte på å gjøre ferdig
+deloppgave 3 og deloppgave 4, og ferdigstille til første delinnlevering på fredag.
+- Fordeling av arbeidsoppgaver 2. sprint:
+    - Lage en kort beskrivelse av overordnet mål for applikasjonen(sigurd/malte)
+    - En liste over brukerhistorier til systemet basert på MVP-kravene(alle)
+    - Fullføre brukerhistorier, akseptansekriterier og arbeidsoppgaver(alle)
+    - Prioritetsliste over brukerhistorier(sigurd/malte)
+    - Skrive ferdig kode med tilsvarende tester for MVP krav 1-5.(Eivind/Daan)
+    
+###Onsdag 10.02.2021
+###Discord møte, oppfølging av fullførte arbeidsoppgaver
+- Konklusjon 
+- Fullført:
+    - MVP-kravene 1-3 har blitt fullført samt tilhørende tester(eivind/daan)
+    - Skrive overordnet mål for applikasjonen(sigurd/malte)
+    - En liste over brukerhistorier basert på MVP-kravene(sigurd/malte)
+- Gjenstående:
+    - MVP-krav 4-5 samt tilhørende tester
+    - Akseptansekrav og arbeidsoppgaver for hver brukerhistorie samt hvilke krav de oppfyller.
+    - Priotiert liste over hvilke brukerhistorier vi vil ha med i første iterasjon.
+    - Gjenstående tekstarbeid i .md-filen. (sigurd/malte)
+    
+###Discord gruppetime fellesarbeid med tilgang til TA, 1215-14
+- Konklusjon
+- Fullført: 
+    - Akseptansekrav og arbeidsoppgaver for hver brukerhistorie samt hvilke krav de oppfyller(Sigurd/malte)
+    - MVP-krav 4, mangler test(eivind/daan)
+    
+
+###Fredag 12.02.2021.     
+###Discord møte, sprint review og sprint retrospektiv, tilbakemelding fra kunde(TA - Knut)
+- Scrum review konklusjon:
+    - Nesten ferdig med alle utdelte arbeidsoppgaver
+    - Litt finpuss før endelig innlevering av obligatorisk oppgave 1
+    - Kunde(TA - Knut) oppdatert på prosjektets status og fått tilbakemelding av kunde.
+    
+- Scrum retrospektiv konklusjon:
+    - Passende mengder med oppgaver for gruppemedlemmene
+    - Fornøyd med kommunikasjon og oppfølging
+    - Fornøyd med valgt arbeidsmetodikk, kan fremdeles tilpasses etter prosjektets videre arbeidsoppgaver
+    - Foreløpig gode commit-meldinger, må evt kategoriseres og ryddes opp i for oversiktens skyld
+    
