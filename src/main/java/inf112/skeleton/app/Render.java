@@ -11,11 +11,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 
-import static inf112.skeleton.app.Board.flagLayer;
-import static inf112.skeleton.app.Board.playerLayer;
-import static inf112.skeleton.app.Player.playerPos;
-
-
 public class Render extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
@@ -107,8 +102,8 @@ public class Render extends InputAdapter implements ApplicationListener {
     }
     @Override
     public boolean keyUp(int keyCode){
-        // Remove player sprite before moving
-        playerLayer.setCell((int) playerPos.x, (int) playerPos.y, null);
+        // Remove player texture before moving
+        board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
 
         String direction = "none";
         // Move up
