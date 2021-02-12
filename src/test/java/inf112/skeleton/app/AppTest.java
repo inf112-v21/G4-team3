@@ -3,6 +3,7 @@ package inf112.skeleton.app;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapObjects;
@@ -80,24 +81,39 @@ public class AppTest {
         assertTrue(!board.validPlayerMapPos(player.playerPos));
     }
 
-    /*
     @Test
     public void testIfRobotDiesOfFalling(){
+        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+        cfg.setTitle("close");
+        cfg.setWindowedMode(500, 500);
+        new Lwjgl3Application(new Render(), cfg);
+
         Board board = new Board();
-        System.out.println(board.map);
-        //TiledMapTileLayer tile = new TiledMapTileLayer(1,1,1,1);
+        System.out.println(Board.map);
 
-
-        //TiledMap map = new TiledMapTileLayer.Cell();
-        player.setPlayerState();
 
         player.playerPos = new Vector2(2,2);
-
+        board.updatePlayer(player);
         //assertEquals();
-        assertTrue(true);
+        assertTrue(player.loseCondition);
     }
 
-     */
+    @Test
+    public void testIfRobotWinnsByWisiting(){
+        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+        cfg.setTitle("close");
+        cfg.setWindowedMode(500, 500);
+        new Lwjgl3Application(new Render(), cfg);
+
+        Board board = new Board();
+        System.out.println(Board.map);
+
+
+        player.playerPos = new Vector2(4,4); //flag position
+        board.updatePlayer(player);
+        //assertEquals();
+        assertTrue(player.winCondition);
+    }
 
 
 }
