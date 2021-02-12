@@ -178,7 +178,8 @@ som prøve-periode på måten vi jobber sammen på.
 
 
 ## Deloppgave 4: Kode
-- Kort om programmet
+- Kort om programmet:
+
 Programmet starter ved å kjøre main. Spilleren flyttes rundt på brettet ved bruk av piltastene. Hvis spilleren beveger seg over et hull eller utenfor brettet taper han spillet og spillet avsluttes. Hvis spilleren beveger seg over flagget har spilleren vunnet og spillet avsluttes. De andre rutene med ting på har ikke fått noen funksjoner ennå.
 
 
