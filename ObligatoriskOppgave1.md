@@ -283,3 +283,10 @@ deloppgave 3 og deloppgave 4, og ferdigstille til første delinnlevering på fre
     - Fornøyd med valgt arbeidsmetodikk, kan fremdeles tilpasses etter prosjektets videre arbeidsoppgaver
     - Foreløpig gode commit-meldinger, må evt kategoriseres og ryddes opp i for oversiktens skyld
     
+##Project board
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
+![img_5.png](img_5.png)
