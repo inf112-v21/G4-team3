@@ -2,22 +2,13 @@ package inf112.skeleton.app;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.MapObjects;
-import com.badlogic.gdx.maps.MapProperties;
-import com.badlogic.gdx.maps.tiled.*;
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import com.badlogic.gdx.math.Vector2;
 
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+
 
 /**
  * Unit test for simple App.
@@ -27,9 +18,8 @@ public class AppTest {
      * Rigorous Test :-)
      */
 
-    // Initiate a player class instance
+    // Initiate class instances
     public Player player = new Player();
-
     public Board board = new Board();
 
     @Before
@@ -69,7 +59,7 @@ public class AppTest {
     public void testIfPlayerIsOnMap(){
         Board board = new Board();
         board.MAP_SIZE_X = 4;
-        board.MAP_SIZE_X = 4;
+        board.MAP_SIZE_Y = 4;
         player.playerPos = new Vector2(3,1);
         assertTrue(board.validPlayerMapPos(player.playerPos));
     }
@@ -78,39 +68,44 @@ public class AppTest {
     public void testIfPlayerIsNotOnMap(){
         Board board = new Board();
         board.MAP_SIZE_X = 4;
-        board.MAP_SIZE_X = 4;
+        board.MAP_SIZE_Y = 4;
         player.playerPos = new Vector2(-1,-1);
         assertTrue(!board.validPlayerMapPos(player.playerPos));
     }
 
-    // testen åpner et windu som må lukkas før testen kjører, fungerer ellers
-    //@Test
-    public void testIfGameRegisterIfRobotLosesOfStandingOnHole(){
+
+
+
+
+    // Open application for testing purposes
+    public void openApplication() {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("close");
+        cfg.setTitle("Lukk vinduet for at testen skal kjøre");
         cfg.setWindowedMode(500, 500);
         new Lwjgl3Application(new Render(), cfg);
+    }
 
-        player.playerPos = new Vector2(2,2);
+    // Testen åpner et vindu som må lukkes før testen kjører, fungerer ellers. [WIP]
+    //@Test
+    public void testIfGameRegisterIfRobotLosesOfStandingOnHole(){
+        openApplication();
+
+        // Using the layer setup from Testmap.tmx
+        player.playerPos = new Vector2(2,2); // Hole position;
         board.updatePlayer(player);
-        //assertEquals();
         assertTrue(player.loseCondition);
     }
 
-    // testen åpner et windu som må lukkas før testen kjører, fungerer ellers
+    // Testen åpner et vindu som må lukkes før testen kjører, fungerer ellers. [WIP]
     //@Test
-    public void testIfGameRegisterRobotWinnsByWisitingFlag(){
-        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("close");
-        cfg.setWindowedMode(500, 500);
-        new Lwjgl3Application(new Render(), cfg);
-        player.playerPos = new Vector2(4,4); //flag position
+    public void testIfGameRegisterRobotWinsByVisitingFlag(){
+        openApplication();
+
+        // Using the layer setup from Testmap.tmx
+        player.playerPos = new Vector2(4,4); // Flag position
         board.updatePlayer(player);
-        //assertEquals();
         assertTrue(player.winCondition);
     }
-
-
 }
 
 
