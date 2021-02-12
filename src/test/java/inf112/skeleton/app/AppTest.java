@@ -30,6 +30,16 @@ public class AppTest {
     // Initiate a player class instance
     public Player player = new Player();
 
+    public Board board = new Board();
+
+    @Before
+    public void setUpScreenForTest(){
+        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+        cfg.setTitle("close");
+        cfg.setWindowedMode(500, 500);
+        new Lwjgl3Application(new Render(), cfg);
+    }
+
     @Before
     public void setPlayerPosition(){
         player.playerPos = new Vector2(0,0);
@@ -83,15 +93,6 @@ public class AppTest {
 
     @Test
     public void testIfRobotDiesOfFalling(){
-        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("close");
-        cfg.setWindowedMode(500, 500);
-        new Lwjgl3Application(new Render(), cfg);
-
-        Board board = new Board();
-        System.out.println(Board.map);
-
-
         player.playerPos = new Vector2(2,2);
         board.updatePlayer(player);
         //assertEquals();
@@ -100,16 +101,7 @@ public class AppTest {
 
     @Test
     public void testIfRobotWinnsByWisiting(){
-        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("close");
-        cfg.setWindowedMode(500, 500);
-        new Lwjgl3Application(new Render(), cfg);
-
-        Board board = new Board();
-        System.out.println(Board.map);
-
-
-        player.playerPos = new Vector2(4,4); //flag position
+       player.playerPos = new Vector2(4,4); //flag position
         board.updatePlayer(player);
         //assertEquals();
         assertTrue(player.winCondition);
