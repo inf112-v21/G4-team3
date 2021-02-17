@@ -165,7 +165,7 @@ Brukerhistoriene er numerert etter hvilket MVP-krav de oppfyller og prioritet.
      så skal:
         - flagget bli registrert som besøkt.
         - spillet bli vunnet av den som tar flagget.
-<<<<<<< Updated upstream
+    
 6. Spille fra flere maskiner (vise brikker for alle spillere, flytte brikker for alle spillere):
     - Brukerhistorie:
       Som spiller ønsker eg å kunne spille med andre, 
@@ -181,9 +181,6 @@ Brukerhistoriene er numerert etter hvilket MVP-krav de oppfyller og prioritet.
             1. når MaskinA sender at den flytter RobotA så Flytter RobotA seg både på skermen til Maskin A og B.
             2. at begge Maskinane viser samme Bretet med Robotane på samme posison.
             3. 
-
-
-=======
     
 8. Velge 5 kort:
    - Brukerhistorie:
@@ -198,7 +195,7 @@ Brukerhistoriene er numerert etter hvilket MVP-krav de oppfyller og prioritet.
      så skal:
         - Riktige kortene bli valgt
         - Kortene bli lagt til i "hånden" til spiller
->>>>>>> Stashed changes
+
    
 ###Prioriteringer
 - Vi har prioritert brukerhistoriene/kravene ut fra den viste rekkefølgen i oppgaveteksten, grunnet
