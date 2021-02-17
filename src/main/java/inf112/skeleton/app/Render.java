@@ -2,13 +2,19 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 
 
 public class Render extends InputAdapter implements ApplicationListener {
@@ -25,6 +31,12 @@ public class Render extends InputAdapter implements ApplicationListener {
     public Player player = new Player();
     public Board board = new Board();
 
+    private TextureRegion textureMove1, textureMove2, textureMove3, textureBackUp;
+    private TextureRegion textureRotateLeft, textureRotateRight, textureUTurn;
+    private Sprite spriteMove1, spriteMove2 ,spriteMove3, spriteBackUp;
+    private Sprite spriteRotateLeft, spriteRotateRight, spriteUTurn;
+
+
     @Override
     public void create() {
         // Setup text
@@ -37,9 +49,9 @@ public class Render extends InputAdapter implements ApplicationListener {
 
         // Setup camera
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, board.MAP_SIZE_X, board.MAP_SIZE_Y);
+        camera.setToOrtho(false, board.MAP_SIZE_X, board.MAP_SIZE_Y+3);
         camera.position.x= board.MAP_SIZE_X/2f;
-        camera.position.x= board.MAP_SIZE_Y/2f;
+        camera.position.y= (board.MAP_SIZE_Y-3)/2f;
         camera.update();
 
         // Setup render
@@ -49,8 +61,40 @@ public class Render extends InputAdapter implements ApplicationListener {
         // Setup player cell states, including textures
         player.setPlayerState();
 
+        // Setup card textures
+        initializeCardTextures();
+
         // Get key input
         Gdx.input.setInputProcessor(this);
+    }
+
+    public void initializeCardTextures(){
+        // Split movement.png into 3 textures
+        Texture texture1 = new Texture("assets/movement.jpg");
+        TextureRegion textureMovement = new TextureRegion(texture1);
+        TextureRegion[][] textureMovementSplit = textureMovement.split(texture1,100, 154);
+
+        textureMove1 = textureMovementSplit[0][0];
+        textureMove2 = textureMovementSplit[0][1];
+        textureMove3 = textureMovementSplit[0][2];
+        spriteMove1 = new Sprite(textureMove1);
+        spriteMove2 = new Sprite(textureMove2);
+        spriteMove3 = new Sprite(textureMove3);
+
+
+        // Split rotation.png into 4 textures
+        Texture texture2 = new Texture("assets/rotation.jpg");
+        TextureRegion textureRotation = new TextureRegion(texture2);
+        TextureRegion[][] textureRotationSplit = textureRotation.split(texture2,100, 154);
+
+        textureBackUp = textureRotationSplit[0][1];
+        textureRotateLeft = textureRotationSplit[1][0];
+        textureRotateRight = textureRotationSplit[1][0];
+        textureUTurn = textureRotationSplit[1][1];
+        spriteBackUp = new Sprite(textureBackUp);
+        spriteRotateLeft = new Sprite(textureRotateLeft);
+        spriteRotateRight = new Sprite(textureRotateRight);
+        spriteUTurn = new Sprite(textureUTurn);
     }
 
     @Override
@@ -66,6 +110,22 @@ public class Render extends InputAdapter implements ApplicationListener {
 
         renderer.render();
         board.updatePlayer(player);
+
+
+        // Card visualization example
+        batch.begin();
+        spriteUTurn.setPosition(0,100);
+        spriteUTurn.draw(batch);
+        spriteMove2.setPosition(100,100);
+        spriteMove2.draw(batch);
+        spriteRotateLeft.setPosition(200,100);
+        spriteRotateLeft.draw(batch);
+        spriteMove3.setPosition(300,100);
+        spriteMove3.draw(batch);
+        spriteBackUp.setPosition(400,100);
+        spriteBackUp.draw(batch);
+        batch.end();
+
 
         if (player.winCondition){
             endGame();

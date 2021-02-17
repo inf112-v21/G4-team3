@@ -33,11 +33,6 @@ public class Player{
         playerCell = new TiledMapTileLayer.Cell().setTile(playerCellTile);
         playerDiedCell = new TiledMapTileLayer.Cell().setTile(playerDiedCellTile);
         playerWonCell = new TiledMapTileLayer.Cell().setTile(playerWonTile);
-        //playerCell.setRotation(90);
-
-        // Rotate player texture
-
-
     }
 
     public static void move(String direction) {

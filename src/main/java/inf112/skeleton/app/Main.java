@@ -9,7 +9,7 @@ public class Main {
         /*
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("RobotRally");
-        cfg.setWindowedMode(500, 500);
+        cfg.setWindowedMode(500, 800);
 
         new Lwjgl3Application(new Render(), cfg);
         */
