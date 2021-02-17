@@ -100,6 +100,32 @@ public class Render extends InputAdapter implements ApplicationListener {
     public void resume() {
         pause = false;
     }
+
+    @Override
+    public boolean keyUp(int keyCode){
+        // Remove player texture before moving
+        board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
+
+        String direction = "none";
+        // Move up
+        if (keyCode == 19) {
+            direction = "Forwards";
+        }
+        // Rotate left
+        else if (keyCode == 22) {
+            direction = "RotateLeft";
+        }
+        // Rotate right
+        else if (keyCode == 21) {
+            direction = "RotateRight";
+        }
+
+        if(!pause) {
+            player.move(direction);
+        }
+        return true;
+    }
+    /*
     @Override
     public boolean keyUp(int keyCode){
         // Remove player texture before moving
@@ -128,4 +154,5 @@ public class Render extends InputAdapter implements ApplicationListener {
         }
         return true;
     }
+    */
 }
