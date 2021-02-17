@@ -165,6 +165,23 @@ Brukerhistoriene er numerert etter hvilket MVP-krav de oppfyller og prioritet.
      så skal:
         - flagget bli registrert som besøkt.
         - spillet bli vunnet av den som tar flagget.
+6. Spille fra flere maskiner (vise brikker for alle spillere, flytte brikker for alle spillere):
+    - Brukerhistorie:
+      Som spiller ønsker eg å kunne spille med andre, 
+      slik at eg kan ha en meir utforandre spillerfaring med 
+      andre spillere.
+    - Løsningsbeskrivelse:
+      
+    - Aksepteansekriterier:
+        - git:
+            1. maskin A og B
+            2. git RobotA (1,0) og RobotB(0,0)
+        - *****:
+            1. når MaskinA sender at den flytter RobotA så Flytter RobotA seg både på skermen til Maskin A og B.
+            2. at begge Maskinane viser samme Bretet med Robotane på samme posison.
+            3. 
+
+
    
 ###Prioriteringer
 - Vi har prioritert brukerhistoriene/kravene ut fra den viste rekkefølgen i oppgaveteksten, grunnet
