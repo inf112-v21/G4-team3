@@ -5,9 +5,9 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
 public class Main {
     public static void main(String[] args) {
-        new CardDeck();
-        System.out.println(CardDeck.deck);
-        /*
+        //new CardDeck();
+        //System.out.println(CardDeck.deck);
+
 
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("RobotRally");
@@ -16,7 +16,7 @@ public class Main {
         new Lwjgl3Application(new Render(), cfg);
 
 
-        */
+
 
     }
 }

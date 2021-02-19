@@ -16,7 +16,7 @@ public class Player{
     public static Cell playerCell;
     public static Cell playerWonCell;
     public static Cell playerDiedCell;
-    public static String dir = "North";
+    public static int dir = 0;
 
     public static void setPlayerState(){
         // Split player.png into 3 textures
@@ -35,6 +35,38 @@ public class Player{
         playerWonCell = new TiledMapTileLayer.Cell().setTile(playerWonTile);
     }
 
+    public static void move(int ChousenMovment) {
+        if(ChousenMovment > 4 || ChousenMovment < -2){
+            rotate(int ChousenMovment)
+        }
+        else relocation(int ChousenMovment)
+    }
+
+    public void rotate(int ChousenMovment){
+        dir += ChousenMovment;
+        dir = (dir % 360 + 360) % 360;
+    }
+
+    public void relocation(int ChousenMovment){
+        if(dir == 0){
+            playerPos.y = playerPos.y + ChousenMovment;
+        }
+        else if(dir == 90){
+            playerPos.x = playerPos.x + ChousenMovment;
+        }
+        else if(dir == 180){
+            playerPos.y = playerPos.y - ChousenMovment;
+        }
+        else if(dir == 270){
+            playerPos.x = playerPos.x - ChousenMovment;
+        }
+    }
+
+
+
+
+
+    /*
     public static void move(String direction) {
 
         if (dir == "North") {
@@ -74,6 +106,7 @@ public class Player{
             }
         }
     }
+     */
     /*
     public static void move(String direction){
         // -------- Placeholder movement for part 1--------
