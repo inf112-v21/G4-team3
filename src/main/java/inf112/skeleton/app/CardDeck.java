@@ -34,14 +34,14 @@ public class CardDeck {
             this.deck.add(MovementValue);
         }
 
-        for (int i = 41; i <= 83; i++) {
-            if (i <= 59) {
+        for (int i = 41; i <= 82; i++) {
+            if (i <= 58) {
                 this.RotationValue = CardRotation.Rotation.ROTATERIGHT;
                 amountOfRotateRight += 1;
-            } else if (i <= 77) {
+            } else if (i <= 76) {
                 this.RotationValue = CardRotation.Rotation.ROTATELEFT;
                 amountOfRotateLeft += 1;
-            } else if (i <= 83) {
+            } else if (i <= 82) {
                 this.RotationValue = CardRotation.Rotation.UTURN;
                 amountOfUTurn += 1;
             }
