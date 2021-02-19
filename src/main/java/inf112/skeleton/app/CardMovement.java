@@ -2,8 +2,8 @@ package inf112.skeleton.app;
 
 public class CardMovement{
 
-    public Movement movement;
-    public Movement MovementValue;
+    public static Movement movement;
+    public static Movement MovementValue;
 
     public CardMovement(Movement movement, Movement MovementValue){
         this.movement = movement;

@@ -2,8 +2,8 @@ package inf112.skeleton.app;
 
 public class CardRotation {
 
-    private Rotation rotation;
-    private Rotation RotationValue;
+    public static Rotation rotation;
+    public static Rotation RotationValue;
 
     public CardRotation(Rotation rotation, Rotation RotationValue) {
         this.rotation = rotation;
@@ -27,19 +27,18 @@ public class CardRotation {
     }
 
 
-    public enum Rotation{
+    public enum Rotation {
         ROTATERIGHT(+90),
         ROTATELEFT(-90),
         UTURN(+180);
 
         private int value;
-        private Rotation(int value){
-            this.value = value;
 
+        private Rotation(int value) {
+            this.value = value;
         }
 
 
-
-
+    }
 
 }
