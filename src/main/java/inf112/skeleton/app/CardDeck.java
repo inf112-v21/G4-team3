@@ -17,7 +17,7 @@ public class CardDeck {
     int amountOfUTurn = 0; //6
 
     public CardDeck() {
-        for (int i = 0; i <= 83; i++) {
+        for (int i = 0; i <= 41; i++) {
             if (i <= 17) {
                 this.MovementValue = CardMovement.Movement.MOVE1;
                 amountOfMove1 += 1;
@@ -27,12 +27,17 @@ public class CardDeck {
             } else if (i <= 35) {
                 this.MovementValue = CardMovement.Movement.MOVE3;
                 amountOfMove3 += 1;
-            } else if (i <=41) {
+            } else if (i <= 41) {
                 this.MovementValue = CardMovement.Movement.BACKUP;
                 amountOfMoveBackUp += 1;
-            } else if (i <= 59) {
+            }
+            this.deck.add(MovementValue);
+        }
+
+        for (int i = 41; i <= 83; i++) {
+            if (i <= 59) {
                 this.RotationValue = CardRotation.Rotation.ROTATERIGHT;
-                amountOfRotateRight +=1;
+                amountOfRotateRight += 1;
             } else if (i <= 77) {
                 this.RotationValue = CardRotation.Rotation.ROTATELEFT;
                 amountOfRotateLeft += 1;
@@ -40,9 +45,17 @@ public class CardDeck {
                 this.RotationValue = CardRotation.Rotation.UTURN;
                 amountOfUTurn += 1;
             }
-            this.deck.add(MovementValue);
             this.deck.add(RotationValue);
         }
+        System.out.println(amountOfMove1);
+        System.out.println(amountOfMove2);
+        System.out.println(amountOfMove3);
+        System.out.println(amountOfMoveBackUp);
+
+        System.out.println(amountOfRotateRight);
+        System.out.println(amountOfRotateLeft);
+        System.out.println(amountOfUTurn);
+
     }
 }
 
