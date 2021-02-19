@@ -115,10 +115,10 @@ public class Render extends InputAdapter implements ApplicationListener {
             cardsToPickFrom.add(draw);
         }
 
-        cardsToPickFrom = new ArrayList<>();
+        //cardsToPickFrom = new ArrayList<>();
 
 
-        pickedCards = new ArrayList<>();
+        //pickedCards = new ArrayList<>();
         pickingCards = false;
     }
 
@@ -174,7 +174,7 @@ public class Render extends InputAdapter implements ApplicationListener {
         renderer.render();
         board.updatePlayer(player);
         round();
-
+        board.updatePlayer(player);
 
         // Card visualization example
         batch.begin();

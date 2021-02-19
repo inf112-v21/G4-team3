@@ -37,17 +37,17 @@ public class Player{
 
     public void move(Enum ChosenMovement) {
 
-        if(rotatecard==used && Movementcard==used) {
-            rotate()
-            relocation()
+        if(ChosenMovement == CardMovement.Movement.MOVE1
+                || ChosenMovement == CardMovement.Movement.MOVE2
+                || ChosenMovement == CardMovement.Movement.MOVE3
+                || ChosenMovement == CardMovement.Movement.BACKUP){
+            relocation(ChosenMovement);
         }
-
-        
-
-
-        ChosenMovement = CardMovement.getMovementValue();
-        rotate(ChosenMovement);
-        relocation(ChosenMovement);
+        else if(ChosenMovement == CardRotation.Rotation.ROTATERIGHT
+                || ChosenMovement == CardRotation.Rotation.ROTATELEFT
+                || ChosenMovement == CardRotation.Rotation.UTURN){
+            rotate(ChosenMovement);
+        }
     }
 
     public void rotate(Enum ChosenMovement){

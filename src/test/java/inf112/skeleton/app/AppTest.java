@@ -26,35 +26,35 @@ public class AppTest {
     public void setPlayerPosition(){
         player.playerPos = new Vector2(0,0);
     }
-
-    @Test
+/*
+    //@Test
     public void testMovementUp() {
         Vector2 expectedPosition = new Vector2(0,1);
         player.move("up");
         assertEquals(expectedPosition, player.playerPos);
     }
 
-    @Test
+    //@Test
     public void testMovementDown(){
         Vector2 expectedPosition = new Vector2(0,-1);
         player.move("down");
         assertEquals(expectedPosition, player.playerPos);
     }
 
-    @Test
+    //@Test
     public void testMovementRight() {
         Vector2 expectedPosition = new Vector2(1,0);
         player.move("right");
         assertEquals(expectedPosition, player.playerPos);
     }
 
-    @Test
+    //@Test
     public void testMovementLeft() {
         Vector2 expectedPosition = new Vector2(-1,0);
         player.move("left");
         assertEquals(expectedPosition, player.playerPos);
     }
-
+*/
     @Test
     public void testIfPlayerIsOnMap(){
         Board board = new Board();

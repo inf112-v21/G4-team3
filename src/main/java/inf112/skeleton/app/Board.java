@@ -45,13 +45,13 @@ public class Board {
 
         // Set the player on the layer depending on direction
         int rotation = 0;
-        if (player.dir == "North"){
+        if (player.dir == 0){
             rotation = 0;
-        } else if (player.dir == "West"){
+        } else if (player.dir == 270){
             rotation = 1;
-        } else if (player.dir == "South"){
+        } else if (player.dir == 180){
             rotation = 2;
-        } else if (player.dir == "East"){
+        } else if (player.dir == 90){
             rotation = 3;
         }
         playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
