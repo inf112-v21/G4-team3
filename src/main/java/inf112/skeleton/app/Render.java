@@ -42,8 +42,8 @@ public class Render extends InputAdapter implements ApplicationListener {
     private boolean pickingCards = true;
     public ArrayList<String> listMoves= new ArrayList<String>();
     public int nCards=3;
-    public ArrayList<String> pickedCards = new ArrayList<>();
-    public ArrayList<String> cardsToPickFrom = new ArrayList<>();
+    public ArrayList<Enum> pickedCards = new ArrayList<>();
+    public ArrayList<Enum> cardsToPickFrom = new ArrayList<>();
 
 
     @Override
@@ -109,7 +109,15 @@ public class Render extends InputAdapter implements ApplicationListener {
 
     // Display 9 cards and let the player pick 5
     public void pickCards(){
-        cardsToPickFrom = new ArrayList(Arrays.asList(new CardDeck().deck));
+        CardDeck fullDeck = new CardDeck();
+        for (int i = 0; i <= 8; i++) {
+            Enum draw = fullDeck.deck.get(i);
+            cardsToPickFrom.add(draw);
+        }
+
+        cardsToPickFrom = new ArrayList<>();
+
+
         pickedCards = new ArrayList<>();
         pickingCards = false;
     }
@@ -236,7 +244,7 @@ public class Render extends InputAdapter implements ApplicationListener {
             listMoves.add(direction);
              */
 
-            String card = "none";
+            Enum card = null;
             if (keyCode == 8){
                 card = cardsToPickFrom.remove(1);
             } else if (keyCode == 9) {
