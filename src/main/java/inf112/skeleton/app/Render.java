@@ -109,7 +109,7 @@ public class Render extends InputAdapter implements ApplicationListener {
 
     // Display 9 cards and let the player pick 5
     public void pickCards(){
-        cardsToPickFrom = new ArrayList<>(Arrays.asList("Forwards", "Forwards", "Forwards", "Forwards", "Forwards", "Forwards", "Forwards", "Forwards", "Forwards"));
+        cardsToPickFrom = new ArrayList(Arrays.asList(new CardDeck().deck));
         pickedCards = new ArrayList<>();
         pickingCards = false;
     }
