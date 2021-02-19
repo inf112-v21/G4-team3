@@ -16,6 +16,9 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class Render extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
@@ -35,6 +38,12 @@ public class Render extends InputAdapter implements ApplicationListener {
     private TextureRegion textureRotateLeft, textureRotateRight, textureUTurn;
     private Sprite spriteMove1, spriteMove2 ,spriteMove3, spriteBackUp;
     private Sprite spriteRotateLeft, spriteRotateRight, spriteUTurn;
+
+    private boolean pickingCards = true;
+    public ArrayList<String> listMoves= new ArrayList<String>();
+    public int nCards=3;
+    public ArrayList<String> pickedCards = new ArrayList<>();
+    public ArrayList<String> cardsToPickFrom = new ArrayList<>();
 
 
     @Override
@@ -67,6 +76,52 @@ public class Render extends InputAdapter implements ApplicationListener {
         // Get key input
         Gdx.input.setInputProcessor(this);
     }
+
+
+
+
+    // A game does rounds until there is a winner
+    public void game(){
+        while (player.winCondition == false){
+            round();
+        }
+    }
+
+    // One round starts with picking cards or powering down, then does five turns
+    public void round(){
+        if (pickingCards){
+            pickCards();
+
+            // Wait for client input
+            // clientInput();
+        }
+        if (pickedCards.size()==nCards) {
+            for (int i = 0; i <nCards; i++) {
+                turn();
+            }
+            pickingCards=true;
+            listMoves.clear();
+        }
+
+        // Send game state (Board, Player) to client
+        // sendGameState();
+    }
+
+    // Display 9 cards and let the player pick 5
+    public void pickCards(){
+        cardsToPickFrom = new ArrayList<>(Arrays.asList("Forwards", "Forwards", "Forwards", "Forwards", "Forwards", "Forwards", "Forwards", "Forwards", "Forwards"));
+        pickedCards = new ArrayList<>();
+        pickingCards = false;
+    }
+
+    // Do one turn of player actions
+    public void turn(){
+        board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
+        player.move(pickedCards.remove(0));
+    }
+
+
+
 
     public void initializeCardTextures(){
         // Split movement.png into 3 textures
@@ -110,6 +165,7 @@ public class Render extends InputAdapter implements ApplicationListener {
 
         renderer.render();
         board.updatePlayer(player);
+        round();
 
 
         // Card visualization example
@@ -164,25 +220,64 @@ public class Render extends InputAdapter implements ApplicationListener {
     @Override
     public boolean keyUp(int keyCode){
         // Remove player texture before moving
-        board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
+        //board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
 
+        if(pickedCards.size()<nCards) {
+
+            /* keyboard movement
+            String direction = "none";
+            if (keyCode == 19) {
+                direction = "Forwards";
+            } else if (keyCode == 21) {
+                direction = "RotateLeft";
+            } else if (keyCode == 22) {
+                direction = "RotateRight";
+            }
+            listMoves.add(direction);
+             */
+
+            String card = "none";
+            if (keyCode == 8){
+                card = cardsToPickFrom.remove(1);
+            } else if (keyCode == 9) {
+                card = cardsToPickFrom.remove(2);
+            } else if (keyCode == 10) {
+                card = cardsToPickFrom.remove(3);
+            } else if (keyCode == 11) {
+                card = cardsToPickFrom.remove(4);
+            } else if (keyCode == 12) {
+                card = cardsToPickFrom.remove(5);
+            } else if (keyCode == 13) {
+                card = cardsToPickFrom.remove(6);
+            } else if (keyCode == 14) {
+                card = cardsToPickFrom.remove(7);
+            } else if (keyCode == 15) {
+                card = cardsToPickFrom.remove(8);
+            } else if (keyCode == 16) {
+                card = cardsToPickFrom.remove(9);
+            }
+
+            pickedCards.add(card);
+
+            System.out.println("Available cards:");
+            System.out.println(cardsToPickFrom);
+        }
+
+        /* keyboard movement
         String direction = "none";
-        // Move up
         if (keyCode == 19) {
             direction = "Forwards";
-        }
-        // Rotate left
-        else if (keyCode == 22) {
+        } else if (keyCode == 21) {
             direction = "RotateLeft";
-        }
-        // Rotate right
-        else if (keyCode == 21) {
+        } else if (keyCode == 22) {
             direction = "RotateRight";
         }
+        //listMoves.add(direction);
 
         if(!pause) {
             player.move(direction);
         }
+         */
         return true;
     }
     /*

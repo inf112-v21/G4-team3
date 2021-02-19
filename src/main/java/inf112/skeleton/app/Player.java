@@ -48,7 +48,7 @@ public class Player{
         }
         else if (dir == "West") {
             if (direction == "Forwards") {
-                playerPos.x = playerPos.x + 1;
+                playerPos.x = playerPos.x -1 ;
             } else if (direction == "RotateLeft") {
                 dir = "South";
             } else if (direction == "RotateRight") {
@@ -66,7 +66,7 @@ public class Player{
         }
         else if (dir == "East") {
             if (direction == "Forwards") {
-                playerPos.x = playerPos.x - 1;
+                playerPos.x = playerPos.x + 1;
             } else if (direction == "RotateLeft") {
                 dir = "North";
             } else if (direction == "RotateRight") {
