@@ -35,30 +35,55 @@ public class Player{
         playerWonCell = new TiledMapTileLayer.Cell().setTile(playerWonTile);
     }
 
-    public static void move(int ChousenMovment) {
-        if(ChousenMovment > 4 || ChousenMovment < -2){
-            rotate(int ChousenMovment)
+    public void move(Enum ChosenMovement) {
+
+        if(rotatecard==used && Movementcard==used) {
+            rotate()
+            relocation()
         }
-        else relocation(int ChousenMovment)
+
+        
+
+
+        ChosenMovement = CardMovement.getMovementValue();
+        rotate(ChosenMovement);
+        relocation(ChosenMovement);
     }
 
-    public void rotate(int ChousenMovment){
-        dir += ChousenMovment;
+    public void rotate(Enum ChosenMovement){
+        if (ChosenMovement == CardRotation.Rotation.ROTATERIGHT) {
+            dir += 90;
+        } else if (ChosenMovement == CardRotation.Rotation.ROTATELEFT) {
+            dir += 270;
+        } else if (ChosenMovement == CardRotation.Rotation.UTURN) {
+            dir += 180;
+        }
         dir = (dir % 360 + 360) % 360;
     }
 
-    public void relocation(int ChousenMovment){
+    public void relocation(Enum ChosenMovement){
+        int move = 0;
+        if (ChosenMovement == CardMovement.Movement.MOVE1) {
+            move = 1;
+        } else if (ChosenMovement == CardMovement.Movement.MOVE2) {
+            move = 2;
+        } else if (ChosenMovement == CardMovement.Movement.MOVE3) {
+            move = 3;
+        } else if (ChosenMovement == CardMovement.Movement.BACKUP) {
+            move = -1;
+        }
+
         if(dir == 0){
-            playerPos.y = playerPos.y + ChousenMovment;
+            playerPos.y = playerPos.y + move;
         }
         else if(dir == 90){
-            playerPos.x = playerPos.x + ChousenMovment;
+            playerPos.x = playerPos.x + move;
         }
         else if(dir == 180){
-            playerPos.y = playerPos.y - ChousenMovment;
+            playerPos.y = playerPos.y - move;
         }
         else if(dir == 270){
-            playerPos.x = playerPos.x - ChousenMovment;
+            playerPos.x = playerPos.x - move;
         }
     }
 

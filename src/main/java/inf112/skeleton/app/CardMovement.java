@@ -22,7 +22,7 @@ public class CardMovement{
         this.MovementValue = MovementValue;
     }
 
-    public Movement getMovementValue() {
+    public static Movement getMovementValue() {
         return MovementValue;
     }
 

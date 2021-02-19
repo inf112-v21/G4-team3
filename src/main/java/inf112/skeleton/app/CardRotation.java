@@ -28,9 +28,9 @@ public class CardRotation {
 
 
     public enum Rotation {
-        ROTATERIGHT(+90),
-        ROTATELEFT(-90),
-        UTURN(+180);
+        ROTATERIGHT(90),
+        ROTATELEFT(270),
+        UTURN(180);
 
         private int value;
 
