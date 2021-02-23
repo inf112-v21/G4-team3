@@ -7,8 +7,13 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Player{
+
+public class Player implements Serializable {
 
     public static Vector2 playerPos = new Vector2(1,1);
     public static boolean loseCondition = false;
