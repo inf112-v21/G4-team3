@@ -1,36 +1,51 @@
 package inf112.skeleton.app;
 
 
+
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Server {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        ServerSocket listener = new ServerSocket(4000);
-        System.out.println("ServerSocket awaiting connections...");
-        Socket socket = listener.accept(); // blocking call, this will wait until a connection is attempted on this port.
-        System.out.println("Connection from " + socket + "!");
 
-        // get the input stream from the connected socket
+    public ServerSocket listener;
+    public Socket socket;
+    public ObjectInputStream objectInputStream;
+    public ObjectOutputStream objectOutputStream;
+
+    public void setUpServer() throws IOException, ClassNotFoundException {
+        listener = new ServerSocket(4000);
+        System.out.println("ServerSocket is waiting for connections...");
+        socket = listener.accept(); // blocking call, this will wait until a connection is attempted on this port.
+        System.out.println("Received a connection from " + socket);
+    }
+
+    // Wait for client input
+    public List<Enum> clientInput() throws IOException, ClassNotFoundException {
+        // Get the input stream from the connected socket
         InputStream inputStream = socket.getInputStream();
-        // create a DataInputStream so we can read data from it.
-        ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-        TestObject t = new TestObject();
-        System.out.println(t.getClass().getPackage());
+        objectInputStream = new ObjectInputStream(inputStream);
+        // Receive object from client
+        List<Enum> cards = (List<Enum>) objectInputStream.readObject();
+        return cards;
+    }
 
-        // read the list of messages from the socket
-        List<String> listOfMessages = (List<String>) objectInputStream.readObject();
-        //TestObject listOfMessages = (TestObject) objectInputStream.readObject();
 
-        //System.out.println("Received [" + listOfMessages.size() + "] messages from: " + socket);
-        // print out the text of every message
-        System.out.println("All messages:");
-        //listOfMessages.forEach((msg)-> System.out.println(msg));
-        System.out.println(listOfMessages);
+    public void sendGameState(ArrayList<Player> player) throws IOException {
+        // get the output stream from the socket.
+        OutputStream outputStream = socket.getOutputStream();
+        // create an object output stream from the output stream so we can send an object through it
+        objectOutputStream = new ObjectOutputStream(outputStream);
 
-        System.out.println("Closing sockets.");
+        // send player object
+        objectOutputStream.writeObject(player);
+    }
+
+    public void closeSocket() throws IOException {
+        System.out.println("Closing socket");
         listener.close();
         socket.close();
     }

@@ -37,8 +37,9 @@ public class CardRotation {
         private Rotation(int value) {
             this.value = value;
         }
+    }
 
 
     }
 
-}
+

@@ -10,18 +10,18 @@ import com.badlogic.gdx.math.Vector2;
 public class Board {
 
     // Layer variables
-    public static TiledMap map;
-    public static TiledMapTileLayer boardLayer;
-    public static TiledMapTileLayer playerLayer;
-    public static TiledMapTileLayer holeLayer;
-    public static TiledMapTileLayer flagLayer;
+    public TiledMap map;
+    public TiledMapTileLayer boardLayer;
+    public TiledMapTileLayer playerLayer;
+    public TiledMapTileLayer holeLayer;
+    public TiledMapTileLayer flagLayer;
 
     // Map size
-    public static int MAP_SIZE_X;
-    public static int MAP_SIZE_Y;
+    public int MAP_SIZE_X;
+    public int MAP_SIZE_Y;
 
     // Create map layers
-    public static void createMap(){
+    public void createMap(){
         map = new TmxMapLoader().load("assets/Testmap.tmx");
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
@@ -32,13 +32,15 @@ public class Board {
     }
 
     // Check if player is positioned on the map
-    public static boolean validPlayerMapPos(Vector2 pos){
-        boolean checkX = pos.x<Board.MAP_SIZE_X && pos.x>=0;
-        boolean checkY = pos.y<Board.MAP_SIZE_Y && pos.y>=0;
+    public boolean validPlayerMapPos(Vector2 pos){
+        boolean checkX = pos.x<MAP_SIZE_X && pos.x>=0;
+        boolean checkY = pos.y<MAP_SIZE_Y && pos.y>=0;
         return checkX && checkY;
     }
 
     public void updatePlayer(Player player){
+        //System.out.println("Updating player position");
+
         // Checks if the player is on one of the layer types. Cell is null if player is not on the layer type
         Cell holeCell = holeLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
         Cell flagCell = flagLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
@@ -54,6 +56,8 @@ public class Board {
         } else if (player.dir == 90){
             rotation = 3;
         }
+
+        //System.out.println("Updating player position");
         playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
 
         // Check if player is in a hole or is outside the map. If true ends the game.

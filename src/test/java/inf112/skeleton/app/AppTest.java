@@ -19,7 +19,7 @@ public class AppTest {
      */
 
     // Initiate class instances
-    public Player player = new Player();
+    public Player player = new Player(new Vector2(1,1));
     public Board board = new Board();
 
     @Before
@@ -82,7 +82,7 @@ public class AppTest {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("Lukk vinduet for at testen skal kjøre");
         cfg.setWindowedMode(500, 500);
-        new Lwjgl3Application(new Render(), cfg);
+        new Lwjgl3Application(new RenderServer(), cfg);
     }
 
     // Testen åpner et vindu som må lukkes før testen kjører, fungerer ellers. [WIP]

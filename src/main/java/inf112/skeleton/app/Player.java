@@ -8,26 +8,28 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class Player implements Serializable {
 
-    public static Vector2 playerPos = new Vector2(1,1);
-    public static boolean loseCondition = false;
-    public static boolean winCondition = false;
+    public Vector2 playerPos = new Vector2(1,1);
+    public boolean loseCondition = false;
+    public boolean winCondition = false;
     public static Cell playerCell;
     public static Cell playerWonCell;
     public static Cell playerDiedCell;
-    public static int dir = 0;
+    public int dir = 0;
+
+
+    public  Player(Vector2 pos){
+        this.playerPos = pos;
+    }
 
     public static void setPlayerState(){
         // Split player.png into 3 textures
         Texture texture = new Texture("assets/player.png");
         TextureRegion texturePlayer = new TextureRegion(texture);
-        TextureRegion[][] texturePlayerSplit = texturePlayer.split(texture,Render.widthPixels, Render.heightPixels);
+        TextureRegion[][] texturePlayerSplit = texturePlayer.split(texture, RenderServer.widthPixels, RenderServer.heightPixels);
 
         // Get the textures for the different player states
         StaticTiledMapTile playerCellTile = new StaticTiledMapTile(texturePlayerSplit[0][0]);
@@ -91,69 +93,4 @@ public class Player implements Serializable {
             playerPos.x = playerPos.x - move;
         }
     }
-
-
-
-
-
-    /*
-    public static void move(String direction) {
-
-        if (dir == "North") {
-            if (direction == "Forwards") {
-                playerPos.y = playerPos.y + 1;
-            } else if (direction == "RotateLeft") {
-                dir = "West";
-            } else if (direction == "RotateRight") {
-                dir = "East";
-            }
-        }
-        else if (dir == "West") {
-            if (direction == "Forwards") {
-                playerPos.x = playerPos.x -1 ;
-            } else if (direction == "RotateLeft") {
-                dir = "South";
-            } else if (direction == "RotateRight") {
-                dir = "North";
-            }
-        }
-        else if (dir == "South") {
-            if (direction == "Forwards") {
-                playerPos.y = playerPos.y - 1;
-            } else if (direction == "RotateLeft") {
-                dir = "East";
-            } else if (direction == "RotateRight") {
-                dir = "West";
-            }
-        }
-        else if (dir == "East") {
-            if (direction == "Forwards") {
-                playerPos.x = playerPos.x + 1;
-            } else if (direction == "RotateLeft") {
-                dir = "North";
-            } else if (direction == "RotateRight") {
-                dir = "South";
-            }
-        }
-    }
-     */
-    /*
-    public static void move(String direction){
-        // -------- Placeholder movement for part 1--------
-        if (direction == "up") {
-            playerPos.y = playerPos.y + 1;
-        }
-        else if (direction == "down") {
-            playerPos.y = playerPos.y - 1;
-        }
-        else if (direction == "right") {
-            playerPos.x = playerPos.x + 1;
-        }
-        else if (direction == "left") {
-            playerPos.x = playerPos.x - 1;
-        }
-    }
-     */
-
-
 }
