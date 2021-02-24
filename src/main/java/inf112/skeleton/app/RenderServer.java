@@ -41,12 +41,13 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     private boolean pickingCards = true;
     public ArrayList<String> listMoves= new ArrayList<String>();
     public int nCards=3;
-    public ArrayList<Enum> pickedCards = new ArrayList<>();
-    public ArrayList<Enum> clientCards = new ArrayList<>();
-    public ArrayList<Enum> cardsToPickFrom = new ArrayList<>();
+    public ArrayList<Enum> pickedCards;
+    public ArrayList<Enum> clientCards;
+    public ArrayList<Enum> cardsToPickFrom;
 
     public Server server = new Server();
     public boolean showCards = true;
+    public GameLogic gameLogic;
 
 
 
@@ -89,83 +90,12 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             e.printStackTrace();
         }
 
+        gameLogic = new GameLogic(server, player1, player2, board);
+
 
         // Get key input
         Gdx.input.setInputProcessor(this);
     }
-
-
-
-
-    // A game does rounds until there is a winner
-    /*
-    public void game() throws IOException, ClassNotFoundException, InterruptedException {
-        while (player1.winCondition == false){
-            round();
-        }
-    }
-     */
-
-
-    // One round starts with picking cards or powering down, then does five turns
-    public void round() throws IOException, ClassNotFoundException, InterruptedException {
-        if (pickingCards){
-            // Wait for client input
-            System.out.println("\n-Wait for client cards-\n");
-            clientCards = (ArrayList<Enum>) server.clientInput();
-            System.out.println("\nPlayer2 picked the cards:");
-            System.out.println(clientCards);
-
-            System.out.println("\nYour turn to pick cards");
-            pickCards();
-            showCards = true;
-        }
-
-        // Do turns for the players
-        if (pickedCards.size()==nCards) {
-            System.out.println("You picked "+pickedCards);
-            System.out.println("Doing turns");
-            for (int i = 0; i <nCards; i++) {
-                turn(player1, pickedCards);
-                turn(player2, clientCards);
-            }
-
-            // Send information to client
-            ArrayList<Player> playerStates = new ArrayList<Player>();
-            playerStates.add(player1);
-            playerStates.add(player2);
-            System.out.println("-Sending game state to client-");
-            server.sendGameState(playerStates);
-
-            pickingCards=true;
-        }
-    }
-
-    // Display 9 cards and let the player pick 5
-    public void pickCards(){
-        CardDeck fullDeck = new CardDeck();
-        for (int i = 0; i <= 8; i++) {
-            Enum draw = fullDeck.deck.get(i);
-            cardsToPickFrom.add(draw);
-        }
-
-        if (showCards){
-            System.out.println("Available cards:");
-            System.out.println(cardsToPickFrom);
-            showCards=false;
-        }
-
-        pickedCards = new ArrayList<>();
-        pickingCards = false;
-    }
-
-    // Do one turn of player actions
-    public void turn(Player player, ArrayList<Enum> cards){
-        // Delete previous player texture before moving
-        board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
-        player.move(cards.remove(0));
-    }
-
 
 
     public void initializeCardTextures(){
@@ -217,7 +147,8 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         if (n>4) {
             n=0;
             try {
-                round();
+                gameLogic.round();
+                cardsToPickFrom = gameLogic.cardsToPickFrom;
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
@@ -244,23 +175,23 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         batch.end();
 
 
-        if (player1.winCondition){
+        if (player1.winCondition || player2.loseCondition){
             endGame();
             // End win screen
             batch.begin();
             font.getData().setScale(4, 4);
-            font.draw(batch, "You won", 140, 250);
+            font.draw(batch, "Player 2 lost, you won", 140, 250);
+            batch.end();
+        }
+        else if (player2.winCondition || player1.loseCondition){
+            endGame();
+            // End win screen
+            batch.begin();
+            font.getData().setScale(4, 4);
+            font.draw(batch, "Player 2 won, you LOST", 140, 250);
             batch.end();
         }
 
-        else if (player1.loseCondition){
-            endGame();
-            // End lose screen
-            batch.begin();
-            font.getData().setScale(4, 4);
-            font.draw(batch, "You lost", 140, 250);
-            batch.end();
-        }
     }
 
     public void endGame(){
@@ -282,35 +213,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public boolean keyUp(int keyCode){
         // Remove player texture before moving
         //board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
-
-        if(pickedCards.size()<nCards) {
-
-            Enum card = null;
-            if (keyCode == 8){
-                card = cardsToPickFrom.remove(0);
-            } else if (keyCode == 9) {
-                card = cardsToPickFrom.remove(1);
-            } else if (keyCode == 10) {
-                card = cardsToPickFrom.remove(2);
-            } else if (keyCode == 11) {
-                card = cardsToPickFrom.remove(3);
-            } else if (keyCode == 12) {
-                card = cardsToPickFrom.remove(4);
-            } else if (keyCode == 13) {
-                card = cardsToPickFrom.remove(5);
-            } else if (keyCode == 14) {
-                card = cardsToPickFrom.remove(6);
-            } else if (keyCode == 15) {
-                card = cardsToPickFrom.remove(7);
-            } else if (keyCode == 16) {
-                card = cardsToPickFrom.remove(8);
-            }
-
-            pickedCards.add(card);
-
-            System.out.println("Available cards:");
-            System.out.println(cardsToPickFrom);
-        }
+        gameLogic.selectCards(keyCode);
         return true;
     }
 }
