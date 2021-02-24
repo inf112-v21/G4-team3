@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.ArrayList;
 
 
 /**
@@ -73,7 +74,32 @@ public class AppTest {
         assertTrue(!board.validPlayerMapPos(player.playerPos));
     }
 
+    @Test
+    public void testCardsHandedOut() {
+        CardDeck testDeck = new CardDeck();
+        ArrayList<Enum> cardsToPickFrom = new ArrayList<>();
 
+
+        for (int i = 0; i <= 8; i++) {
+            Enum draw = testDeck.deck.get(i);
+            cardsToPickFrom.add(draw);
+        }
+        assertEquals(9, cardsToPickFrom.size());
+    }
+
+    @Test
+    public void testPickedFiveCards() {
+        CardDeck testDeck = new CardDeck();
+        ArrayList<Enum> cardsToPickFrom = new ArrayList<>();
+        ArrayList<Enum> pickedCards = new ArrayList<>();
+
+        for (int i = 0; i <= 8; i++) {
+            Enum draw = testDeck.deck.get(i);
+            cardsToPickFrom.add(draw);
+        }
+
+
+    }
 
 
 

@@ -35,5 +35,6 @@ public class CardDeck {
         Collections.shuffle(this.deck);
 
     }
+
 }
 
