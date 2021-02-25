@@ -108,7 +108,7 @@ public class AppTest {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("Lukk vinduet for at testen skal kjøre");
         cfg.setWindowedMode(500, 500);
-        new Lwjgl3Application(new GameRender("server"), cfg);
+        new Lwjgl3Application(new RenderServer(), cfg);
     }
 
     // Testen åpner et vindu som må lukkes før testen kjører, fungerer ellers. [WIP]

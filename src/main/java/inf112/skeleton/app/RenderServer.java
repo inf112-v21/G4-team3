@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class GameRender extends InputAdapter implements ApplicationListener {
+public class RenderServer extends InputAdapter implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
 
@@ -46,15 +46,10 @@ public class GameRender extends InputAdapter implements ApplicationListener {
     public ArrayList<Enum> cardsToPickFrom;
 
     public Server server = new Server();
-    public Client client = new Client();
     public boolean showCards = true;
     public GameLogic gameLogic;
-    public String mode;
 
 
-    public GameRender(String mode){
-        this.mode = mode;
-    }
 
     @Override
     public void create() {
@@ -86,26 +81,16 @@ public class GameRender extends InputAdapter implements ApplicationListener {
         // Setup card textures
         initializeCardTextures();
 
-
         // Setup server/ client
-        if (mode.equals("server")) {
-            try {
-                server.setUpServer();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            gameLogic = new GameLogic(server, player1, player2, board);
-
-        }else if (mode.equals("client")){
-            try {
-                client.setUpClient();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            gameLogic = new GameLogicClient(client, player1, player2, board);
+        try {
+            server.setUpServer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+
+        gameLogic = new GameLogic(server, player1, player2, board);
 
 
         // Get key input
@@ -172,6 +157,8 @@ public class GameRender extends InputAdapter implements ApplicationListener {
                 e.printStackTrace();
             }
         }
+        //board.updatePlayer(player1);
+        //board.updatePlayer(player2);
 
         // Card visualization example
         batch.begin();

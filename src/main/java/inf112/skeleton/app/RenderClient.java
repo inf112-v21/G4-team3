@@ -140,10 +140,10 @@ public class RenderClient extends InputAdapter implements ApplicationListener {
         board.updatePlayer(player2);
 
         try {
-            gameLogic.round();
+            gameLogic.clientActions();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException | InterruptedException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         board.updatePlayer(player1);

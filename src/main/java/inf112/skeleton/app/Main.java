@@ -21,10 +21,10 @@ public class Main {
         int mode= sc.nextInt();
 
         if (mode == 1) {
-            new Lwjgl3Application(new GameRender("server"), cfg);
+            new Lwjgl3Application(new RenderServer(), cfg);
         }
         else if (mode == 2){
-            new Lwjgl3Application(new GameRender("client"), cfg);
+            new Lwjgl3Application(new RenderClient(), cfg);
         }
 
 

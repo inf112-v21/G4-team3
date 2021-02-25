@@ -29,7 +29,7 @@ public class Player implements Serializable {
         // Split player.png into 3 textures
         Texture texture = new Texture("assets/player.png");
         TextureRegion texturePlayer = new TextureRegion(texture);
-        TextureRegion[][] texturePlayerSplit = texturePlayer.split(texture, GameRender.widthPixels, GameRender.heightPixels);
+        TextureRegion[][] texturePlayerSplit = texturePlayer.split(texture, RenderServer.widthPixels, RenderServer.heightPixels);
 
         // Get the textures for the different player states
         StaticTiledMapTile playerCellTile = new StaticTiledMapTile(texturePlayerSplit[0][0]);
