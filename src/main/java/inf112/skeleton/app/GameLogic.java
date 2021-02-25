@@ -52,9 +52,8 @@ public class GameLogic {
                 turn(player1, pickedCards);
                 turn(player2, clientCards);
                 System.out.println(player1.playerPos);
-
-
             }
+
             // Send information to client
             ArrayList<Player> playerStates = new ArrayList<Player>();
             playerStates.add(player1);
@@ -133,6 +132,7 @@ public class GameLogic {
 
 
 
+    /*
     public void clientActions() throws IOException, ClassNotFoundException {
 
         if (pickingCards) {
@@ -155,6 +155,8 @@ public class GameLogic {
 
         }
     }
+
+     */
 
 
 
