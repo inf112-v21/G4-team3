@@ -17,21 +17,24 @@ public class GameLogic {
     public Player player2;
     public Board board;
 
-    public GameLogic(Server server, Player player1, Player player2, Board board){
-        this.server = server;
-        this.player1 = player1;
-        this.player2 = player2;
-        this.board = board;
-    }
+
     public GameLogic(Client client, Player player1, Player player2, Board board){
         this.client = client;
         this.player1 = player1;
         this.player2 = player2;
         this.board = board;
     }
+    public GameLogic(Server server, Player player1, Player player2, Board board){
+        this.server = server;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.board = board;
+    }
+
+
 
     // One round starts with picking cards or powering down, then does five turns
-    public void round() throws IOException, ClassNotFoundException, InterruptedException {
+    public void doRound() throws IOException, ClassNotFoundException, InterruptedException {
         if (pickingCards){
             // Wait for client input
             System.out.println("\n-Wait for client cards-\n");
@@ -53,7 +56,6 @@ public class GameLogic {
                 turn(player2, clientCards);
                 System.out.println(player1.playerPos);
 
-
             }
             // Send information to client
             ArrayList<Player> playerStates = new ArrayList<Player>();
@@ -61,11 +63,9 @@ public class GameLogic {
             playerStates.add(player2);
             System.out.println("-Sending game state to client-");
             server.sendGameState(playerStates);
-
             pickingCards=true;
         }
     }
-
 
     // Display 9 cards and let the player pick 5
     public void pickCards(){
@@ -74,13 +74,11 @@ public class GameLogic {
             Enum draw = fullDeck.deck.get(i);
             cardsToPickFrom.add(draw);
         }
-
         if (showCards){
             System.out.println("Available cards:");
             System.out.println(cardsToPickFrom);
             showCards=false;
         }
-
         pickedCards = new ArrayList<>();
         pickingCards = false;
     }
@@ -110,30 +108,26 @@ public class GameLogic {
             } else if (keyCode == 16) {
                 card = cardsToPickFrom.remove(8);
             }
-
             pickedCards.add(card);
-
             System.out.println("Available cards:");
             System.out.println(cardsToPickFrom);
         }
 
     }
 
-
-
     // Do one turn of player actions
     public void turn(Player player, ArrayList<Enum> cards){
         // Delete previous player texture before moving
         board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
         player.move(cards.remove(0));
-
-
     }
 
 
+    public ArrayList<Player> doRoundClient() throws IOException, ClassNotFoundException {
 
-
-    public void clientActions() throws IOException, ClassNotFoundException {
+        ArrayList<Player> playerStates = new ArrayList<Player>();
+        playerStates.add(player1);
+        playerStates.add(player2);
 
         if (pickingCards) {
             showCards=true;
@@ -149,14 +143,13 @@ public class GameLogic {
             board.playerLayer.setCell((int) player1.playerPos.x, (int) player1.playerPos.y, null);
             board.playerLayer.setCell((int) player2.playerPos.x, (int) player2.playerPos.y, null);
             System.out.println("\n-Wait to receive game state-\n");
-            ArrayList<Player> playerStates = client.receiveGameState();
-            player1 = playerStates.get(0);
-            player2 = playerStates.get(1);
-
+            ArrayList<Player> playerStatesNew = client.receiveGameState();
+            player1 = playerStatesNew.get(0);
+            player2 = playerStatesNew.get(1);
+            board.playerLayer.setCell((int) player1.playerPos.x, (int) player1.playerPos.y, null);
+            board.playerLayer.setCell((int) player2.playerPos.x, (int) player2.playerPos.y, null);
+            return playerStates;
         }
+        return playerStates;
     }
-
-
-
-
 }

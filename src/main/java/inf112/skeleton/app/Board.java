@@ -1,9 +1,12 @@
 package inf112.skeleton.app;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 
 
@@ -38,7 +41,7 @@ public class Board {
         return checkX && checkY;
     }
 
-    public void updatePlayer(Player player){
+    public void updatePlayer(Player player, PlayerTexture playerTexture){
         //System.out.println("Updating player position");
 
         // Checks if the player is on one of the layer types. Cell is null if player is not on the layer type
@@ -57,17 +60,17 @@ public class Board {
             rotation = 3;
         }
 
-        //System.out.println("Updating player position");
-        playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
+        //System.out.println(player.playerPos);
+        playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, playerTexture.playerCell.setRotation(rotation));
 
         // Check if player is in a hole or is outside the map. If true ends the game.
         if (holeCell != null || !validPlayerMapPos(player.playerPos)) {
-            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerDiedCell.setRotation(rotation));
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, playerTexture.playerDiedCell.setRotation(rotation));
             player.loseCondition = true;
 
             // Check if player has reached a flag. If true ends the game.
         } else if (flagCell != null) {
-            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerWonCell.setRotation(rotation));
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, playerTexture.playerWonCell.setRotation(rotation));
             player.winCondition = true;
         }
     }

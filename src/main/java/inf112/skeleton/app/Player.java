@@ -11,36 +11,19 @@ import java.io.Serializable;
 
 
 public class Player implements Serializable {
+    public static final long serialVersionUID = 6529685098267757690L;
+
 
     public Vector2 playerPos = new Vector2(1,1);
     public boolean loseCondition = false;
     public boolean winCondition = false;
-    public static Cell playerCell;
-    public static Cell playerWonCell;
-    public static Cell playerDiedCell;
     public int dir = 0;
 
 
-    public  Player(Vector2 pos){
+    public Player(Vector2 pos){
         this.playerPos = pos;
     }
 
-    public static void setPlayerState(){
-        // Split player.png into 3 textures
-        Texture texture = new Texture("assets/player.png");
-        TextureRegion texturePlayer = new TextureRegion(texture);
-        TextureRegion[][] texturePlayerSplit = texturePlayer.split(texture, RenderServer.widthPixels, RenderServer.heightPixels);
-
-        // Get the textures for the different player states
-        StaticTiledMapTile playerCellTile = new StaticTiledMapTile(texturePlayerSplit[0][0]);
-        StaticTiledMapTile playerDiedCellTile = new StaticTiledMapTile(texturePlayerSplit[0][1]);
-        StaticTiledMapTile playerWonTile = new StaticTiledMapTile(texturePlayerSplit[0][2]);
-
-        // Create player states
-        playerCell = new TiledMapTileLayer.Cell().setTile(playerCellTile);
-        playerDiedCell = new TiledMapTileLayer.Cell().setTile(playerDiedCellTile);
-        playerWonCell = new TiledMapTileLayer.Cell().setTile(playerWonTile);
-    }
 
     public void move(Enum ChosenMovement) {
 

@@ -19,8 +19,8 @@ import java.util.ArrayList;
 
 
 public class RenderServer extends InputAdapter implements ApplicationListener {
-    private SpriteBatch batch;
-    private BitmapFont font;
+    public SpriteBatch batch;
+    public BitmapFont font;
 
     // Displaying player
     private OrthographicCamera camera;
@@ -29,8 +29,10 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public static final int heightPixels = 300;
     public boolean pause = false;
 
-    public Player player1;
-    public Player player2;
+    public Player player1 = new Player(new Vector2(1,1));
+    public Player player2 = new Player(new Vector2(3,1));
+    public PlayerTexture playerTexture1 = new PlayerTexture();
+    public PlayerTexture playerTexture2 = new PlayerTexture();
     public Board board = new Board();
 
     private TextureRegion textureMove1, textureMove2, textureMove3, textureBackUp;
@@ -48,7 +50,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public Server server = new Server();
     public boolean showCards = true;
     public GameLogic gameLogic;
-
 
 
     @Override
@@ -73,15 +74,20 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         renderer.setView(camera);
 
         // Setup player cell states, including textures
-        player1.setPlayerState();
-        player2.setPlayerState();
-        player1 = new Player(new Vector2(1,1));
-        player2 = new Player(new Vector2(3,1));
+        playerTexture1.setPlayerState();
+        playerTexture2.setPlayerState();
 
         // Setup card textures
         initializeCardTextures();
 
         // Setup server/ client
+        setUpGame();
+
+        // Get key input
+        Gdx.input.setInputProcessor(this);
+    }
+
+    public void setUpGame() {
         try {
             server.setUpServer();
         } catch (IOException e) {
@@ -89,13 +95,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         gameLogic = new GameLogic(server, player1, player2, board);
-
-
-        // Get key input
-        Gdx.input.setInputProcessor(this);
     }
+
 
 
     public void initializeCardTextures(){
@@ -133,7 +135,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         font.dispose();
     }
 
-    public Integer n = 0;
+
 
     @Override
     public void render() {
@@ -141,22 +143,12 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         renderer.render();
-        board.updatePlayer(player1);
-        board.updatePlayer(player2);
-        n++;
-        if (n>4) {
-            n=0;
-            try {
-                gameLogic.round();
-                cardsToPickFrom = gameLogic.cardsToPickFrom;
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        board.updatePlayer(player1, playerTexture1);
+        board.updatePlayer(player2, playerTexture2);
+
+        simulateRound();
+        board.updatePlayer(player1, playerTexture1);
+        board.updatePlayer(player2, playerTexture2);
         //board.updatePlayer(player1);
         //board.updatePlayer(player2);
 
@@ -174,7 +166,28 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         spriteBackUp.draw(batch);
         batch.end();
 
+        checkWinCondition();
+    }
 
+    public Integer n = 0;
+    public void simulateRound(){
+        n++;
+        if (n>4) {
+            n=0;
+            try {
+                gameLogic.doRound();
+                cardsToPickFrom = gameLogic.cardsToPickFrom;
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void checkWinCondition() {
         if (player1.winCondition || player2.loseCondition){
             endGame();
             // End win screen
@@ -191,7 +204,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             font.draw(batch, "Player 2 won, you LOST", 140, 250);
             batch.end();
         }
-
     }
 
     public void endGame(){
@@ -212,7 +224,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     @Override
     public boolean keyUp(int keyCode){
         // Remove player texture before moving
-        //board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
         gameLogic.selectCards(keyCode);
         return true;
     }
