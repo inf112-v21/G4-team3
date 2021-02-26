@@ -41,7 +41,7 @@ public class Board {
         return checkX && checkY;
     }
 
-    public void updatePlayer(Player player, PlayerTexture playerTexture){
+    public void updatePlayer(Player player){
         //System.out.println("Updating player position");
 
         // Checks if the player is on one of the layer types. Cell is null if player is not on the layer type
@@ -61,16 +61,16 @@ public class Board {
         }
 
         //System.out.println(player.playerPos);
-        playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, playerTexture.playerCell.setRotation(rotation));
+        playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
 
         // Check if player is in a hole or is outside the map. If true ends the game.
         if (holeCell != null || !validPlayerMapPos(player.playerPos)) {
-            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, playerTexture.playerDiedCell.setRotation(rotation));
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerDiedCell.setRotation(rotation));
             player.loseCondition = true;
 
             // Check if player has reached a flag. If true ends the game.
         } else if (flagCell != null) {
-            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, playerTexture.playerWonCell.setRotation(rotation));
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerWonCell.setRotation(rotation));
             player.winCondition = true;
         }
     }

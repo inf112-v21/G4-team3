@@ -1,22 +1,30 @@
 package inf112.skeleton.app;
 
 import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
+public class Networking {
 
-public class Client {
-
+    public ServerSocket listener;
     public Socket socket;
-    public ObjectOutputStream objectOutputStream;
     public ObjectInputStream objectInputStream;
+    public ObjectOutputStream objectOutputStream;
+
+    public void setUpServer() throws IOException, ClassNotFoundException {
+        listener = new ServerSocket(4000);
+        System.out.println("ServerSocket is waiting for connections...");
+        socket = listener.accept(); // blocking call, this will wait until a connection is attempted on this port.
+        System.out.println("Received a connection from " + socket);
+    }
 
     public void setUpClient() throws IOException {
         // need host and port, we want to connect to the ServerSocket at port 7777
         socket = new Socket("127.0.0.1", 4000);
         System.out.println("Connected!");
     }
-
 
     public void sendCards(ArrayList<Enum> cards) throws IOException {
         // get the output stream from the socket.
@@ -27,22 +35,13 @@ public class Client {
         objectOutputStream.writeObject(cards);
     }
 
-    public ArrayList<Player> receiveGameState() throws IOException, ClassNotFoundException {
-        // get the input stream from the connected socket
+    // Wait for client input
+    public List<Enum> receiveCards() throws IOException, ClassNotFoundException {
+        // Get the input stream from the connected socket
         InputStream inputStream = socket.getInputStream();
-
-        // create a DataInputStream so we can read data from it.
         objectInputStream = new ObjectInputStream(inputStream);
-
-        // receive object from client
-        ArrayList<Player> players = (ArrayList<Player>) objectInputStream.readObject();
-        return players;
-    }
-
-
-    public void closeSocket() throws IOException {
-        System.out.println("Closing socket");
-        //listener.close();
-        socket.close();
+        // Receive object from client
+        List<Enum> cards = (List<Enum>) objectInputStream.readObject();
+        return cards;
     }
 }

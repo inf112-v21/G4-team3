@@ -118,7 +118,7 @@ public class AppTest {
 
         // Using the layer setup from Testmap.tmx
         player.playerPos = new Vector2(2,2); // Hole position;
-        board.updatePlayer(player);
+        //board.updatePlayer(player);
         assertTrue(player.loseCondition);
     }
 
@@ -129,7 +129,7 @@ public class AppTest {
 
         // Using the layer setup from Testmap.tmx
         player.playerPos = new Vector2(4,4); // Flag position
-        board.updatePlayer(player);
+        //board.updatePlayer(player);
         assertTrue(player.winCondition);
     }
 }

@@ -16,6 +16,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 
 public class RenderServer extends InputAdapter implements ApplicationListener {
@@ -31,8 +32,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
     public Player player1 = new Player(new Vector2(1,1));
     public Player player2 = new Player(new Vector2(3,1));
-    public PlayerTexture playerTexture1 = new PlayerTexture();
-    public PlayerTexture playerTexture2 = new PlayerTexture();
     public Board board = new Board();
 
     private TextureRegion textureMove1, textureMove2, textureMove3, textureBackUp;
@@ -47,7 +46,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public ArrayList<Enum> clientCards;
     public ArrayList<Enum> cardsToPickFrom;
 
-    public Server server = new Server();
+    public Networking connection = new Networking();
     public boolean showCards = true;
     public GameLogic gameLogic;
 
@@ -74,14 +73,15 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         renderer.setView(camera);
 
         // Setup player cell states, including textures
-        playerTexture1.setPlayerState();
-        playerTexture2.setPlayerState();
+        player1.setPlayerState();
+        player2.setPlayerState();
 
         // Setup card textures
         initializeCardTextures();
 
         // Setup server/ client
         setUpGame();
+        gameLogic = new GameLogic(connection, player1, player2, board);
 
         // Get key input
         Gdx.input.setInputProcessor(this);
@@ -89,13 +89,12 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
     public void setUpGame() {
         try {
-            server.setUpServer();
+            connection.setUpServer();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        gameLogic = new GameLogic(server, player1, player2, board);
     }
 
 
@@ -143,12 +142,12 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         renderer.render();
-        board.updatePlayer(player1, playerTexture1);
-        board.updatePlayer(player2, playerTexture2);
+        board.updatePlayer(player1);
+        board.updatePlayer(player2);
 
         simulateRound();
-        board.updatePlayer(player1, playerTexture1);
-        board.updatePlayer(player2, playerTexture2);
+        board.updatePlayer(player1);
+        board.updatePlayer(player2);
         //board.updatePlayer(player1);
         //board.updatePlayer(player2);
 
