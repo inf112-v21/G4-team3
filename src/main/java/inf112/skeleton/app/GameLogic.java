@@ -10,7 +10,6 @@ public class GameLogic {
     public ArrayList<Enum> receivedCards = new ArrayList<>();
     public ArrayList<Enum> cardsToPickFrom = new ArrayList<>();
     public boolean pickingCards = true;
-    public boolean showCards = true;
     public boolean readyTurn = false;
     public int nCards = 3;
     public Networking connection;
@@ -43,7 +42,7 @@ public class GameLogic {
 
     public void getCardsFromOtherPlayer() throws IOException, ClassNotFoundException {
         // Wait for client input
-        System.out.println("\n-Wait to receive the other player's cards-\n");
+        System.out.println("\n-Wait to receive the other player's cards-");
         receivedCards = (ArrayList<Enum>) connection.receiveCards();
         System.out.println("\nYour opponent picked the cards:");
         System.out.println(receivedCards);
@@ -69,7 +68,6 @@ public class GameLogic {
     }
 
     public void doRoundClient() throws IOException, ClassNotFoundException, InterruptedException {
-
         if (pickingCards) {
             pickCards();
         }
@@ -93,6 +91,8 @@ public class GameLogic {
     // Display 9 cards and let the player pick 5
     public void pickCards(){
         System.out.println("\nYour turn to pick cards");
+        System.out.println("Use numbers 1 to 9 to pick cards");
+        System.out.println("You are the black character");
         CardDeck fullDeck = new CardDeck();
         cardsToPickFrom.clear();
         pickedCards.clear();
@@ -106,11 +106,9 @@ public class GameLogic {
         System.out.println(cardsToPickFrom);
     }
 
-
     public void selectCards(int keyCode){
 
         if(pickedCards.size()<nCards && !readyTurn) {
-
             Enum card = null;
             if (keyCode == 8){
                 card = cardsToPickFrom.remove(0);

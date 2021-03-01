@@ -1,12 +1,9 @@
 package inf112.skeleton.app;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 
 
@@ -25,7 +22,7 @@ public class Board {
 
     // Create map layers
     public void createMap(){
-        map = new TmxMapLoader().load("assets/Testmap.tmx");
+        map = new TmxMapLoader().load("assets/Testmap2.tmx");
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
@@ -42,7 +39,6 @@ public class Board {
     }
 
     public void updatePlayer(Player player){
-        //System.out.println("Updating player position");
 
         // Checks if the player is on one of the layer types. Cell is null if player is not on the layer type
         Cell holeCell = holeLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
@@ -60,7 +56,7 @@ public class Board {
             rotation = 3;
         }
 
-        //System.out.println(player.playerPos);
+        // Rotate player sprite
         playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
 
         // Check if player is in a hole or is outside the map. If true ends the game.

@@ -7,28 +7,29 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
-import java.io.Serializable;
 
+public class Player {
 
-public class Player implements Serializable {
-    public static final long serialVersionUID = 6529685098267757690L;
-
-
-    public Vector2 playerPos = new Vector2(1,1);
+    public Vector2 playerPos;
     public boolean loseCondition = false;
     public boolean winCondition = false;
     public int dir = 0;
     public Cell playerCell;
     public Cell playerWonCell;
     public Cell playerDiedCell;
+    public String playerTexture = "assets/player.png";
 
     public Player(Vector2 pos){
         this.playerPos = pos;
     }
 
+    public void setTexture(String textureName){
+        this.playerTexture = textureName;
+    }
+
     public void setPlayerState(){
         // Split player.png into 3 textures
-        Texture texture = new Texture("assets/player.png");
+        Texture texture = new Texture(playerTexture);
         TextureRegion texturePlayer = new TextureRegion(texture);
         TextureRegion[][] texturePlayerSplit = texturePlayer.split(texture, RenderServer.widthPixels, RenderServer.heightPixels);
 

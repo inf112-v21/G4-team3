@@ -7,18 +7,14 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        //new CardDeck();
-        //System.out.println(CardDeck.deck);
-
-
+    public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("RobotRally");
-        cfg.setWindowedMode(500, 800);
+        cfg.setWindowedMode(1000, 1000);
 
         Scanner sc= new Scanner(System.in);
         System.out.print("Select mode:\nType 1 for server. Type 2 for client\n");
-        int mode= sc.nextInt();
+        int mode = sc.nextInt();
 
         if (mode == 1) {
             new Lwjgl3Application(new RenderServer(), cfg);

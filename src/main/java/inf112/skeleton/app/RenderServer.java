@@ -16,10 +16,12 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
+
 
 
 public class RenderServer extends InputAdapter implements ApplicationListener {
+
+    // For text
     public SpriteBatch batch;
     public BitmapFont font;
 
@@ -30,26 +32,25 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public static final int heightPixels = 300;
     public boolean pause = false;
 
-    public Player player1 = new Player(new Vector2(1,1));
-    public Player player2 = new Player(new Vector2(3,1));
+    // Players start position
+    public Player player1 = new Player(new Vector2(4,3));
+    public Player player2 = new Player(new Vector2(9,3));
     public Board board = new Board();
 
+    // Card textures
+    /*
     private TextureRegion textureMove1, textureMove2, textureMove3, textureBackUp;
     private TextureRegion textureRotateLeft, textureRotateRight, textureUTurn;
     private Sprite spriteMove1, spriteMove2 ,spriteMove3, spriteBackUp;
     private Sprite spriteRotateLeft, spriteRotateRight, spriteUTurn;
 
+     */
+
     private boolean pickingCards = true;
-    public ArrayList<String> listMoves= new ArrayList<String>();
-    public int nCards=3;
-    public ArrayList<Enum> pickedCards;
-    public ArrayList<Enum> clientCards;
     public ArrayList<Enum> cardsToPickFrom;
-
     public Networking connection = new Networking();
-    public boolean showCards = true;
     public GameLogic gameLogic;
-
+    public Integer n = 0;
 
     @Override
     public void create() {
@@ -63,9 +64,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
         // Setup camera
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, board.MAP_SIZE_X, board.MAP_SIZE_Y+3);
+        camera.setToOrtho(false, board.MAP_SIZE_X, board.MAP_SIZE_Y);
         camera.position.x= board.MAP_SIZE_X/2f;
-        camera.position.y= (board.MAP_SIZE_Y-3)/2f;
+        camera.position.y= (board.MAP_SIZE_Y)/2f;
         camera.update();
 
         // Setup render
@@ -73,14 +74,19 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         renderer.setView(camera);
 
         // Setup player cell states, including textures
+        player1.setTexture("assets/player.png");
+        player2.setTexture("assets/player2.png");
         player1.setPlayerState();
         player2.setPlayerState();
 
+
         // Setup card textures
-        initializeCardTextures();
+        //initializeCardTextures();
 
         // Setup server/ client
         setUpGame();
+
+        // Game logic
         gameLogic = new GameLogic(connection, player1, player2, board);
 
         // Get key input
@@ -99,6 +105,8 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
 
 
+    // For card textures [WIP]
+    /*
     public void initializeCardTextures(){
         // Split movement.png into 3 textures
         Texture texture1 = new Texture("assets/movement.jpg");
@@ -128,6 +136,8 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         spriteUTurn = new Sprite(textureUTurn);
     }
 
+     */
+
     @Override
     public void dispose() {
         batch.dispose();
@@ -148,10 +158,12 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         simulateRound();
         board.updatePlayer(player1);
         board.updatePlayer(player2);
-        //board.updatePlayer(player1);
-        //board.updatePlayer(player2);
+        checkWinCondition();
 
-        // Card visualization example
+
+
+        /*
+        // Card visualization example [WIP]
         batch.begin();
         spriteUTurn.setPosition(0,100);
         spriteUTurn.draw(batch);
@@ -164,11 +176,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         spriteBackUp.setPosition(400,100);
         spriteBackUp.draw(batch);
         batch.end();
-
-        checkWinCondition();
+         */
     }
 
-    public Integer n = 0;
     public void simulateRound(){
         n++;
         if (n>4) {
@@ -223,7 +233,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     @Override
     public boolean keyUp(int keyCode){
         // Remove player texture before moving
-        gameLogic.selectCards(keyCode);
+        if(!pause) {
+            gameLogic.selectCards(keyCode);
+        }
         return true;
     }
 }
