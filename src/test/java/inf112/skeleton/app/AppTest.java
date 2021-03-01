@@ -27,35 +27,46 @@ public class AppTest {
     public void setPlayerPosition(){
         player.playerPos = new Vector2(0,0);
     }
-/*
-    //@Test
-    public void testMovementUp() {
+
+    @Test
+    public void testMovement1UpInnNordenDir() {
+        openApplication();
+        player.playerPos = new Vector2(0,0);
         Vector2 expectedPosition = new Vector2(0,1);
-        player.move("up");
+        player.move(CardMovement.Movement.MOVE1);
         assertEquals(expectedPosition, player.playerPos);
     }
 
-    //@Test
-    public void testMovementDown(){
-        Vector2 expectedPosition = new Vector2(0,-1);
-        player.move("down");
-        assertEquals(expectedPosition, player.playerPos);
-    }
-
-    //@Test
-    public void testMovementRight() {
+    @Test
+    public void testMovement1InnEastDir() {
+        openApplication();
+        player.playerPos = new Vector2(0,0);
+        player.dir = 90;
         Vector2 expectedPosition = new Vector2(1,0);
-        player.move("right");
+        player.move(CardMovement.Movement.MOVE1);
         assertEquals(expectedPosition, player.playerPos);
     }
 
-    //@Test
-    public void testMovementLeft() {
-        Vector2 expectedPosition = new Vector2(-1,0);
-        player.move("left");
+    @Test
+    public void testMovement1InnSouthDir() {
+        openApplication();
+        player.playerPos = new Vector2(0,0);
+        player.dir = 180;
+        Vector2 expectedPosition = new Vector2(0,-1);
+        player.move(CardMovement.Movement.MOVE1);
         assertEquals(expectedPosition, player.playerPos);
     }
-*/
+
+    @Test
+    public void testMovement1InnWestDir() {
+        openApplication();
+        player.playerPos = new Vector2(0,0);
+        player.dir = 270;
+        Vector2 expectedPosition = new Vector2(-1,0);
+        player.move(CardMovement.Movement.MOVE1);
+        assertEquals(expectedPosition, player.playerPos);
+    }
+/*
     @Test
     public void testIfPlayerIsOnMap(){
         Board board = new Board();
@@ -100,7 +111,7 @@ public class AppTest {
 
 
     }
-
+*/
 
 
     // Open application for testing purposes
@@ -132,6 +143,8 @@ public class AppTest {
         //board.updatePlayer(player);
         assertTrue(player.winCondition);
     }
+
+
 }
 
 
