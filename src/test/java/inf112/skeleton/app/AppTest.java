@@ -28,44 +28,7 @@ public class AppTest {
         player.playerPos = new Vector2(0,0);
     }
 
-    @Test
-    public void testMovement1UpInnNordenDir() {
-        openApplication();
-        player.playerPos = new Vector2(0,0);
-        Vector2 expectedPosition = new Vector2(0,1);
-        player.move(CardMovement.Movement.MOVE1);
-        assertEquals(expectedPosition, player.playerPos);
-    }
 
-    @Test
-    public void testMovement1InnEastDir() {
-        openApplication();
-        player.playerPos = new Vector2(0,0);
-        player.dir = 90;
-        Vector2 expectedPosition = new Vector2(1,0);
-        player.move(CardMovement.Movement.MOVE1);
-        assertEquals(expectedPosition, player.playerPos);
-    }
-
-    @Test
-    public void testMovement1InnSouthDir() {
-        openApplication();
-        player.playerPos = new Vector2(0,0);
-        player.dir = 180;
-        Vector2 expectedPosition = new Vector2(0,-1);
-        player.move(CardMovement.Movement.MOVE1);
-        assertEquals(expectedPosition, player.playerPos);
-    }
-
-    @Test
-    public void testMovement1InnWestDir() {
-        openApplication();
-        player.playerPos = new Vector2(0,0);
-        player.dir = 270;
-        Vector2 expectedPosition = new Vector2(-1,0);
-        player.move(CardMovement.Movement.MOVE1);
-        assertEquals(expectedPosition, player.playerPos);
-    }
 /*
     @Test
     public void testIfPlayerIsOnMap(){
