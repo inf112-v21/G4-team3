@@ -64,9 +64,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
         // Setup camera
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, board.MAP_SIZE_X, board.MAP_SIZE_Y);
+        camera.setToOrtho(false, board.MAP_SIZE_X, board.MAP_SIZE_Y+2);
         camera.position.x= board.MAP_SIZE_X/2f;
-        camera.position.y= (board.MAP_SIZE_Y)/2f;
+        camera.position.y= (board.MAP_SIZE_Y-2)/2f;
         camera.update();
 
         // Setup render
@@ -103,6 +103,15 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         }
     }
 
+    public void showCardsOnScreen(){
+        batch.begin();
+        font.getData().setScale((float)1.2, (float)1.2);
+        font.draw(batch, "Available cards:", 0, 120);
+        font.getData().setScale((float)0.8, (float)0.8);
+        font.draw(batch, cardsToPickFrom.toString(), 0, 100);
+        batch.end();
+    }
+
 
 
     // For card textures [WIP]
@@ -135,7 +144,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         spriteRotateRight = new Sprite(textureRotateRight);
         spriteUTurn = new Sprite(textureUTurn);
     }
-
      */
 
     @Override
@@ -155,7 +163,11 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         board.updatePlayer(player1);
         board.updatePlayer(player2);
 
+
         simulateRound();
+        if (!gameLogic.pickingCards && !pause) {
+            showCardsOnScreen();
+        }
         board.updatePlayer(player1);
         board.updatePlayer(player2);
         checkWinCondition();
@@ -210,7 +222,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             // End win screen
             batch.begin();
             font.getData().setScale(4, 4);
-            font.draw(batch, "Player 2 won, you LOST", 140, 250);
+            font.draw(batch, "Player 2 won, you lost", 140, 250);
             batch.end();
         }
     }
