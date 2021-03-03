@@ -20,12 +20,13 @@ public class AppTest {
      */
 
     // Initiate class instances
-    public Player player = new Player(new Vector2(1,1));
+    public Player player = new Player(new Vector2(1,1), null);
     public Board board = new Board();
 
     @Before
     public void setPlayerPosition(){
         player.playerPos = new Vector2(0,0);
+        player.dir = 0;
     }
 
 
@@ -78,7 +79,7 @@ public class AppTest {
 
 
     // Open application for testing purposes
-    public void openApplication() {
+    public static void openApplication() {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("Lukk vinduet for at testen skal kjøre");
         cfg.setWindowedMode(500, 500);

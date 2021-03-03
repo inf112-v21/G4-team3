@@ -33,8 +33,8 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public boolean pause = false;
 
     // Players start position
-    public Player player1 = new Player(new Vector2(4,3));
-    public Player player2 = new Player(new Vector2(9,3));
+    public Player player1 = new Player(new Vector2(4,3), "assets/player.png");
+    public Player player2 = new Player(new Vector2(9,3), "assets/player2.png");
     public Board board = new Board();
 
     // Card textures
@@ -237,5 +237,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             gameLogic.selectCards(keyCode);
         }
         return true;
+    }
+
+    public void showGivenCards(){
+
     }
 }
