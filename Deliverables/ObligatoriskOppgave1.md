@@ -166,35 +166,6 @@ Brukerhistoriene er numerert etter hvilket MVP-krav de oppfyller og prioritet.
         - flagget bli registrert som besøkt.
         - spillet bli vunnet av den som tar flagget.
     
-6. Spille fra flere maskiner (vise brikker for alle spillere, flytte brikker for alle spillere):
-    - Brukerhistorie:
-      Som spiller ønsker eg å kunne spille med andre, 
-      slik at eg kan ha en meir utforandre spillerfaring med 
-      andre spillere.
-    - Løsningsbeskrivelse:
-      
-    - Aksepteansekriterier:
-        - git:
-            1. maskin A og B
-            2. git RobotA (1,0) og RobotB(0,0)
-        - *****:
-            1. når MaskinA sender at den flytter RobotA så Flytter RobotA seg både på skermen til Maskin A og B.
-            2. at begge Maskinane viser samme Bretet med Robotane på samme posison.
-            3. 
-    
-8. Velge 5 kort:
-   - Brukerhistorie:
-     Som spiller
-     vil jeg kunne velge kort,
-     slik at jeg har 5 kort å spille med.
-   - Løsningsbeskrivelse:
-     Når kortene er delt ut skal spiller velge med enten taster eller klikk fra mus og da blir de lagt
-     til i "hånden"
-   - Aksepteansekriterier:
-     Gitt at spiller velger 5 kort,
-     så skal:
-        - Riktige kortene bli valgt
-        - Kortene bli lagt til i "hånden" til spiller
 
    
 ###Prioriteringer
@@ -223,6 +194,7 @@ De andre rutene med objekter på har ikke blitt gitt noen funksjoner foreløpig.
 
 ###Mandag: 01.02.2021
 ###Første møte for prosjektet: Møtes i DC kl 12-14
+####Deltakere: Daan, Evind, Sigurd, Malte
 
 - Prosjektplanlegging: Finne ut hva vi trenger å gjøre til første innlevering ut fra oppgaveteksten.
 
@@ -243,6 +215,7 @@ elg og tilpass en prosess for laget.
       Deling og oppbevaring av felles dokumenter (alle). Skrive kort oppsummering av konklusjon (Sigurd/Malte)
 
 ###Onsdag 03.02.2021
+####Deltakere: Daan, Evind, Sigurd, Malte
 
 ###Kort DC møte (oppfølging av fullført arbeidsoppgaver)  12-12.15
 Konklusjon:
@@ -257,6 +230,7 @@ Konklusjon:
 - Skrive kort oppsummering av konklusjon (Sigurd/Malte)
 
 ###Fredag 05.02.2021 
+####Deltakere: Daan, Evind, Sigurd, Malte
 ###Fysisk møte på matnat Scrum review og retrospektiv 12-14
 ####Scrum review / retrospektiv
 ####Scrum review Konklusjon:
@@ -270,6 +244,7 @@ Konklusjon:
 - Usikkerhet angående commit meldinger og hvordan disse skal se ut. 
 
 ###Mandag 08.02.2021
+####Deltakere: Daan, Evind, Sigurd, Malte
 ###Sprintplanning møtes på Discord 12-13
 
 - Sprint planlegging: Dette møtet gikk ut på planlegging av ukens sprint, tar sikte på å gjøre ferdig
@@ -282,6 +257,7 @@ deloppgave 3 og deloppgave 4, og ferdigstille til første delinnlevering på fre
     - Skrive ferdig kode med tilsvarende tester for MVP krav 1-5.(Eivind/Daan)
     
 ###Onsdag 10.02.2021
+####Deltakere: Daan, Evind, Sigurd, Malte
 ###Discord møte, oppfølging av fullførte arbeidsoppgaver
 - Konklusjon 
 - Fullført:
@@ -295,6 +271,7 @@ deloppgave 3 og deloppgave 4, og ferdigstille til første delinnlevering på fre
     - Gjenstående tekstarbeid i .md-filen. (sigurd/malte)
     
 ###Discord gruppetime fellesarbeid med tilgang til TA, 1215-14
+####Deltakere: Daan, Evind, Sigurd, Malte
 - Konklusjon
 - Fullført: 
     - Akseptansekrav og arbeidsoppgaver for hver brukerhistorie samt hvilke krav de oppfyller(Sigurd/malte)
@@ -302,6 +279,7 @@ deloppgave 3 og deloppgave 4, og ferdigstille til første delinnlevering på fre
     
 
 ###Fredag 12.02.2021.     
+####Deltakere: Daan, Evind, Sigurd, Malte
 ###Discord møte, sprint review og sprint retrospektiv, tilbakemelding fra kunde(TA - Knut)
 - Scrum review konklusjon:
     - Nesten ferdig med alle utdelte arbeidsoppgaver
