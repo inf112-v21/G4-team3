@@ -110,3 +110,133 @@ trenger flere av dem, men at rollene i dette prosjektet er fleksible og tilpasse
 
 
 - Klassediagram
+
+
+##Meetingminutes
+
+### Mandag 15.02.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Sprint-planlegging møte på Discord 12-13
+- Fordeling av arbeidsoppgaver:
+    - Skrive brukerhistorier for MVP-krav 6-9.
+    - Begynner å tenke på løsning for MVP-krav 6: flerspiller.
+    - Enighet om mindre arbeidsmengde denne uken grunnet andre prosjekter/fag.
+    
+### Onsdag 17.02.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte 
+### Discord Møte - oppfølging av utdelte arbeidsopppgaver 12-12:15
+- Konklusjon:
+    - Alle brukerhistorier har blitt skrevet ferdig, med unntak av løsningsforslag for
+      brukerhistorie 6 grunnet usikkerhet rundt flerspiller implementasjon.
+- Gjenstående:
+    - Brukerhistorie 6 løsningsforslag.
+    - Begynne på implementasjon av brukerhistorie 6.
+    
+### Discord gruppetime fellesarbeid - med tilgang til TA. 12:15-14
+- Konklusjon:
+    - - Begynt med implementasjon av MVP-krav 6, spille fra flere maskiner.
+    - Ferdigstilt alle brukerhistorier.
+    - Fungerende MVP-krav 6 spille fra flere maskiner, men trenger finpussing/refaktorering
+    
+### Fredag 19.02.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - Sprint review og retrospektiv
+-Scrum review konklusjon:
+    - Fullførte oppsatte arbeidsoppgaver.
+    - Spille fra flere maskiner trenger fortsatt forbedringer og implementasjon av resterende MVP-krav.
+- Scrum review retrospektiv konklusjon:
+    - Passe mengde arbeidsoppgaver.
+    - Bra kommunikasjon og oppfølging.
+    - Større arbeidsmengde kan bli satt opp for neste sprint grunnet mer tid.
+    
+### Mandag 22.02.2021
+### Deltakere: Eivind, Sigurd, Malte(Daan manglet grunnet annet obligatorisk oppmøte)
+### Discord møte - Sprint-planlegging 12-13
+- Sprint planning: Tar sikte på å ferdigstille MVP-krav 7-8 i løpet av sprinten og beggynne på tekstbaserte oppgaver.
+- Fordeling av arbeidsoppgaver:
+    - MVP-krav 7 - dele ut kort.
+    - MVP-krev 8 - velge 5 kort.
+    - Tilhørende tester for krav.
+    - Skriving av .md- fil.
+
+### Onsdag 24.02.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - Oppfølging av utdelte arbeidsoppgaver 12-12:15
+- Konklusjon:
+    - MVP-krav 7 nær ferdigstilling.
+    - Deler av md.- fil skrevet.
+    - Test for MVP-krav 7 ferdigstilt.
+- Gjenstående:
+    - MVP-krav 8 må gjøres etter 7.
+    - Videre arbeid med .md- fil.
+
+### Discord gruppetime fellesarbeid - med tilgang til TA 12:15-14
+### Deltakere: Daan, Eivind, Sigurd, Malte
+- Konklusjon:
+    - MVP-krav 7 ferdigstilt og passerer tester.
+    - Oppdatering av .md- fil.
+    - Begynt med MVP-krav 8.
+
+### Fredag 26.02.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - Sprint review og retrospektiv
+- Sprint review konklusjon:
+    - MVP-krav 7 ferdigstilt med tilhørende tester.
+    - MVP-krav 8 nært ferdigstilling fremdeles noen bugs.
+    - Manuell test for MVP-krav 8 ferdigstilt.
+    - Kommet godt i gang med .md- fil.
+-Sprint retrospektiv konklusjon:
+    - Tilnærmet alle arbeidsoppgaver fullført.
+    - God kommunkiasjon og oppfølging.
+    - Trenger bedre fordeling og beskrivelse av commits.
+
+### Mandag 01.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - Sprint-planlegging 12-13
+- Sprint planlegging:
+    - Fullføring av obligatorisk innlevering 2.
+    - Ferdigstilling av MVP-krav 8 og 9.
+    - Resterende tester for MVP-krav.
+    - Ferdigstilling av .md- fil.
+- Arbeidsfordeling:
+    - MVP-krav 8 ()
+    - MVP-krav 9 ()
+    - Tester ()
+    - .md- fil ()
+
+### Onsdag 03.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - oppfølging av arbeid.
+- Konklusjon:
+    - Ferdig med MVP-krav 8.
+    - Ferdig med tester for MVP-krav 8.
+    - .md- fil oppdatert.
+- Gjenstående:
+    - MVP-krav 9.
+    - Fler tester der det trengs.
+    - Ferdigstilling av .md- fil.
+
+### Discord gruppetime fellesarbeid - med tilgang til TA 12:15-14
+### Deltakere: Daan, Eivind, Sigurd, Malte
+- Konklusjon:
+    - MVP-krav 9 nær ferdigstilling.
+    - Tester ferdigstilt. 
+    - .md- fil nær ferdig, mangler for kommende fredagsmøte.
+
+### Fredag 05.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
