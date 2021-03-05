@@ -5,6 +5,13 @@ import java.io.IOException;
 
 public class RenderClient extends RenderServer {
 
+    public static String hostIP;
+
+    public RenderClient(String hostIP) {
+        this.hostIP = hostIP;
+    }
+
+
     @Override
     public void setUpGame(){
         Player temp = player1;
