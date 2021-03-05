@@ -1,12 +1,25 @@
 package inf112.skeleton.app;
 
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.math.Vector2;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class MoveTest extends AppTest{
+public class MoveTest{
+
+    // Initiate class instances
+    public Player player = new Player(new Vector2(1,1), null);
+    public Board board = new Board();
+
+    @Before
+    public void setPlayerPosition(){
+        player.playerPos = new Vector2(0,0);
+        player.dir = 0;
+    }
 
     @Test
     public void testMovement1UpInnNordenDir() {
@@ -79,5 +92,13 @@ public class MoveTest extends AppTest{
         int expectedDir = 180;
         player.move(CardRotation.Rotation.UTURN);
         assertEquals(expectedDir, player.dir);
+    }
+
+    // Open application for testing purposes. my be needed for future
+    public static void openApplication() {
+        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+        cfg.setTitle("Lukk vinduet for at testen skal kjøre");
+        cfg.setWindowedMode(500, 500);
+        new Lwjgl3Application(new RenderServer(), cfg);
     }
 }

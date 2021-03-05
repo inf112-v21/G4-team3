@@ -110,7 +110,7 @@ public class GameLogic {
         System.out.println(cardsToPickFrom);
     }
 
-    public void selectCards(int keyCode){
+    public void selectCardsFromKeyboardInput(int keyCode){
 
         if(pickedCards.size()<nCards && !readyTurn) {
             Enum card = null;
