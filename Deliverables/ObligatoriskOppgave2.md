@@ -58,6 +58,8 @@ trenger flere av dem, men at rollene i dette prosjektet er fleksible og tilpasse
   hosten vil også¨være den som pusher opp koden til slutt. 
 
 ##Deloppgave 2 krav
+### Brukerhistorier 
+
 6. Spille fra flere maskiner (vise brikker for alle spillere, flytte brikker for alle spillere):
     - Brukerhistorie:
       Som spiller ønsker eg å kunne spille med andre,
