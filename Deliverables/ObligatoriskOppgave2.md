@@ -4,18 +4,28 @@
   - Team leader: Jan Malte Brunner
     - Team leader sine oppgaver innebærer å lede møte og ha innblikk i det større bildet av prosjektet. 
       Holde styr på når og eventuelt hvor møter skal finne sted. Team leader er også hovedkontaktperson for
-      team medlemmer og skal distribuere informasjon videre til alle gruppemedlem.   
+      team medlemmer og skal distribuere informasjon videre til alle gruppemedlem. 
+      
   - Kundekontakt: Jan Malte Brunner
     - Kundekontakt har hovedansvar for kommunikasjon og tilbakemeldinger til kunden/TA. 
       Det vil innebære å holde kunden/TA oppdatert med progresjon og eventuelle mangler i prosjektet. 
       Også eventuell oppklaring av hva kunden forventer for godkjenning av de forskjellige oppgavene 
       innenfor prosjektet.   
+      
   - Design: Sigurd Loennechen
     - Design har hovedsakelig ansvar for hvordan de ulike objektene i programmet ser ut. 
       Dette bruker vi Tiles og Libgdx til.
+      
   - Koder: Daan van Kessel
+    -Som koder er det mitt ansvar å programmere dem denne kunden har til ett program, som enklast mulig å vedlikeholde.
+    og at koden er strukturert og lesbart for andre kodere og brukere, slik at om nødvendig det blir lettere å gjøre modifikasjoner.
+
 
   - Tester: Eivind Skarstein
+    -For å vite om programmet fungerer som ønsket er det nødvendig å ha gode og omfattende tester.
+    I rollen som tester innebærer det hovedsakelig å ha kontroll over hva vi ønsker at koden skal gjøre.
+    Det er også viktig å vite hvordan programmet fungerer slik at en kan skrive gode tester og gi tilbakemeldinger til koderene.
+
 
 - Rollene vi satt opp har stort sett fungert bra, alle tildelte rollene har blitt 
 oppfylt av gruppemedlemmene. Det vi har merket er at rollene ikke kan bli fulgt like 
@@ -102,11 +112,19 @@ trenger flere av dem, men at rollene i dette prosjektet er fleksible og tilpasse
   i. Roboten bevege seg med bevegelsen kortet beskriver.
 - Gitt at spilleren har flere kort, så skal:
 
+###Bugs:
+- Spillere kan bevege seg over hull/flagg uten å avslutte spillet midt i en runde hvis spilleren beveger seg 2 eller 3 felt fremover på en turn.
+- Applikasjonsvinduet «fryser» mens den andre spilleren velger kort. Ikke noe problem egentlig. 
+- Hvis en trykker på et tall på tastaturet høyere enn det er tilgjengelige kort krasjer programmet. For eksempel, det er 8 kort å velge mellom og brukeren trykker på 9.
+
+###Endring siden siste innlevering:
+- Vi har fullført resten av MVP kravene; spille multiplayer, dele ut kort, 
+  la spillerne velge 5 kort og å bevege robotene ut fra de valgte kortene.
 
 
 
 ##Deloppgave 3 Kode
-- Se step-by-step guide for prosjektbygging, tester og hvordan programmet skal kjøres
+- Se step-by-step guide for prosjektbygging, tester og hvordan programmet skal kjøres finner du i README.md
 
 
 - Klassediagram
