@@ -57,6 +57,7 @@ trenger flere av dem, men at rollene i dette prosjektet er fleksible og tilpasse
   tekst-baserte oppgaver kan man se en skjevfordeling av commits fra enkeltpersoner. For eksempel CodeWithMe
   hosten vil også¨være den som pusher opp koden til slutt. 
 
+Ret
 ##Deloppgave 2 krav
 ### Brukerhistorier 
 
@@ -87,7 +88,7 @@ trenger flere av dem, men at rollene i dette prosjektet er fleksible og tilpasse
       - Akseptansekriterier:
       Gitt at spilleren får utdelt kort
       så skal:
-      Kortene bli vist i terminalen
+      Kortene bli vist i programmet 
 
 
 8. Velge 5 kort:
