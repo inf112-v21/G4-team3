@@ -22,7 +22,7 @@ public class Networking {
 
     public void setUpClient() throws IOException {
         // Connecting to the ServerSocket at port 4000
-        socket = new Socket("127.0.0.1", 4000); // 127.0.0.1 is localhost
+        socket = new Socket(RenderClient.hostIP, 4000); // 127.0.0.1 is localhost
         System.out.println("Connected");
     }
 
