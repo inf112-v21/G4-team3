@@ -8,19 +8,19 @@
    IDE’en som brukes i denne guiden er IntelliJ.  IntelliJ kan lastes ned her: https://www.jetbrains.com/idea/
    For å pulle prosjektet fra github må du gå til github repositoriet og klikke på den grønne «Code» knappen 
    for å få en HTTPS lenke.
-   ![img_7.png](img_7.png)
+   ![img_7.png](assets/images/img_7.png)
    Deretter, går du til din IDE og åpner et nytt prosjekt fra «version controll». 
    I intelliJ gjøres dette ved å trykke på «File» -> «New» -> «Project from Version Control». 
    Det vil åpnes et vindu hvor du limer inn HTTPS lenken i URL feltet. 
    Husk å endre på navnet hvis du skal pulle flere versjoner av prosjektet.
 
-![img_9.png](img_9.png)
+![img_9.png](assets/images/img_9.png)
 
 2. Kjøre programmet fra IDE’en:
    
    Applikasjonen kjøres ved å høyreklikke på main funksjonen under src/main/java/inf112.skeleton.app i prosjektet ditt og å trykke på «run» ved den grønne pilen.
 
-![img_10.png](img_10.png)
+![img_10.png](assets/images/img_10.png)
 
 3. Bruke applikasjonen
    
@@ -68,6 +68,12 @@ Deretter kan spillet spilles ved å følge teksten i «run» vinduet i bunnen av
       handlinger og den andre mottar/får sett handlingene gjort av den andre spilleren.
 
 - Kriterier for at testen blir godkjent:
-		- De to instansene av spillet skal kommunisere med hverandre og får sett hverandres handlinger på spillbrett.
+    - De to instansene av spillet skal kommunisere med hverandre og får sett hverandres handlinger på spillbrett.
 
+### Manuell test for loseCondition.
+- Hvordan testen utføres:
+    - Kjør Main og så velg enten client eller server, etter det kan man se kortene i terminalen og velge.
+    - Etter det velg kort og naviger utenfor kartet eller til et hull. Da skal spillet fryse og en tekst skal si hvem som tapte.
+- Kriterer for at testen blir godkjent:
+    - Når en losecondition blir triggeret fryser spillet og det står hvem som har tapt
 

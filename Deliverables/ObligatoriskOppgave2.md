@@ -64,8 +64,7 @@ trenger flere av dem, men at rollene i dette prosjektet er fleksible og tilpasse
     - Utdypning av rollebeskrivelser
     - Forbedre mengden commits fra hvert medlem, commitmeldinger og timing på push mtp merge-conflict.
     - Bedre bruk av project board, oppdatere med gjevne mellomrom.
-
-Ret
+    
 ##Deloppgave 2 krav
 ### Brukerhistorier 
 
@@ -94,8 +93,7 @@ Ret
       Gitt at spilleren får utdelt kort
       så skal:
       Kortene bli vist i programmet 
-
-
+        
 8. Velge 5 kort:
     - Brukerhistorie:
       Som spiller
@@ -111,14 +109,26 @@ Ret
         - Kortene bli lagt til i "hånden" til spiller
 
 9. Bevege robot ut fra valgte kort
-   Brukerhistorie:
-- Som spiller vil jeg at roboten min skal bevege seg i rekkefølge ut fra valgte kort.
-  Løsningsbeskrivelse:
-- Knytte spillkortene sine bevegelses verdier til bevegelse av roboten i koden.
-  Akseptansekriterier:
-- Gitt at spilleren har et kort med en spesifikk bevegelse, så skal:
-  i. Roboten bevege seg med bevegelsen kortet beskriver.
-- Gitt at spilleren har flere kort, så skal:
+    - Brukerhistorie:
+      Som spiller 
+      vil jeg at roboten min skal bevege seg i rekkefølge ut fra valgte kort.
+    - Løsningsbeskrivelse:
+      Knytte spillkortene sine bevegelses verdier til bevegelse av roboten i koden.
+    - Akseptansekriterier:
+      - Gitt at spilleren har et kort med en spesifikk bevegelse, så skal:
+        - Roboten bevege seg med bevegelsen kortet beskriver.
+      - Gitt at spilleren har flere kort, så skal: 
+        - Roboten bevege seg med bevegelsene beskrevet av kortene i rekkefølgen kortene er valgt.
+
+### Prioritering av brukerhistorier
+1. Krav 6 - spille fra flere maskiner
+   - Dette begynte vi på den første uken, siden vi ikke hadde oversikt hvor omfattende implementasjonen og kunne dele ut
+    jevne arbeidsmengder for medlemmene.
+2. Krav 7 - dele ut kort
+3. Krav 8 - velge 5 kort fra utdelte kort
+4. Krav 9 - bevege robot ut fra valgte kort
+- De tre siste kravene valgte vi å løse i gitt rekkefølge ettersom det faller naturlig for fremgangen. f.eks vil det være
+vanskelig å implementere og velge 5 kort på en meningsfull måte uten å ha krav 7 - dele ut kort gjennomført.
 
 ###Bugs:
 - Spillere kan bevege seg over hull/flagg uten å avslutte spillet midt i en runde hvis spilleren beveger seg 2 eller 3 felt fremover på en turn.
@@ -133,10 +143,12 @@ Ret
 ##Deloppgave 3 Kode
 - Se step-by-step guide for prosjektbygging, tester og hvordan programmet skal kjøres finner du i README.md
 
-
-- Klassediagram
-
-
+- Klassediagram forklaring:
+![img.png](img.png)
+    
+- Klassediagram:
+![img_2.png](img_2.png)
+  
 ##Meetingminutes
 
 ### Mandag 15.02.2021

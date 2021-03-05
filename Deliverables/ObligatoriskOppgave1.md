@@ -293,9 +293,9 @@ deloppgave 3 og deloppgave 4, og ferdigstille til første delinnlevering på fre
     - Foreløpig gode commit-meldinger, må evt kategoriseres og ryddes opp i for oversiktens skyld
     
 ##Project board
-![img.png](../img.png)
-![img_1.png](../img_1.png)
-![img_2.png](../img_2.png)
-![img_3.png](../img_3.png)
-![img_4.png](../img_4.png)
-![img_5.png](../img_5.png)
+![img.png](../assets/images/img.png)
+![img_1.png](../assets/images/img_1.png)
+![img_2.png](../assets/images/img_2.png)
+![img_3.png](../assets/images/img_3.png)
+![img_4.png](../assets/images/img_4.png)
+![img_5.png](../assets/images/img_5.png)
