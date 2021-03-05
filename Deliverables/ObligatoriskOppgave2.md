@@ -26,7 +26,6 @@
     I rollen som tester innebærer det hovedsakelig å ha kontroll over hva vi ønsker at koden skal gjøre.
     Det er også viktig å vite hvordan programmet fungerer slik at en kan skrive gode tester og gi tilbakemeldinger til koderene.
 
-
 - Rollene vi satt opp har stort sett fungert bra, alle tildelte rollene har blitt 
 oppfylt av gruppemedlemmene. Det vi har merket er at rollene ikke kan bli fulgt like 
 sterkt som i et skikkelig jobb prosjekt. Det vil si at selv om en person er satt opp 
@@ -44,7 +43,7 @@ trenger flere av dem, men at rollene i dette prosjektet er fleksible og tilpasse
   visse oppgaver blir mer langvarig / komplisert en andre. Noe som kan være vanskelig å presist forutse 
   ved arbeidsfordeling.
   
--  Kommunikasjon tar vi hovedsakelig gjennom discord der vi har en felles SMED gruppechat. Vi samles i en 
+- Kommunikasjon tar vi hovedsakelig gjennom discord der vi har en felles SMED gruppechat. Vi samles i en 
   voice call sammen under møtene/arbeidstimer. Utenfor møter/arbeidstimer sender vi meldinger på discord 
   i gruppechatten om spørsmål, oppfølging eller generell diskusjon.
    
@@ -56,6 +55,15 @@ trenger flere av dem, men at rollene i dette prosjektet er fleksible og tilpasse
 - Ettersom vi ofte jobber i par ikke bare angående programmering (code with me) men også med tanke på 
   tekst-baserte oppgaver kan man se en skjevfordeling av commits fra enkeltpersoner. For eksempel CodeWithMe
   hosten vil også¨være den som pusher opp koden til slutt. 
+  
+- Retrospektiv:
+    - Stort sett fornøyd med rollefordeling, metodikk og kommunikasjon.
+    - Vi kan utdype rollebeskrivelser mer nøyaktig eventuelt gi flere roller til medlemmene, 
+      ettersom alle bidrar litt til hverandres roller.
+- Tre forbedringspunkter:
+    - Utdypning av rollebeskrivelser
+    - Forbedre mengden commits fra hvert medlem, commitmeldinger og timing på push mtp merge-conflict.
+    - Bedre bruk av project board, oppdatere med gjevne mellomrom.
 
 Ret
 ##Deloppgave 2 krav
@@ -67,15 +75,12 @@ Ret
       slik at eg kan ha en meir utforandre spillerfaring med
       andre spillere.
     - Løsningsbeskrivelse:
-
+      Løses ved å la en spiller fungere som en server og åpner en nettverksport som den andre 
+      spilleren kan knytte seg til.
     - Aksepteansekriterier:
-        - git:
-            1. maskin A og B
-            2. git RobotA (1,0) og RobotB(0,0)
-        - *****:
-            1. når MaskinA sender at den flytter RobotA så Flytter RobotA seg både på skermen til Maskin A og B.
-            2. at begge Maskinane viser samme Bretet med Robotane på samme posison.
-            3.
+        - Gitt at maskinen sender at den flytter robot a til posisjon 2,0:
+        - Så skal: 
+            1. skjermen til maskina og b vise robot a i posisjon 2,0:
 
 7. Dele ut kort:
     - Brukerhustorie:
@@ -119,12 +124,11 @@ Ret
 - Spillere kan bevege seg over hull/flagg uten å avslutte spillet midt i en runde hvis spilleren beveger seg 2 eller 3 felt fremover på en turn.
 - Applikasjonsvinduet «fryser» mens den andre spilleren velger kort. Ikke noe problem egentlig. 
 - Hvis en trykker på et tall på tastaturet høyere enn det er tilgjengelige kort krasjer programmet. For eksempel, det er 8 kort å velge mellom og brukeren trykker på 9.
+- Godtar feil input men setter verdi til null. (Et valg utenfor 1-9)
 
 ###Endring siden siste innlevering:
 - Vi har fullført resten av MVP kravene; spille multiplayer, dele ut kort, 
   la spillerne velge 5 kort og å bevege robotene ut fra de valgte kortene.
-
-
 
 ##Deloppgave 3 Kode
 - Se step-by-step guide for prosjektbygging, tester og hvordan programmet skal kjøres finner du i README.md
@@ -246,7 +250,15 @@ Ret
 
 ### Fredag 05.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
-
+### Discord møte - Sprint review og retrospektiv
+- Sprint review konklusjon:
+    - Ferdig med alle krav for obligatorisk innlevering 2.
+    - Et par små bugs som ikke har stor påvirkning på kjøringen.
+-Sprint retrospektiv konklusjon:
+    - God kommunikasjon og tone i teamet.
+    - Bra arbeidsfordeling.
+    - Fornøyd med arbeidsmetodikk
+    - Eventuelt forandre rolle-fordeling/beskrivelse.
 
 
 
