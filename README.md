@@ -1,4 +1,4 @@
-#Step by step guide
+#Step by step guide - starte programmet
 
 
 
@@ -25,6 +25,31 @@
    
 Deretter kan spillet spilles ved å følge teksten i «run» vinduet i bunnen av IDE’en. Trykk på applikasjons vinduet for at applikasjonen skal registrere keyboard input. Klient versjonen velger kort først. 
 
+##Manuelle tester utførelse
+### Manuell test for at fem kort blir valgt.
+- Hvordan testen utføres:
+   - Kjør Main og så velg enten client eller server, etter det kan man se kortene i terminalen og velge.
+   - Velg 5 kort fra de 9 som blir vist i terminal gjennom nummer taster på tastatur(1-9) der de
+      valgte blir fjernet for hvert valg
 
+	- Kriterier for at testen blir godkjent:
+		- Velge fem kort.
+		- De fem valgte kortene vises i spillet.
+
+### Manuell test for winCondition.
+-Hvordan testen utføres:
+   - Kjør Main og så velg enten client eller server, etter det kan man se kortene i terminalen og velge.
+   - Etter det velg kort og naviger til et flagg. Da skal spillet fryse og en tekst skal si hvem som vant.
+   
+- Kriterer for at testen blir godkjent:
+   - Når en wincondition blir triggeret fryser spillet og det står hvem som har vunnet
+
+### Manuell test for nettverk.
+- Hvordan testen utføres:
+   - Kjør Main og så velg enten client eller server, sjekk deretter at begge instansene av spillet får valgt kort og gjennomført
+      handlinger og den andre mottar/får sett handlingene gjort av den andre spilleren.
+
+- Kriterier for at testen blir godkjent:
+		- De to instansene av spillet skal kommunisere med hverandre og får sett hverandres handlinger på spillbrett.
 
 
