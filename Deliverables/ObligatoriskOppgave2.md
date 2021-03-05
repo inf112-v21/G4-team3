@@ -155,9 +155,9 @@ vanskelig å implementere og velge 5 kort på en meningsfull måte uten å ha kr
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 ### Sprint-planlegging møte på Discord 12-13
 - Fordeling av arbeidsoppgaver:
-    - Skrive brukerhistorier for MVP-krav 6-9.
-    - Begynner å tenke på løsning for MVP-krav 6: flerspiller.
-    - Enighet om mindre arbeidsmengde denne uken grunnet andre prosjekter/fag.
+    - Skrive brukerhistorier for MVP-krav 6-9. (Alle)
+    - Begynner å tenke på løsning for MVP-krav 6: flerspiller.(Alle)
+    - Enighet om mindre arbeidsmengde denne uken grunnet andre prosjekter/fag.(Alle)
     
 ### Onsdag 17.02.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte 
@@ -191,10 +191,10 @@ vanskelig å implementere og velge 5 kort på en meningsfull måte uten å ha kr
 ### Discord møte - Sprint-planlegging 12-13
 - Sprint planning: Tar sikte på å ferdigstille MVP-krav 7-8 i løpet av sprinten og beggynne på tekstbaserte oppgaver.
 - Fordeling av arbeidsoppgaver:
-    - MVP-krav 7 - dele ut kort.
-    - MVP-krev 8 - velge 5 kort.
-    - Tilhørende tester for krav.
-    - Skriving av .md- fil.
+    - MVP-krav 7 - dele ut kort.(Daan, Sigurd)
+    - MVP-krev 8 - velge 5 kort.(Daan, Sigurd)
+    - Tilhørende tester for krav. (Alle)
+    - Skriving av .md- fil. (Sigurd, Malte)
 
 ### Onsdag 24.02.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
@@ -236,10 +236,10 @@ vanskelig å implementere og velge 5 kort på en meningsfull måte uten å ha kr
     - Resterende tester for MVP-krav.
     - Ferdigstilling av .md- fil.
 - Arbeidsfordeling:
-    - MVP-krav 8 ()
-    - MVP-krav 9 ()
-    - Tester ()
-    - .md- fil ()
+    - MVP-krav 8 (Daan, Sigurd)
+    - MVP-krav 9 (Daan, Sigurd)
+    - Tester (Alle)
+    - .md- fil (Malte, Sigurd)
 
 ### Onsdag 03.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
@@ -272,7 +272,8 @@ vanskelig å implementere og velge 5 kort på en meningsfull måte uten å ha kr
     - Fornøyd med arbeidsmetodikk
     - Eventuelt forandre rolle-fordeling/beskrivelse.
 
-
+## Project board
+![img_3.png](img_3.png)
 
 
 
