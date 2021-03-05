@@ -26,7 +26,6 @@ public class Player {
 
     public void setTexture(String textureName){
         this.playerTexture = textureName;
-
     }
 
     public void setPlayerState(){

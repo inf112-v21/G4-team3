@@ -34,7 +34,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
     // Players start position
     public Player player1 = new Player(new Vector2(4,3), "assets/player.png");
-    public Player player2 = new Player(new Vector2(9,3), "assets/player2.png");
+    public Player player2 = new Player(new Vector2(8,3), "assets/player2.png");
     public Board board = new Board();
 
     // Card textures
@@ -43,7 +43,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     private TextureRegion textureRotateLeft, textureRotateRight, textureUTurn;
     private Sprite spriteMove1, spriteMove2 ,spriteMove3, spriteBackUp;
     private Sprite spriteRotateLeft, spriteRotateRight, spriteUTurn;
-
      */
 
     private boolean pickingCards = true;
@@ -65,8 +64,8 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         // Setup camera
         camera = new OrthographicCamera();
         camera.setToOrtho(false, board.MAP_SIZE_X, board.MAP_SIZE_Y+2);
-        camera.position.x= board.MAP_SIZE_X/2f;
-        camera.position.y= (board.MAP_SIZE_Y-2)/2f;
+        camera.position.x = board.MAP_SIZE_X/2f;
+        camera.position.y = (board.MAP_SIZE_Y-2)/2f;
         camera.update();
 
         // Setup render
@@ -114,7 +113,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
 
 
-    // For card textures [WIP]
+    // Card textures [WIP]
     /*
     public void initializeCardTextures(){
         // Split movement.png into 3 textures
@@ -229,6 +228,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
     public void endGame(){
         pause = true;
+        gameLogic.readyTurn = false; // Stop the round
     }
     @Override
     public void resize(int width, int height) {
@@ -244,14 +244,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
     @Override
     public boolean keyUp(int keyCode){
-        // Remove player texture before moving
         if(!pause) {
             gameLogic.selectCards(keyCode);
         }
         return true;
-    }
-
-    public void showGivenCards(){
-
     }
 }

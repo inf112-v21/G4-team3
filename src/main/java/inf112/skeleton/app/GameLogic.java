@@ -11,11 +11,13 @@ public class GameLogic {
     public ArrayList<Enum> cardsToPickFrom = new ArrayList<>();
     public boolean pickingCards = true;
     public boolean readyTurn = false;
-    public int nCards = 3;
     public Networking connection;
     public Player player1;
     public Player player2;
     public Board board;
+
+    // How many cards each player can pick
+    public int nCards = 5;
 
 
     public GameLogic(Networking connection, Player player1, Player player2, Board board){
@@ -83,8 +85,10 @@ public class GameLogic {
 
     // Do one turn of player actions
     public void turn(Player player, ArrayList<Enum> cards){
-        // Delete previous player texture before moving
-        board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
+        if (player.playerTexture != null){
+            // Delete previous player texture before moving
+            board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
+        }
         player.move(cards.remove(0));
     }
 
@@ -92,7 +96,7 @@ public class GameLogic {
     public void pickCards(){
         System.out.println("\nYour turn to pick cards");
         System.out.println("Use numbers 1 to 9 to pick cards");
-        System.out.println("You are the black character");
+        System.out.println("The player that is hosting the game is the black character");
         CardDeck fullDeck = new CardDeck();
         cardsToPickFrom.clear();
         pickedCards.clear();

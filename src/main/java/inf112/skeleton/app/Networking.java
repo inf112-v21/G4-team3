@@ -34,7 +34,6 @@ public class Networking {
         objectOutputStream.writeObject(cards);
     }
 
-    // Wait for client input
     public List<Enum> receiveCards() throws IOException, ClassNotFoundException {
         // Get the input stream from the connected socket
         InputStream inputStream = socket.getInputStream();

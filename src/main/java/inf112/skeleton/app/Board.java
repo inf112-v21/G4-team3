@@ -27,8 +27,8 @@ public class Board {
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flagLayer = (TiledMapTileLayer) map.getLayers().get("Flag");
-        MAP_SIZE_X = boardLayer.getHeight();
-        MAP_SIZE_Y = boardLayer.getWidth();
+        MAP_SIZE_Y = boardLayer.getHeight();
+        MAP_SIZE_X = boardLayer.getWidth();
     }
 
     // Check if player is positioned on the map
