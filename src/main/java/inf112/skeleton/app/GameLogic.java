@@ -89,6 +89,7 @@ public class GameLogic {
             // Delete previous player texture before moving
             board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
         }
+        board.updatePlayer(player);
         player.move(cards.remove(0));
     }
 
@@ -113,6 +114,8 @@ public class GameLogic {
     public void selectCardsFromKeyboardInput(int keyCode){
 
         if(pickedCards.size()<nCards && !readyTurn) {
+            System.out.println(keyCode);
+            // p = 44
             Enum card = null;
             if (keyCode == 8){
                 card = cardsToPickFrom.remove(0);

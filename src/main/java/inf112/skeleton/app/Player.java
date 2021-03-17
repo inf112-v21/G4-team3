@@ -7,10 +7,13 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
+import java.util.ArrayList;
+
 
 public class Player {
 
     public Vector2 playerPos;
+    public Vector2 checkPoint;
     public boolean loseCondition = false;
     public boolean winCondition = false;
     public int dir = 0; //take this in as a parameter
@@ -18,14 +21,43 @@ public class Player {
     public Cell playerWonCell;
     public Cell playerDiedCell;
     public String playerTexture; //take this in as a parameter
+    public int HP = 5;
+    public int life = 3;
+    public ArrayList<String> visitedCheckPoints = new ArrayList<>();
 
     public Player(Vector2 pos, String texture){
         this.playerPos = pos;
+        this.checkPoint = pos;
         this.playerTexture = texture;
     }
 
     public void setTexture(String textureName){
         this.playerTexture = textureName;
+    }
+
+    public void addCheckPoint(String checkPoint){
+        visitedCheckPoints.add(checkPoint);
+        this.checkPoint = playerPos;
+    }
+
+    public void setCheckPoint(Vector2 checkPoint){
+        this.checkPoint = checkPoint;
+    }
+
+    public void move(Vector2 newPos){
+        this.playerPos = newPos;
+    }
+
+    public void setHP(int HP){
+        this.HP = HP;
+    }
+
+    public void addLife(int val){
+        life = life + val;
+    }
+
+    public int getLife(){
+        return this.life;
     }
 
     public void setPlayerState(){

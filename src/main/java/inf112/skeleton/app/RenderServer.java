@@ -87,6 +87,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
         // Get key input
         Gdx.input.setInputProcessor(this);
+
+        board.updatePlayer(player1);
+        board.updatePlayer(player2);
     }
 
     public void setUpGame() {
@@ -156,16 +159,22 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         renderer.render();
-        board.updatePlayer(player1);
-        board.updatePlayer(player2);
+        //board.updatePlayer(player1);
+        //board.updatePlayer(player2);
 
 
+        //if (gameLogic.readyTurn) {
         simulateRound();
+            //board.updatePlayer(player1);
+            //board.updatePlayer(player2);
         if (!gameLogic.pickingCards && !pause) {
             showCardsOnScreen();
         }
-        board.updatePlayer(player1);
-        board.updatePlayer(player2);
+        //}
+
+
+        //board.updatePlayer(player1);
+        //board.updatePlayer(player2);
         checkWinCondition();
 
 
