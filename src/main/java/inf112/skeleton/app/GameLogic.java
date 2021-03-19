@@ -94,6 +94,11 @@ public class GameLogic {
 
     }
 
+    public void moveAndUpdate(Player player, int keyCode){
+
+
+    }
+
     // Display 9 cards and let the player pick 5
     public void pickCards(){
         System.out.println("\nYour turn to pick cards");
