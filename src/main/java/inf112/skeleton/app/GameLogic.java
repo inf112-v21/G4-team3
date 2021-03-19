@@ -89,8 +89,12 @@ public class GameLogic {
             // Delete previous player texture before moving
             board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
         }
-        board.updatePlayer(player);
         player.move(cards.remove(0));
+        board.updatePlayer(player);
+    }
+
+    public void moveAndUpdate(Player player, int keyCode){
+
     }
 
     // Display 9 cards and let the player pick 5

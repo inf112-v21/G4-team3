@@ -13,12 +13,12 @@ public class Board {
 
     // Layer variables
     public TiledMap map;
-    public TiledMapTileLayer boardLayer;
-    public TiledMapTileLayer playerLayer;
-    public TiledMapTileLayer holeLayer;
-    public TiledMapTileLayer flag1Layer;
-    public TiledMapTileLayer flag2Layer;
-    public TiledMapTileLayer flag3Layer;
+    public TiledMapTileLayer boardLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer playerLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer holeLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer flag1Layer = new TiledMapTileLayer(20,20,1,1);
+    public TiledMapTileLayer flag2Layer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer flag3Layer = new TiledMapTileLayer(1,1,1,1);
 
     // Map size
     public int MAP_SIZE_X;
@@ -37,6 +37,18 @@ public class Board {
         MAP_SIZE_X = boardLayer.getWidth();
     }
 
+    public void setSize(int x, int y){
+        MAP_SIZE_Y = x;
+        MAP_SIZE_X = y;
+
+        boardLayer = new TiledMapTileLayer(x,y,1,1);
+        playerLayer = new TiledMapTileLayer(x,y,1,1);
+        holeLayer = new TiledMapTileLayer(x,y,1,1);
+        flag1Layer = new TiledMapTileLayer(x,y,1,1);
+        flag2Layer = new TiledMapTileLayer(x,y,1,1);
+        flag3Layer = new TiledMapTileLayer(x,y,1,1);
+    }
+
     // Check if player is positioned on the map
     public boolean validPlayerMapPos(Vector2 pos){
         boolean checkX = pos.x<MAP_SIZE_X && pos.x>=0;
@@ -44,31 +56,44 @@ public class Board {
         return checkX && checkY;
     }
 
+
+    /*
+    public void testMap(){
+        Cell t = new Cell();
+        //Cell holeCell = holeLayer.getCell((int) 1, (int) 1);
+        //Cell holeCell2 = holeLayer.;
+        playerLayer = new TiledMapTileLayer(1,1,1,1);
+        TiledMapTileLayer holeLayer = new TiledMapTileLayer(1,1,1,1);
+        holeLayer.setCell(1,1, t);
+        holeLayer.setCell(2,1, t);
+        holeLayer.setCell(1,2, t);
+        holeLayer.setCell(2,2, t);
+    }
+     */
+
+    //public void setCell(TiledMapTileLayer layer,int x, int y, Cell cell){
+    //}
+
     public void updatePlayer(Player player){
 
         // Checks if the player is on one of the layer types. Cell is null if player is not on the layer type
         Cell holeCell = holeLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        //Cell flagCell = flagLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-
-        //Cell test = holeLayer.setCell();
 
         // Rotate player sprite
         int rotation = getRotation(player);
-        playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
+        if (player.playerTexture != null) {
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
+        }
 
-        //System.out.println("size"+holeCell);
         checkForCheckPoints(player);
 
         // Check if player is in a hole or is outside the map. If true removes a life.
         if (holeCell != null || !validPlayerMapPos(player.playerPos)) {
             player.addLife(-1);
-            System.out.println(player.getLife());
             if (player.getLife()>0){
-                System.out.println(player.checkPoint);
                 player.move(player.checkPoint);
             }
         }
-
         if(player.getLife()==0){
             playerDied(player);
         }
@@ -78,25 +103,23 @@ public class Board {
         if (player.visitedCheckPoints.size() == 0){
             Cell flag1Cell = flag1Layer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
             if (flag1Cell != null) {
-                player.addCheckPoint("CheckPoint1");
+                player.addCheckPoint();
             }
         }
-
         else if (player.visitedCheckPoints.size() == 1){
             Cell flag2Cell = flag2Layer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
             if (flag2Cell != null) {
-                player.addCheckPoint("CheckPoint2");
+                player.addCheckPoint();
             }
         }
-
         else if (player.visitedCheckPoints.size() == 2){
             Cell flag3Cell = flag3Layer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
             if (flag3Cell != null) {
-                player.addCheckPoint("CheckPoint3");
+                player.addCheckPoint();
             }
         }
         // Check if player has reached all flags. If true ends the game.
-        else if (player.visitedCheckPoints.size() == 3) {
+        if (player.visitedCheckPoints.size() == 3) {
             playerWon(player);
         }
     }
@@ -118,13 +141,17 @@ public class Board {
 
     public void playerDied(Player player){
         int rotation = getRotation(player);
-        playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerDiedCell.setRotation(rotation));
+        if (player.playerTexture != null) {
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerDiedCell.setRotation(rotation));
+        }
         player.loseCondition = true;
     }
 
     public void playerWon(Player player){
         int rotation = getRotation(player);
-        playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerWonCell.setRotation(rotation));
+        if (player.playerTexture != null) {
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerWonCell.setRotation(rotation));
+        }
         player.winCondition = true;
     }
 }

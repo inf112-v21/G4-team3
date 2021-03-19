@@ -23,7 +23,8 @@ public class Player {
     public String playerTexture; //take this in as a parameter
     public int HP = 5;
     public int life = 3;
-    public ArrayList<String> visitedCheckPoints = new ArrayList<>();
+    //public ArrayList<String> visitedCheckPoints = new ArrayList<>();
+    public ArrayList<Vector2> visitedCheckPoints = new ArrayList<>();
 
     public Player(Vector2 pos, String texture){
         this.playerPos = pos;
@@ -35,8 +36,8 @@ public class Player {
         this.playerTexture = textureName;
     }
 
-    public void addCheckPoint(String checkPoint){
-        visitedCheckPoints.add(checkPoint);
+    public void addCheckPoint(){
+        visitedCheckPoints.add(playerPos);
         this.checkPoint = playerPos;
     }
 
@@ -46,6 +47,14 @@ public class Player {
 
     public void move(Vector2 newPos){
         this.playerPos = newPos;
+    }
+
+    public void move(int x, int y){
+        this.playerPos = new Vector2(x,y);
+    }
+
+    public Vector2 getPosition(){
+        return playerPos;
     }
 
     public void setHP(int HP){
@@ -58,6 +67,22 @@ public class Player {
 
     public int getLife(){
         return this.life;
+    }
+
+    public void setLife(int life){
+        this.life=life;
+    }
+
+    public Vector2 getCheckPoint(){
+        return checkPoint;
+    }
+
+    public boolean playerLost(){
+        return loseCondition;
+    }
+
+    public boolean playerWon(){
+        return winCondition;
     }
 
     public void setPlayerState(){

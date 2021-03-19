@@ -25,5 +25,9 @@ public class Main {
             new Lwjgl3Application(new RenderClient(hostIP), cfg);
         }
 
+        else if (mode == 3){
+            new Lwjgl3Application(new RenderSinglePlayer(), cfg);
+        }
+
     }
 }

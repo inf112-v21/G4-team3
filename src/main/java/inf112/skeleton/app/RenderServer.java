@@ -50,31 +50,27 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
     @Override
     public void create() {
-        // Setup text
-        batch = new SpriteBatch();
-        font = new BitmapFont();
-        font.setColor(Color.RED);
+        setUpText();
 
         // Load in map layers from tmx file
         board.createMap();
 
-        // Setup camera
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, board.MAP_SIZE_X, board.MAP_SIZE_Y+2);
-        camera.position.x = board.MAP_SIZE_X/2f;
-        camera.position.y = (board.MAP_SIZE_Y-2)/2f;
-        camera.update();
+        setUpCamera();
 
-        // Setup render
-        renderer = new OrthogonalTiledMapRenderer(board.map, 1F/widthPixels);
-        renderer.setView(camera);
+        setUpRender();
 
+        createGame();
+
+        // Get key input
+        Gdx.input.setInputProcessor(this);
+    }
+
+    public void createGame(){
         // Setup player cell states, including textures
         player1.setTexture("assets/player.png");
         player2.setTexture("assets/player2.png");
         player1.setPlayerState();
         player2.setPlayerState();
-
 
         // Setup card textures
         //initializeCardTextures();
@@ -84,9 +80,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
         // Game logic
         gameLogic = new GameLogic(connection, player1, player2, board);
-
-        // Get key input
-        Gdx.input.setInputProcessor(this);
 
         board.updatePlayer(player1);
         board.updatePlayer(player2);
@@ -100,6 +93,25 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setUpCamera(){
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, board.MAP_SIZE_X, board.MAP_SIZE_Y+2);
+        camera.position.x = board.MAP_SIZE_X/2f;
+        camera.position.y = (board.MAP_SIZE_Y-2)/2f;
+        camera.update();
+    }
+
+    public void setUpText(){
+        batch = new SpriteBatch();
+        font = new BitmapFont();
+        font.setColor(Color.RED);
+    }
+
+    public void setUpRender(){
+        renderer = new OrthogonalTiledMapRenderer(board.map, 1F/widthPixels);
+        renderer.setView(camera);
     }
 
     public void showCardsOnScreen(){
@@ -159,22 +171,10 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         renderer.render();
-        //board.updatePlayer(player1);
-        //board.updatePlayer(player2);
-
-
-        //if (gameLogic.readyTurn) {
         simulateRound();
-            //board.updatePlayer(player1);
-            //board.updatePlayer(player2);
         if (!gameLogic.pickingCards && !pause) {
             showCardsOnScreen();
         }
-        //}
-
-
-        //board.updatePlayer(player1);
-        //board.updatePlayer(player2);
         checkWinCondition();
 
 
