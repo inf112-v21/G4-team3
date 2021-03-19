@@ -135,6 +135,14 @@ public class GameLogic {
                     card = CardRotation.Rotation.ROTATERIGHT;
                 } else if (keyCode == 14) {
                     card = CardRotation.Rotation.UTURN;
+                } else if (keyCode == 21) { //left
+                    card = CardRotation.Rotation.ROTATELEFT;
+                } else if (keyCode == 19) { //up
+                    card = CardMovement.Movement.MOVE1;
+                }else if (keyCode == 22) { //Right
+                    card = CardRotation.Rotation.ROTATERIGHT;
+                }else if (keyCode == 20) { //Down
+                    card = CardMovement.Movement.BACKUP;
                 }
                 pickedCards.add(card);
                 System.out.println("1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN");
