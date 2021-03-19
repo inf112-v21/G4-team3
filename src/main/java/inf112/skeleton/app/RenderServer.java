@@ -40,7 +40,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     private TextureRegion textureRotateLeft, textureRotateRight, textureUTurn;
     private Sprite spriteMove1, spriteMove2 ,spriteMove3, spriteBackUp;
     private Sprite spriteRotateLeft, spriteRotateRight, spriteUTurn;
-     */
+    */
 
     private boolean pickingCards = true;
     public ArrayList<Enum> cardsToPickFrom;
@@ -107,7 +107,10 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         font.getData().setScale((float)1.2, (float)1.2);
         font.draw(batch, "Available cards:", 0, 120);
         font.getData().setScale((float)0.8, (float)0.8);
-        font.draw(batch, cardsToPickFrom.toString(), 0, 100);
+        if(Main.debugmode)
+            font.draw(batch, "1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN", 0, 100);
+        else
+            font.draw(batch, cardsToPickFrom.toString(), 0, 100);
         batch.end();
     }
 

@@ -89,8 +89,9 @@ public class GameLogic {
             // Delete previous player texture before moving
             board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
         }
-        board.updatePlayer(player);
         player.move(cards.remove(0));
+        board.updatePlayer(player);
+
     }
 
     // Display 9 cards and let the player pick 5
@@ -107,38 +108,65 @@ public class GameLogic {
             Enum draw = fullDeck.deck.get(i);
             cardsToPickFrom.add(draw);
         }
+        if(Main.debugmode)
+            System.out.println("1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN");
+        else{
         System.out.println("Available cards:");
-        System.out.println(cardsToPickFrom);
+        System.out.println(cardsToPickFrom);}
     }
 
-    public void selectCardsFromKeyboardInput(int keyCode){
-
-        if(pickedCards.size()<nCards && !readyTurn) {
-            System.out.println(keyCode);
-            // p = 44
-            Enum card = null;
-            if (keyCode == 8){
-                card = cardsToPickFrom.remove(0);
-            } else if (keyCode == 9) {
-                card = cardsToPickFrom.remove(1);
-            } else if (keyCode == 10) {
-                card = cardsToPickFrom.remove(2);
-            } else if (keyCode == 11) {
-                card = cardsToPickFrom.remove(3);
-            } else if (keyCode == 12) {
-                card = cardsToPickFrom.remove(4);
-            } else if (keyCode == 13) {
-                card = cardsToPickFrom.remove(5);
-            } else if (keyCode == 14) {
-                card = cardsToPickFrom.remove(6);
-            } else if (keyCode == 15) {
-                card = cardsToPickFrom.remove(7);
-            } else if (keyCode == 16) {
-                card = cardsToPickFrom.remove(8);
+    public void selectCardsFromKeyboardInput(int keyCode) {
+        if (Main.debugmode) {
+            if (pickedCards.size() < nCards && !readyTurn) {
+                System.out.println(keyCode);
+                // p = 44
+                Enum card = null;
+                if (keyCode == 8) {
+                    card = CardMovement.Movement.MOVE1;
+                } else if (keyCode == 9) {
+                    card = CardMovement.Movement.MOVE2;
+                } else if (keyCode == 10) {
+                    card = CardMovement.Movement.MOVE3;
+                } else if (keyCode == 11) {
+                    card = CardMovement.Movement.BACKUP;
+                } else if (keyCode == 12) {
+                    card = CardRotation.Rotation.ROTATELEFT;
+                } else if (keyCode == 13) {
+                    card = CardRotation.Rotation.ROTATERIGHT;
+                } else if (keyCode == 14) {
+                    card = CardRotation.Rotation.UTURN;
+                }
+                pickedCards.add(card);
+                System.out.println("1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN");
             }
-            pickedCards.add(card);
-            System.out.println("Available cards:");
-            System.out.println(cardsToPickFrom);
+        } else {
+            if (pickedCards.size() < nCards && !readyTurn) {
+                System.out.println(keyCode);
+                // p = 44
+                Enum card = null;
+                if (keyCode == 8) {
+                    card = cardsToPickFrom.remove(0);
+                } else if (keyCode == 9) {
+                    card = cardsToPickFrom.remove(1);
+                } else if (keyCode == 10) {
+                    card = cardsToPickFrom.remove(2);
+                } else if (keyCode == 11) {
+                    card = cardsToPickFrom.remove(3);
+                } else if (keyCode == 12) {
+                    card = cardsToPickFrom.remove(4);
+                } else if (keyCode == 13) {
+                    card = cardsToPickFrom.remove(5);
+                } else if (keyCode == 14) {
+                    card = cardsToPickFrom.remove(6);
+                } else if (keyCode == 15) {
+                    card = cardsToPickFrom.remove(7);
+                } else if (keyCode == 16) {
+                    card = cardsToPickFrom.remove(8);
+                }
+                pickedCards.add(card);
+                System.out.println("Available cards:");
+                System.out.println(cardsToPickFrom);
+            }
         }
     }
 }
