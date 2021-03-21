@@ -16,9 +16,17 @@ public class Board {
     public TiledMapTileLayer boardLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer playerLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer holeLayer = new TiledMapTileLayer(1,1,1,1);
-    public TiledMapTileLayer flag1Layer = new TiledMapTileLayer(20,20,1,1);
+    public TiledMapTileLayer flag1Layer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer flag2Layer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer flag3Layer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer laserLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer beltNorthLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer beltWestLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer beltSouthLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer beltEastLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer fixLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer extraLifeLayer = new TiledMapTileLayer(1,1,1,1);
+
 
     // Map size
     public int MAP_SIZE_X;
@@ -26,13 +34,21 @@ public class Board {
 
     // Create map layers
     public void createMap(){
-        map = new TmxMapLoader().load("assets/Testmap2.tmx");
+        map = new TmxMapLoader().load("assets/Testmap4.tmx");
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
         flag1Layer = (TiledMapTileLayer) map.getLayers().get("Flag1");
         flag2Layer = (TiledMapTileLayer) map.getLayers().get("Flag2");
         flag3Layer = (TiledMapTileLayer) map.getLayers().get("Flag3");
+        laserLayer = (TiledMapTileLayer) map.getLayers().get("Laser");
+        beltNorthLayer = (TiledMapTileLayer) map.getLayers().get("BeltNorth");
+        beltWestLayer = (TiledMapTileLayer) map.getLayers().get("BeltWest");
+        beltSouthLayer = (TiledMapTileLayer) map.getLayers().get("BeltSouth");
+        beltEastLayer = (TiledMapTileLayer) map.getLayers().get("BeltEast");
+        fixLayer = (TiledMapTileLayer) map.getLayers().get("Fix");
+        extraLifeLayer = (TiledMapTileLayer) map.getLayers().get("ExtraLife");
+
         MAP_SIZE_Y = boardLayer.getHeight();
         MAP_SIZE_X = boardLayer.getWidth();
     }
@@ -47,6 +63,14 @@ public class Board {
         flag1Layer = new TiledMapTileLayer(x,y,1,1);
         flag2Layer = new TiledMapTileLayer(x,y,1,1);
         flag3Layer = new TiledMapTileLayer(x,y,1,1);
+        laserLayer = new TiledMapTileLayer(x,y,1,1);
+        beltNorthLayer = new TiledMapTileLayer(x,y,1,1);
+        beltWestLayer = new TiledMapTileLayer(x,y,1,1);
+        beltSouthLayer = new TiledMapTileLayer(x,y,1,1);
+        beltEastLayer = new TiledMapTileLayer(x,y,1,1);
+        fixLayer = new TiledMapTileLayer(x,y,1,1);
+        extraLifeLayer = new TiledMapTileLayer(x,y,1,1);
+
     }
 
     // Check if player is positioned on the map
@@ -55,24 +79,6 @@ public class Board {
         boolean checkY = pos.y<MAP_SIZE_Y && pos.y>=0;
         return checkX && checkY;
     }
-
-
-    /*
-    public void testMap(){
-        Cell t = new Cell();
-        //Cell holeCell = holeLayer.getCell((int) 1, (int) 1);
-        //Cell holeCell2 = holeLayer.;
-        playerLayer = new TiledMapTileLayer(1,1,1,1);
-        TiledMapTileLayer holeLayer = new TiledMapTileLayer(1,1,1,1);
-        holeLayer.setCell(1,1, t);
-        holeLayer.setCell(2,1, t);
-        holeLayer.setCell(1,2, t);
-        holeLayer.setCell(2,2, t);
-    }
-     */
-
-    //public void setCell(TiledMapTileLayer layer,int x, int y, Cell cell){
-    //}
 
     public void updatePlayer(Player player){
 
@@ -85,7 +91,13 @@ public class Board {
             playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
         }
 
+        // Do something depending on what tile the player is on
         checkForCheckPoints(player);
+        checkLaser(player);
+        loseLifeIfNoHP(player);
+        beltMovement(player);
+        fixer(player);
+        extraLife(player);
 
         // Check if player is in a hole or is outside the map. If true removes a life.
         if (holeCell != null || !validPlayerMapPos(player.playerPos)) {
@@ -123,6 +135,53 @@ public class Board {
             playerWon(player);
         }
     }
+
+    public void checkLaser(Player player){
+        Cell laser = laserLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        if (laser != null){
+            player.addHP(-1);
+        }
+    }
+
+    public void fixer(Player player){
+        Cell fix = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        if (fix != null){
+            player.setHP(player.getMaxHP());
+        }
+    }
+
+    public void extraLife(Player player){
+        Cell extraLife = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        if (extraLife != null){
+            player.setLife(player.getLife() + 1);
+        }
+    }
+
+    public void loseLifeIfNoHP(Player player){
+        if (player.getCurrentHP() == 0){
+            player.addLife(-1);
+        }
+    }
+
+    public void beltMovement(Player player){
+        Cell beltNorth = beltNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell beltWest = beltWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell beltSouth = beltSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell beltEast = beltEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        int posX = (int)player.getPosition().x;
+        int posY = (int)player.getPosition().y;
+
+        if (beltNorth != null){
+            player.move(posX, posY+1);
+        }else if (beltWest != null){
+            player.move(posX-1, posY);
+        }else if (beltSouth != null){
+            player.move(posX, posY-1);
+        }else if (beltEast != null){
+            player.move(posX+1, posY);
+        }
+    }
+
 
     public int getRotation(Player player){
         // Set the player on the layer depending on direction

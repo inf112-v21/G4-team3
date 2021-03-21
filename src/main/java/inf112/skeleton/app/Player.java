@@ -21,7 +21,8 @@ public class Player {
     public Cell playerWonCell;
     public Cell playerDiedCell;
     public String playerTexture; //take this in as a parameter
-    public int HP = 5;
+    public int maxHP = 5;
+    public int HP = maxHP;
     public int life = 3;
     //public ArrayList<String> visitedCheckPoints = new ArrayList<>();
     public ArrayList<Vector2> visitedCheckPoints = new ArrayList<>();
@@ -60,6 +61,12 @@ public class Player {
     public void setHP(int HP){
         this.HP = HP;
     }
+
+    public void addHP(int val) { HP = HP + val; }
+
+    public int getMaxHP(){ return maxHP; }
+
+    public int getCurrentHP(){ return HP; }
 
     public void addLife(int val){
         life = life + val;

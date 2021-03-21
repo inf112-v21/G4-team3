@@ -32,6 +32,74 @@ public class BoardObjectsTest {
         board.flag3Layer.setCell(6,6,flag3);
     }
 
+    public void setUpConveyorBelts(){
+        Cell beltNorth = new Cell();
+        Cell beltWest = new Cell();
+        Cell beltSouth = new Cell();
+        Cell beltEast = new Cell();
+
+        board.beltNorthLayer.setCell(1,2,beltNorth);
+        board.beltNorthLayer.setCell(1,3,beltNorth);
+        board.beltNorthLayer.setCell(1,4,beltNorth);
+
+        board.beltWestLayer.setCell(4,1,beltWest);
+        board.beltWestLayer.setCell(5,1,beltWest);
+
+        board.beltSouthLayer.setCell(2,2,beltSouth);
+        board.beltSouthLayer.setCell(2,3,beltSouth);
+        board.beltSouthLayer.setCell(2,4,beltSouth);
+
+        board.beltEastLayer.setCell(4,2,beltEast);
+        board.beltEastLayer.setCell(5,2,beltEast);
+        board.beltEastLayer.setCell(6,2,beltEast);
+    }
+
+    @Test
+    public void testConveyorBeltNorth(){
+        setUpConveyorBelts();
+        player.move(new Vector2(1,2));
+        board.updatePlayer(player);
+        Vector2 expectedPos = new Vector2(1,3);
+        assertEquals(expectedPos, player.getPosition());
+    }
+
+    @Test
+    public void testConveyorBeltWest(){
+        setUpConveyorBelts();
+        player.move(new Vector2(4,1));
+        board.updatePlayer(player);
+        Vector2 expectedPos = new Vector2(3,1);
+        assertEquals(expectedPos, player.getPosition());
+    }
+
+    @Test
+    public void testConveyorBeltSouth(){
+        setUpConveyorBelts();
+        player.move(new Vector2(2,2));
+        board.updatePlayer(player);
+        Vector2 expectedPos = new Vector2(2,1);
+        assertEquals(expectedPos, player.getPosition());
+    }
+
+    @Test
+    public void testConveyorBeltEast(){
+        Cell laser = new Cell();
+        board.laserLayer.setCell(1,1,laser);
+        player.move(new Vector2(1,1));
+        board.updatePlayer(player);
+        int expectedHP = player.getMaxHP()-1;
+        assertEquals(expectedHP, player.getCurrentHP());
+    }
+
+    @Test
+    public void testLoseLifeWhenHitByLaser(){
+        setUpConveyorBelts();
+        player.move(new Vector2(1,2));
+        board.updatePlayer(player);
+        Vector2 expectedPos = new Vector2(1,3);
+        assertEquals(expectedPos, player.getPosition());
+    }
+
     @Test
     public void testLose1LifeWhenOnHole(){
         setUp();

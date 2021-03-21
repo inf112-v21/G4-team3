@@ -19,7 +19,6 @@ public class GameLogic {
     // How many cards each player can pick
     public int nCards = 5;
 
-
     public GameLogic(Networking connection, Player player1, Player player2, Board board){
         this.connection = connection;
         this.player1 = player1;
