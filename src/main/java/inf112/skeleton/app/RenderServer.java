@@ -176,7 +176,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
         renderer.render();
         simulateRound();
-        if (!gameLogic.pickingCards && !pause) {
+        if (!gameLogic.pickingCards && !pause || Main.debugmode) {
             showCardsOnScreen();
         }
         checkWinCondition();
@@ -255,6 +255,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     @Override
     public boolean keyUp(int keyCode){
         if(!pause) {
+            if(Main.debugmode)
             gameLogic.selectCardsFromKeyboardInput(keyCode);
         }
         return true;

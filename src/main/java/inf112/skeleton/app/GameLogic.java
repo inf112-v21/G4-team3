@@ -84,18 +84,22 @@ public class GameLogic {
 
     // Do one turn of player actions
     public void turn(Player player, ArrayList<Enum> cards){
+        deletePlayerTexture(player);
+        player.move(cards.remove(0));
+        board.updatePlayer(player);
+    }
+
+    public void moveAndUpdate(Player player, int keyCode){
+        deletePlayerTexture(player);
+        player.move(debugMovement(keyCode));
+        board.updatePlayer(player);
+    }
+
+    public void deletePlayerTexture(Player player){
         if (player.playerTexture != null){
             // Delete previous player texture before moving
             board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
         }
-        player.move(cards.remove(0));
-        board.updatePlayer(player);
-
-    }
-
-    public void moveAndUpdate(Player player, int keyCode){
-
-
     }
 
     // Display 9 cards and let the player pick 5
@@ -119,39 +123,44 @@ public class GameLogic {
         System.out.println(cardsToPickFrom);}
     }
 
+    public Enum debugMovement(int keyCode){
+       //& !readyTurn) {
+        System.out.println(keyCode);
+        // p = 44
+        Enum card = null;
+        if (keyCode == 8) {
+            card = CardMovement.Movement.MOVE1;
+        } else if (keyCode == 9) {
+            card = CardMovement.Movement.MOVE2;
+        } else if (keyCode == 10) {
+            card = CardMovement.Movement.MOVE3;
+        } else if (keyCode == 11) {
+            card = CardMovement.Movement.BACKUP;
+        } else if (keyCode == 12) {
+            card = CardRotation.Rotation.ROTATELEFT;
+        } else if (keyCode == 13) {
+            card = CardRotation.Rotation.ROTATERIGHT;
+        } else if (keyCode == 14) {
+            card = CardRotation.Rotation.UTURN;
+        } else if (keyCode == 21) { //left
+            card = CardRotation.Rotation.ROTATELEFT;
+        } else if (keyCode == 19) { //up
+            card = CardMovement.Movement.MOVE1;
+        }else if (keyCode == 22) { //Right
+            card = CardRotation.Rotation.ROTATERIGHT;
+        }else if (keyCode == 20) { //Down
+            card = CardMovement.Movement.BACKUP;
+        }
+
+        System.out.println("1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN");
+
+        return card;
+    }
+
     public void selectCardsFromKeyboardInput(int keyCode) {
-        if (Main.debugmode) {
-            if (pickedCards.size() < nCards && !readyTurn) {
-                System.out.println(keyCode);
-                // p = 44
-                Enum card = null;
-                if (keyCode == 8) {
-                    card = CardMovement.Movement.MOVE1;
-                } else if (keyCode == 9) {
-                    card = CardMovement.Movement.MOVE2;
-                } else if (keyCode == 10) {
-                    card = CardMovement.Movement.MOVE3;
-                } else if (keyCode == 11) {
-                    card = CardMovement.Movement.BACKUP;
-                } else if (keyCode == 12) {
-                    card = CardRotation.Rotation.ROTATELEFT;
-                } else if (keyCode == 13) {
-                    card = CardRotation.Rotation.ROTATERIGHT;
-                } else if (keyCode == 14) {
-                    card = CardRotation.Rotation.UTURN;
-                } else if (keyCode == 21) { //left
-                    card = CardRotation.Rotation.ROTATELEFT;
-                } else if (keyCode == 19) { //up
-                    card = CardMovement.Movement.MOVE1;
-                }else if (keyCode == 22) { //Right
-                    card = CardRotation.Rotation.ROTATERIGHT;
-                }else if (keyCode == 20) { //Down
-                    card = CardMovement.Movement.BACKUP;
-                }
-                pickedCards.add(card);
-                System.out.println("1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN");
-            }
-        } else {
+        if (Main.debugmode)
+            pickedCards.add(debugMovement(keyCode));
+        else {
             if (pickedCards.size() < nCards && !readyTurn) {
                 System.out.println(keyCode);
                 // p = 44
