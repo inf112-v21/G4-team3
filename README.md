@@ -99,3 +99,4 @@ Deretter kan spillet spilles ved å følge teksten i «run» vinduet i bunnen av
     Då skal robot beveges helt fra starten av belt frem til slutten av belt.
 - Kriterier for at testen skal godkjennes:
     Når robot beveges opp på starten av et belt skal robot beveges frem til slutten av belt. 
+-
