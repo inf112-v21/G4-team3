@@ -119,8 +119,9 @@ public class GameLogic {
         if(Main.debugmode)
             System.out.println("1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN");
         else{
-        System.out.println("Available cards:");
-        System.out.println(cardsToPickFrom);}
+            System.out.println("Available cards:");
+            System.out.println(cardsToPickFrom);
+        }
     }
 
     public Enum debugMovement(int keyCode){

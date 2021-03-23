@@ -122,8 +122,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         if(Main.debugmode) {
             font.draw(batch, "1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN", 0, 100);
             font.draw(batch, "Left arrowkey: ROTATELEFT; Up arrowkey: MOVE1; Right arrowkey: ROTATERIGHT; Down arrowkey: BACKUP", 0, 75);
-        }else
+        }else{
             font.draw(batch, cardsToPickFrom.toString(), 0, 100);
+        }
         batch.end();
     }
 
@@ -255,9 +256,15 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     @Override
     public boolean keyUp(int keyCode){
         if(!pause) {
-            if(Main.debugmode)
             gameLogic.selectCardsFromKeyboardInput(keyCode);
         }
         return true;
     }
+/*
+    public void showHPandLive(Player player, int i){
+        batch.begin();
+        font.getData().setScale(4, 4);
+        font.draw(batch, "Player 1 HP: " + player.getCurrentHP() +"   Live:" + player.getLife() , 20, 125);
+        batch.end();
+    }*/
 }
