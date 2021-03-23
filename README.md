@@ -46,7 +46,7 @@ Deretter kan spillet spilles ved å følge teksten i «run» vinduet i bunnen av
 ##Manuelle tester utførelse
 ### Manuell test for at fem kort blir valgt.
 - Hvordan testen utføres:
-   - Kjør Main og så velg enten client eller server, etter det kan man se kortene i terminalen og velge.
+   - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode, etter det kan man se kortene i terminalen og velge.
    - Velg 5 kort fra de 9 som blir vist i terminal gjennom nummer taster på tastatur(1-9) der de
       valgte blir fjernet for hvert valg
 
@@ -56,7 +56,7 @@ Deretter kan spillet spilles ved å følge teksten i «run» vinduet i bunnen av
 
 ### Manuell test for winCondition.
 -Hvordan testen utføres:
-   - Kjør Main og så velg enten client eller server, etter det kan man se kortene i terminalen og velge.
+   - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode, etter det kan man se kortene i terminalen og velge.
    - Etter det velg kort og naviger til et flagg. Da skal spillet fryse og en tekst skal si hvem som vant.
    
 - Kriterer for at testen blir godkjent:
@@ -64,7 +64,7 @@ Deretter kan spillet spilles ved å følge teksten i «run» vinduet i bunnen av
 
 ### Manuell test for nettverk.
 - Hvordan testen utføres:
-   - Kjør Main og så velg enten client eller server, sjekk deretter at begge instansene av spillet får valgt kort og gjennomført
+   - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode, sjekk deretter at begge instansene av spillet får valgt kort og gjennomført
       handlinger og den andre mottar/får sett handlingene gjort av den andre spilleren.
 
 - Kriterier for at testen blir godkjent:
@@ -72,8 +72,30 @@ Deretter kan spillet spilles ved å følge teksten i «run» vinduet i bunnen av
 
 ### Manuell test for loseCondition.
 - Hvordan testen utføres:
-    - Kjør Main og så velg enten client eller server, etter det kan man se kortene i terminalen og velge.
+    - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode, etter det kan man se kortene i terminalen og velge.
     - Etter det velg kort og naviger utenfor kartet eller til et hull. Da skal spillet fryse og en tekst skal si hvem som tapte.
 - Kriterer for at testen blir godkjent:
     - Når en losecondition blir triggeret fryser spillet og det står hvem som har tapt
-
+    
+### Manuell test for Laser
+- Hvordan testen utføres:
+   - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode. 
+   - Naviger robot frem til en laser og så inn i laseren enten ved bruk av kort eller piltaster. Da skal det vises at at HP blir redusert med -1
+- Kriterer for at testen skal godkjennes: 
+    - Når robot blir beveget gjennom en laser skal HP bli redusert med -1. 
+    
+### Manuell test for Wall 
+- Hvordan testen utføres: 
+    - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode.
+    - Naviger robot frem til en wall ved bruk av enten kort eller piltaster, etter det prøv å gjennomføre en bevegelse som vil bevege robot gjennom en wall.
+    Då skal robot ikke bevege seg fra orginal posisjon foran wall.
+- Kriterier for at testen skal godkjennes:
+    Når en bevegelses-input styrer gjennom en wall skal inputen ikke gjennomføres og roboten deremed ikke beveges.
+  
+### Manuell test for Belt 
+- Hvordan testen utføres: 
+    - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode.
+    - Naviger robot frem til starten av et belt ved bruk av enten kort eller piltaster, etter det beveg robot på starten av belt indikert av en pil på brettet. 
+    Då skal robot beveges helt fra starten av belt frem til slutten av belt.
+- Kriterier for at testen skal godkjennes:
+    Når robot beveges opp på starten av et belt skal robot beveges frem til slutten av belt. 
