@@ -11,7 +11,7 @@ public class RenderSinglePlayer extends RenderServer{
         // Game logic
         gameLogic = new GameLogic(null, player1, null, board);
 
-        board.updatePlayer(player1);
+        board.updateBoard(player1);
     }
 
     @Override
@@ -20,7 +20,9 @@ public class RenderSinglePlayer extends RenderServer{
 
     @Override
     public boolean keyUp(int keyCode){
-        gameLogic.moveAndUpdate(player1, keyCode);
+        if(!pause) {
+            gameLogic.moveAndUpdate(player1, keyCode);
+        }
         return false;
     }
 }

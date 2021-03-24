@@ -6,8 +6,10 @@ import java.util.concurrent.TimeUnit;
 
 public class GameLogic {
 
-    public ArrayList<Enum> pickedCards = new ArrayList<>();
+    //public ArrayList<Enum> pickedCards = new ArrayList<>();
     public ArrayList<Enum> receivedCards = new ArrayList<>();
+    public ArrayList<Enum> savedCards = new ArrayList<>();
+    public ArrayList<Enum> startCards = new ArrayList<>();
     public ArrayList<Enum> cardsToPickFrom = new ArrayList<>();
     public boolean pickingCards = true;
     public boolean readyTurn = false;
@@ -32,7 +34,7 @@ public class GameLogic {
             getCardsFromOtherPlayer();
             pickCards();
         }
-        if (pickedCards.size()==nCards) {
+        if (player1.pickedCards.size()==nCards) {
             sendCardsToOtherPlayer();
             readyTurn = true;
         }
@@ -51,20 +53,21 @@ public class GameLogic {
 
     public void sendCardsToOtherPlayer() throws IOException {
         // Send cards to other player
-        System.out.println("You picked " + pickedCards);
+        System.out.println("You picked " + player1.getCurrentCards());
         System.out.println("\n-Sending cards-\n");
-        connection.sendCards(pickedCards);
+        connection.sendCards(player1.getCurrentCards());
     }
 
     public void simulateTurns() throws InterruptedException {
         // Do turns for the players
         System.out.println("Doing turn");
-        turn(player1, pickedCards);
+        turn(player1, player1.pickedCards);
         turn(player2, receivedCards);
         TimeUnit.SECONDS.sleep(1);
-        if (pickedCards.size() == 0) {
+        if (player1.pickedCards.size() == 0) {
             pickingCards = true;
             readyTurn = false;
+            lockCardsBasedOnHP(player1);
         }
     }
 
@@ -72,9 +75,10 @@ public class GameLogic {
         if (pickingCards) {
             pickCards();
         }
-        if (pickedCards.size()==nCards) {
+        if (player1.getCurrentCards().size()==nCards) {
             sendCardsToOtherPlayer();
             getCardsFromOtherPlayer();
+            savedCards=player1.getCurrentCards();
             readyTurn = true;
         }
         if (readyTurn){
@@ -84,21 +88,22 @@ public class GameLogic {
 
     // Do one turn of player actions
     public void turn(Player player, ArrayList<Enum> cards){
-        deletePlayerTexture(player);
+        board.deletePlayerTexture(player);
         player.move(cards.remove(0));
-        board.updatePlayer(player);
+        board.updateBoard(player);
     }
 
     public void moveAndUpdate(Player player, int keyCode){
-        deletePlayerTexture(player);
+        board.deletePlayerTexture(player);
         player.move(debugMovement(keyCode));
-        board.updatePlayer(player);
+        board.updateBoard(player);
     }
 
-    public void deletePlayerTexture(Player player){
-        if (player.playerTexture != null){
-            // Delete previous player texture before moving
-            board.playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
+    private void lockCardsBasedOnHP(Player player){
+        int diffHP = player.getMaxHP() - player.getCurrentHP();
+        nCards = nCards - diffHP;
+        for (int i=0; i<diffHP; i++){
+            startCards.add(savedCards.get(i));
         }
     }
 
@@ -109,7 +114,8 @@ public class GameLogic {
         System.out.println("The player that is hosting the game is the black character");
         CardDeck fullDeck = new CardDeck();
         cardsToPickFrom.clear();
-        pickedCards.clear();
+        //player1.getCurrentCards().clear();
+        player1.pickedCards = startCards;
         pickingCards = false;
 
         for (int i = 0; i <= 8; i++) {
@@ -126,7 +132,6 @@ public class GameLogic {
 
     public Enum debugMovement(int keyCode){
        //& !readyTurn) {
-        System.out.println(keyCode);
         // p = 44
         Enum card = null;
         if (keyCode == 8) {
@@ -160,10 +165,9 @@ public class GameLogic {
 
     public void selectCardsFromKeyboardInput(int keyCode) {
         if (Main.debugmode)
-            pickedCards.add(debugMovement(keyCode));
+            player1.getCurrentCards().add(debugMovement(keyCode));
         else {
-            if (pickedCards.size() < nCards && !readyTurn) {
-                System.out.println(keyCode);
+            if (player1.getCurrentCards().size() < nCards && !readyTurn) {
                 // p = 44
                 Enum card = null;
                 if (keyCode == 8) {
@@ -185,7 +189,7 @@ public class GameLogic {
                 } else if (keyCode == 16) {
                     card = cardsToPickFrom.remove(8);
                 }
-                pickedCards.add(card);
+                player1.pickedCards.add(card);
                 System.out.println("Available cards:");
                 System.out.println(cardsToPickFrom);
             }

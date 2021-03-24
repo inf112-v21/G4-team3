@@ -8,14 +8,24 @@ import java.util.Scanner;
 
 public class Main {
     public static boolean debugmode;
+    public static final int boardSizeX = 13;
+    public static final int boardSizeY = 10;
 
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("RobotRally");
-        cfg.setWindowedMode(867, 1000);
+
+        //Board board = new Board();
+        //board.createMap();
+
+        int height = 800;
+        int k = height / boardSizeY;
+        int width = boardSizeX * k;
+
+        cfg.setWindowedMode(width, 1000);
 
         Scanner sc= new Scanner(System.in);
-        System.out.print("Select mode:\nType 1 for server. Type 2 for client\n");
+        System.out.print("Select mode:\nType 1 for server. Type 2 for client. Type 3 for single player(testing)\n");
         int mode = sc.nextInt();
         System.out.print("Select Debugmode mode: false/true \n");
         debugmode = sc.nextBoolean();

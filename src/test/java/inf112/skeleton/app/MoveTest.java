@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class MoveTest{
 
     // Initiate class instances
-    public Player player = new Player(new Vector2(1,1), null);
+    public Player player = new Player(new Vector2(1,1), 0, null);
     public Board board = new Board();
 
     @Before

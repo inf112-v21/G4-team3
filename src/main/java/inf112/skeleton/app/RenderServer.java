@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-
 public class RenderServer extends InputAdapter implements ApplicationListener {
 
     // For text
@@ -30,8 +29,8 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public boolean pause = false;
 
     // Players start position
-    public Player player1 = new Player(new Vector2(4,3), "assets/player.png");
-    public Player player2 = new Player(new Vector2(8,3), "assets/player2.png");
+    public Player player1 = new Player(new Vector2(1,6), 90,"assets/player.png");
+    public Player player2 = new Player(new Vector2(1,3), 90,"assets/player2.png");
     public Board board = new Board();
 
     // Card textures
@@ -81,8 +80,8 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         // Game logic
         gameLogic = new GameLogic(connection, player1, player2, board);
 
-        board.updatePlayer(player1);
-        board.updatePlayer(player2);
+        board.updateBoard(player1);
+        board.updateBoard(player2);
     }
 
     public void setUpGame() {
@@ -181,8 +180,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             showCardsOnScreen();
         }
         checkWinCondition();
-
-
+        resize(board.MAP_SIZE_X, board.MAP_SIZE_Y);
 
         /*
         // Card visualization example [WIP]
@@ -243,6 +241,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     }
     @Override
     public void resize(int width, int height) {
+
     }
     @Override
     public void pause() {

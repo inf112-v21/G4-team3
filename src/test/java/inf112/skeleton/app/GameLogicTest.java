@@ -10,8 +10,8 @@ public class GameLogicTest {
 
 
     // Initiate class instances
-    public Player player1 = new Player(new Vector2(1,1), null);
-    public Player player2 = new Player(new Vector2(1,1), null);
+    public Player player1 = new Player(new Vector2(1,1), 0, null);
+    public Player player2 = new Player(new Vector2(1,1), 0, null);
     public Board board = new Board();
     public GameLogic gameLogic;
 
@@ -40,11 +40,11 @@ public class GameLogicTest {
         setUp();
 
         // Player 1 cards
-        gameLogic.pickedCards.add(move1);
-        gameLogic.pickedCards.add(move2);
-        gameLogic.pickedCards.add(rotateRight);
-        gameLogic.pickedCards.add(uturn);
-        gameLogic.pickedCards.add(backUp);
+        player1.pickedCards.add(move1);
+        player1.pickedCards.add(move2);
+        player1.pickedCards.add(rotateRight);
+        player1.pickedCards.add(uturn);
+        player1.pickedCards.add(backUp);
 
         // Player 2 cards
         gameLogic.receivedCards.add(rotateRight);
@@ -54,7 +54,7 @@ public class GameLogicTest {
         gameLogic.receivedCards.add(rotateRight);
 
 
-        int nCards = gameLogic.pickedCards.size();
+        int nCards = player1.pickedCards.size();
         System.out.println(nCards);
         for (int i=0; i<nCards; i++){
             gameLogic.simulateTurns();

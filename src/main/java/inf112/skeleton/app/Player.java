@@ -9,7 +9,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
 import java.util.ArrayList;
 
-
 public class Player {
 
     public Vector2 playerPos;
@@ -24,72 +23,21 @@ public class Player {
     public int maxHP = 5;
     public int HP = maxHP;
     public int life = 3;
-    //public ArrayList<String> visitedCheckPoints = new ArrayList<>();
     public ArrayList<Vector2> visitedCheckPoints = new ArrayList<>();
+    public ArrayList<Enum> pickedCards = new ArrayList<>();
 
-    public Player(Vector2 pos, String texture){
+    // How many cards each player can pick (based on player health)
+    public int nCards = 5;
+
+    public Player(Vector2 pos, int dir, String texture){
         this.playerPos = pos;
-        this.checkPoint = pos;
+        this.checkPoint = new Vector2(pos.x,pos.y);
+        this.dir = dir;
         this.playerTexture = texture;
     }
 
-    public void setTexture(String textureName){
-        this.playerTexture = textureName;
-    }
-
-    public void addCheckPoint(){
-        visitedCheckPoints.add(playerPos);
-        this.checkPoint = playerPos;
-    }
-
-    public void setCheckPoint(Vector2 checkPoint){
-        this.checkPoint = checkPoint;
-    }
-
-    public void move(Vector2 newPos){
-        this.playerPos = newPos;
-    }
-
-    public void move(int x, int y){
-        this.playerPos = new Vector2(x,y);
-    }
-
-    public Vector2 getPosition(){
-        return playerPos;
-    }
-
-    public void setHP(int HP){
-        this.HP = HP;
-    }
-
-    public void addHP(int val) { HP = HP + val; }
-
-    public int getMaxHP(){ return maxHP; }
-
-    public int getCurrentHP(){ return HP; }
-
-    public void addLife(int val){
-        life = life + val;
-    }
-
-    public int getLife(){
-        return this.life;
-    }
-
-    public void setLife(int life){
-        this.life=life;
-    }
-
-    public Vector2 getCheckPoint(){
-        return checkPoint;
-    }
-
-    public boolean playerLost(){
-        return loseCondition;
-    }
-
-    public boolean playerWon(){
-        return winCondition;
+    public ArrayList<Enum> getCurrentCards(){
+        return pickedCards;
     }
 
     public void setPlayerState(){
@@ -109,6 +57,70 @@ public class Player {
             playerDiedCell = new TiledMapTileLayer.Cell().setTile(playerDiedCellTile);
             playerWonCell = new TiledMapTileLayer.Cell().setTile(playerWonTile);
         }
+    }
+    public void setTexture(String textureName){
+        this.playerTexture = textureName;
+    }
+
+    public boolean playerLost(){
+        return loseCondition;
+    }
+
+    public boolean playerWon(){
+        return winCondition;
+    }
+
+    public void addCheckPoint(Vector2 pos){
+        visitedCheckPoints.add(pos);
+        this.checkPoint = new Vector2(pos.x,pos.y);
+    }
+
+    public Vector2 getCheckPoint(){
+        return checkPoint;
+    }
+
+    public void setCheckPoint(Vector2 checkPoint){
+        this.checkPoint = checkPoint;
+    }
+
+    public Vector2 getPosition(){
+        return playerPos;
+    }
+
+    public void setHP(int HP){
+        this.HP = HP;
+    }
+
+    public void addHP(int val) {
+        HP = HP + val;
+    }
+
+    public int getMaxHP(){
+        return maxHP;
+    }
+
+    public int getCurrentHP(){
+        return HP;
+    }
+
+    public void addLife(int val){
+        life = life + val;
+    }
+
+    public int getLife(){
+        return this.life;
+    }
+
+    public void setLife(int life){
+        this.life=life;
+    }
+
+    public void move(Vector2 newPos){
+        this.playerPos = newPos;
+    }
+
+    public void move(int x, int y){
+        this.playerPos = new Vector2(x,y);
     }
 
     public void move(Enum ChosenMovement) {

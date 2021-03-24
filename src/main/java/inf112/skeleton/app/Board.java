@@ -6,8 +6,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 
-import javax.swing.*;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Board {
 
@@ -26,15 +28,46 @@ public class Board {
     public TiledMapTileLayer beltEastLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer fixLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer extraLifeLayer = new TiledMapTileLayer(1,1,1,1);
-
+    public List<String> layerNames;
+    public List<TiledMapTileLayer> layerObjects;
 
     // Map size
     public int MAP_SIZE_X;
     public int MAP_SIZE_Y;
 
+    public Player player;
+
+    public void addLayers(){
+        layerNames = Arrays.asList("Board", "Player", "Hole", "Flag1", "Flag2", "Flag3", "Laser",
+                "BeltNorth", "BeltWest", "BeltSouth", "BeltEast", "Fix", "ExtraLife");
+        layerObjects = Arrays.asList(boardLayer, playerLayer, holeLayer, flag1Layer, flag2Layer,
+                flag3Layer, laserLayer, beltNorthLayer, beltWestLayer, beltSouthLayer, beltEastLayer,
+                fixLayer, extraLifeLayer);
+    }
+
     // Create map layers
     public void createMap(){
         map = new TmxMapLoader().load("assets/Testmap4.tmx");
+
+        /*
+        addLayers();
+        int nLayers = layerObjects.size();
+        //TiledMapTileLayer layer2;
+        for (int i=0; i<nLayers; i++){
+        //for(TiledMapTileLayer layer : layerObjects)
+            TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
+            TiledMapTileLayer layer2 = layerObjects.get(i);
+            //layerObjects.set(i, layer);
+            layer2 = layer;
+            //layerNames.get(i) = "das";
+            //layerObjects.get(i) = new TiledMapTileLayer(1,1,1,1);
+            System.out.println(layerObjects.get(i));
+            //layerObjects.get(i) = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
+            //layer = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
+        }
+
+         */
+
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
         holeLayer = (TiledMapTileLayer) map.getLayers().get("Hole");
@@ -48,6 +81,7 @@ public class Board {
         beltEastLayer = (TiledMapTileLayer) map.getLayers().get("BeltEast");
         fixLayer = (TiledMapTileLayer) map.getLayers().get("Fix");
         extraLifeLayer = (TiledMapTileLayer) map.getLayers().get("ExtraLife");
+
 
         MAP_SIZE_Y = boardLayer.getHeight();
         MAP_SIZE_X = boardLayer.getWidth();
@@ -80,110 +114,35 @@ public class Board {
         return checkX && checkY;
     }
 
-    public void updatePlayer(Player player){
-
-        // Checks if the player is on one of the layer types. Cell is null if player is not on the layer type
-        Cell holeCell = holeLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-
-        // Rotate player sprite
-        int rotation = getRotation(player);
-        if (player.playerTexture != null) {
-            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
-        }
+    public void updateBoard(Player player){
+        this.player = player;
 
         // Do something depending on what tile the player is on
-        checkForCheckPoints(player);
-        checkLaser(player);
-        loseLifeIfNoHP(player);
-        beltMovement(player);
-        fixer(player);
-        extraLife(player);
+        // Order:
+        // 1. Player action
+        updatePlayer();
 
-        // Check if player is in a hole or is outside the map. If true removes a life.
-        if (holeCell != null || !validPlayerMapPos(player.playerPos)) {
-            player.addLife(-1);
-            if (player.getLife()>0){
-                player.move(player.checkPoint);
-            }
-        }
-        if(player.getLife()==0){
-            playerDied(player);
-        }
+        // 2. Board movement
+        checkBeltMovement();
+        checkPlayerOnMapOrInHole();
+        //updatePlayer();
+
+        // 3. Laser
+        checkLaser();
+
+        // 4. Rest of board elements
+        checkFixer();
+        checkExtraLife();
+        checkLoseLifeIfNoHP();
+        checkForCheckPoints();
+        checkIfPlayerLost();
+
+        //System.out.println(player.getCurrentHP());
+        //System.out.println(player.getLife());
+        //System.out.println(player.getCheckPoint());
     }
 
-    public void checkForCheckPoints(Player player){
-        if (player.visitedCheckPoints.size() == 0){
-            Cell flag1Cell = flag1Layer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            if (flag1Cell != null) {
-                player.addCheckPoint();
-            }
-        }
-        else if (player.visitedCheckPoints.size() == 1){
-            Cell flag2Cell = flag2Layer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            if (flag2Cell != null) {
-                player.addCheckPoint();
-            }
-        }
-        else if (player.visitedCheckPoints.size() == 2){
-            Cell flag3Cell = flag3Layer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            if (flag3Cell != null) {
-                player.addCheckPoint();
-            }
-        }
-        // Check if player has reached all flags. If true ends the game.
-        if (player.visitedCheckPoints.size() == 3) {
-            playerWon(player);
-        }
-    }
-
-    public void checkLaser(Player player){
-        Cell laser = laserLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        if (laser != null){
-            player.addHP(-1);
-        }
-    }
-
-    public void fixer(Player player){
-        Cell fix = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        if (fix != null){
-            player.setHP(player.getMaxHP());
-        }
-    }
-
-    public void extraLife(Player player){
-        Cell extraLife = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        if (extraLife != null){
-            player.setLife(player.getLife() + 1);
-        }
-    }
-
-    public void loseLifeIfNoHP(Player player){
-        if (player.getCurrentHP() == 0){
-            player.addLife(-1);
-        }
-    }
-
-    public void beltMovement(Player player){
-        Cell beltNorth = beltNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        Cell beltWest = beltWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        Cell beltSouth = beltSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        Cell beltEast = beltEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        int posX = (int)player.getPosition().x;
-        int posY = (int)player.getPosition().y;
-
-        if (beltNorth != null){
-            player.move(posX, posY+1);
-        }else if (beltWest != null){
-            player.move(posX-1, posY);
-        }else if (beltSouth != null){
-            player.move(posX, posY-1);
-        }else if (beltEast != null){
-            player.move(posX+1, posY);
-        }
-    }
-
-
-    public int getRotation(Player player){
+    public int getRotation(){
         // Set the player on the layer depending on direction
         int rotation = 0;
         if (player.dir == 0){
@@ -198,17 +157,147 @@ public class Board {
         return rotation;
     }
 
-    public void playerDied(Player player){
-        int rotation = getRotation(player);
+    private void updatePlayer() {
+        //TimeUnit.SECONDS.sleep(1);
+        // Rotate player sprite
+        int rotation = getRotation();
         if (player.playerTexture != null) {
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerCell.setRotation(rotation));
+        }
+    }
+
+    public void deletePlayerTexture(Player player){
+        if (player.playerTexture != null){
+            // Delete previous player texture
+            playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, null);
+        }
+    }
+
+    private void checkPlayerOnMapOrInHole() {
+        // Checks if the player is on one of the layer types. Cell is null if player is not on the layer type
+        Cell holeCell = holeLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+
+        // Check if player is in a hole or is outside the map. If true removes a life.
+        if (holeCell != null || !validPlayerMapPos(player.playerPos)) {
+            player.addLife(-1);
+            if (player.getLife()>0){
+                playerLostLifeActions();
+            }
+        }
+    }
+
+    private void playerLostLifeActions(){
+        deletePlayerTexture(player);
+        setRestOfCardsToNull();
+        player.move((int)player.getCheckPoint().x, (int)player.getCheckPoint().y);
+        player.setHP(player.getMaxHP());
+        updatePlayer();
+    }
+
+    private void setRestOfCardsToNull(){
+        int n = player.getCurrentCards().size();
+        for(int i=0; i<n; i++){
+            player.pickedCards.set(i,null);
+        }
+    }
+
+    private void checkIfPlayerLost() {
+        if(player.getLife()==0){
+            playerDied();
+        }
+    }
+
+    private void checkForCheckPoints(){
+        if (player.visitedCheckPoints.size() == 0){
+            Cell flag1Cell = flag1Layer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+            if (flag1Cell != null) {
+                player.addCheckPoint(player.getPosition());
+            }
+        }
+        else if (player.visitedCheckPoints.size() == 1){
+            Cell flag2Cell = flag2Layer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+            if (flag2Cell != null) {
+                player.addCheckPoint(player.getPosition());
+            }
+        }
+        else if (player.visitedCheckPoints.size() == 2){
+            Cell flag3Cell = flag3Layer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+            if (flag3Cell != null) {
+                player.addCheckPoint(player.getPosition());
+            }
+        }
+        // Check if player has reached all flags. If true ends the game.
+        if (player.visitedCheckPoints.size() == 3) {
+            playerWon(player);
+        }
+    }
+
+    private void checkLaser(){
+        Cell laser = laserLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        if (laser != null){
+            player.addHP(-1);
+        }
+    }
+
+    private void checkFixer(){
+        Cell fix = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        if (fix != null){
+            player.setHP(player.getMaxHP());
+        }
+    }
+
+    private void checkExtraLife(){
+        Cell extraLife = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        if (extraLife != null){
+            player.setLife(player.getLife() + 1);
+        }
+    }
+
+    private void checkLoseLifeIfNoHP(){
+        if (player.getCurrentHP() == 0){
+            player.addLife(-1);
+            playerLostLifeActions();
+        }
+    }
+
+    private void checkBeltMovement(){
+        Cell beltNorth = beltNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell beltWest = beltWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell beltSouth = beltSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell beltEast = beltEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        int posX = (int)player.getPosition().x;
+        int posY = (int)player.getPosition().y;
+
+        if (beltNorth != null){
+            deletePlayerTexture(player);
+            player.move(posX, posY+1);
+            updatePlayer();
+        }else if (beltWest != null){
+            deletePlayerTexture(player);
+            player.move(posX-1, posY);
+            updatePlayer();
+        }else if (beltSouth != null){
+            deletePlayerTexture(player);
+            player.move(posX, posY-1);
+            updatePlayer();
+        }else if (beltEast != null){
+            deletePlayerTexture(player);
+            player.move(posX+1, posY);
+            updatePlayer();
+        }
+    }
+
+    private void playerDied(){
+        if (player.playerTexture != null) {
+            int rotation = getRotation();
             playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerDiedCell.setRotation(rotation));
         }
         player.loseCondition = true;
     }
 
-    public void playerWon(Player player){
-        int rotation = getRotation(player);
+    private void playerWon(Player player){
         if (player.playerTexture != null) {
+            int rotation = getRotation();
             playerLayer.setCell((int) player.playerPos.x, (int) player.playerPos.y, player.playerWonCell.setRotation(rotation));
         }
         player.winCondition = true;
