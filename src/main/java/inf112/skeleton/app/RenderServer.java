@@ -33,14 +33,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public Player player2 = new Player(new Vector2(1,3), 90,"assets/player2.png");
     public Board board = new Board();
 
-    // Card textures
-    /*
-    private TextureRegion textureMove1, textureMove2, textureMove3, textureBackUp;
-    private TextureRegion textureRotateLeft, textureRotateRight, textureUTurn;
-    private Sprite spriteMove1, spriteMove2 ,spriteMove3, spriteBackUp;
-    private Sprite spriteRotateLeft, spriteRotateRight, spriteUTurn;
-    */
-
     private boolean pickingCards = true;
     public ArrayList<Enum> cardsToPickFrom;
     public Networking connection = new Networking();
@@ -71,8 +63,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         player1.setPlayerState();
         player2.setPlayerState();
 
-        // Setup card textures
-        //initializeCardTextures();
 
         // Setup server/ client
         setUpGame();
@@ -123,51 +113,16 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             font.draw(batch, "Left arrowkey: ROTATELEFT; Up arrowkey: MOVE1; Right arrowkey: ROTATERIGHT; Down arrowkey: BACKUP", 0, 75);
         }else{
             font.draw(batch, cardsToPickFrom.toString(), 0, 100);
+            font.draw(batch,"Your picked cards: " + player1.getCurrentCards(),0, 50 );
         }
         batch.end();
     }
-
-
-
-    // Card textures [WIP]
-    /*
-    public void initializeCardTextures(){
-        // Split movement.png into 3 textures
-        Texture texture1 = new Texture("assets/movement.jpg");
-        TextureRegion textureMovement = new TextureRegion(texture1);
-        TextureRegion[][] textureMovementSplit = textureMovement.split(texture1,100, 154);
-
-        textureMove1 = textureMovementSplit[0][0];
-        textureMove2 = textureMovementSplit[0][1];
-        textureMove3 = textureMovementSplit[0][2];
-        spriteMove1 = new Sprite(textureMove1);
-        spriteMove2 = new Sprite(textureMove2);
-        spriteMove3 = new Sprite(textureMove3);
-
-
-        // Split rotation.png into 4 textures
-        Texture texture2 = new Texture("assets/rotation.jpg");
-        TextureRegion textureRotation = new TextureRegion(texture2);
-        TextureRegion[][] textureRotationSplit = textureRotation.split(texture2,100, 154);
-
-        textureBackUp = textureRotationSplit[0][1];
-        textureRotateLeft = textureRotationSplit[1][0];
-        textureRotateRight = textureRotationSplit[1][0];
-        textureUTurn = textureRotationSplit[1][1];
-        spriteBackUp = new Sprite(textureBackUp);
-        spriteRotateLeft = new Sprite(textureRotateLeft);
-        spriteRotateRight = new Sprite(textureRotateRight);
-        spriteUTurn = new Sprite(textureUTurn);
-    }
-     */
 
     @Override
     public void dispose() {
         batch.dispose();
         font.dispose();
     }
-
-
 
     @Override
     public void render() {
@@ -181,22 +136,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         }
         checkWinCondition();
         resize(board.MAP_SIZE_X, board.MAP_SIZE_Y);
-
-        /*
-        // Card visualization example [WIP]
-        batch.begin();
-        spriteUTurn.setPosition(0,100);
-        spriteUTurn.draw(batch);
-        spriteMove2.setPosition(100,100);
-        spriteMove2.draw(batch);
-        spriteRotateLeft.setPosition(200,100);
-        spriteRotateLeft.draw(batch);
-        spriteMove3.setPosition(300,100);
-        spriteMove3.draw(batch);
-        spriteBackUp.setPosition(400,100);
-        spriteBackUp.draw(batch);
-        batch.end();
-         */
     }
 
     public void simulateRound(){
@@ -222,7 +161,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             // End win screen
             batch.begin();
             font.getData().setScale(4, 4);
-            font.draw(batch, "Player 2 lost, you won", 140, 250);
+            font.draw(batch, "You won", 240, 250);
             batch.end();
         }
         else if (player2.winCondition || player1.loseCondition){
@@ -230,7 +169,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             // End win screen
             batch.begin();
             font.getData().setScale(4, 4);
-            font.draw(batch, "Player 2 won, you lost", 140, 250);
+            font.draw(batch, "You lost", 240, 250);
             batch.end();
         }
     }

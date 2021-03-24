@@ -16,6 +16,7 @@ public class Player {
     public boolean loseCondition = false;
     public boolean winCondition = false;
     public int dir = 0; //take this in as a parameter
+    public int orgDir = 0; //take this in as a parameter
     public Cell playerCell;
     public Cell playerWonCell;
     public Cell playerDiedCell;
@@ -33,6 +34,7 @@ public class Player {
         this.playerPos = pos;
         this.checkPoint = new Vector2(pos.x,pos.y);
         this.dir = dir;
+        this.orgDir = dir;
         this.playerTexture = texture;
     }
 

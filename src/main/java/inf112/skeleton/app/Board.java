@@ -6,10 +6,8 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Board {
 
@@ -212,6 +210,7 @@ public class Board {
         setRestOfCardsToNull();
         player.move((int)player.getCheckPoint().x, (int)player.getCheckPoint().y);
         player.setHP(player.getMaxHP());
+        player.dir = player.orgDir;
         updatePlayer();
     }
 
