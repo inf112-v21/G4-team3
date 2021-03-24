@@ -28,6 +28,14 @@ public class Board {
     public TiledMapTileLayer beltEastLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer fixLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer extraLifeLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer wallNorthLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer wallWestLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer wallEastLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer wallSouthLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer wallNorthEastLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer wallNorthWestLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer wallSouthEastLayer = new TiledMapTileLayer(1,1,1,1);
+    public TiledMapTileLayer wallSouthWestLayer = new TiledMapTileLayer(1,1,1,1);
     public List<String> layerNames;
     public List<TiledMapTileLayer> layerObjects;
 
@@ -65,7 +73,6 @@ public class Board {
             //layerObjects.get(i) = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
             //layer = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
         }
-
          */
 
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
@@ -81,7 +88,14 @@ public class Board {
         beltEastLayer = (TiledMapTileLayer) map.getLayers().get("BeltEast");
         fixLayer = (TiledMapTileLayer) map.getLayers().get("Fix");
         extraLifeLayer = (TiledMapTileLayer) map.getLayers().get("ExtraLife");
-
+        wallNorthLayer = (TiledMapTileLayer) map.getLayers().get("WallNorth");
+        wallWestLayer = (TiledMapTileLayer) map.getLayers().get("WallWest");
+        wallSouthLayer = (TiledMapTileLayer) map.getLayers().get("WallSouth");
+        wallEastLayer = (TiledMapTileLayer) map.getLayers().get("WallEast");
+        wallNorthEastLayer = (TiledMapTileLayer) map.getLayers().get("WallNorthEast");
+        wallNorthWestLayer = (TiledMapTileLayer) map.getLayers().get("WallNorthWest");
+        wallSouthEastLayer = (TiledMapTileLayer) map.getLayers().get("WallSouthEast");
+        wallSouthWestLayer = (TiledMapTileLayer) map.getLayers().get("WallSouthWest");
 
         MAP_SIZE_Y = boardLayer.getHeight();
         MAP_SIZE_X = boardLayer.getWidth();
@@ -104,7 +118,14 @@ public class Board {
         beltEastLayer = new TiledMapTileLayer(x,y,1,1);
         fixLayer = new TiledMapTileLayer(x,y,1,1);
         extraLifeLayer = new TiledMapTileLayer(x,y,1,1);
-
+        wallNorthLayer = new TiledMapTileLayer(x,y,1,1);
+        wallWestLayer = new TiledMapTileLayer(x,y,1,1);
+        wallEastLayer = new TiledMapTileLayer(x,y,1,1);
+        wallSouthLayer = new TiledMapTileLayer(x,y,1,1);
+        wallNorthEastLayer = new TiledMapTileLayer(x,y,1,1);
+        wallNorthWestLayer = new TiledMapTileLayer(x,y,1,1);
+        wallSouthEastLayer = new TiledMapTileLayer(x,y,1,1);
+        wallSouthWestLayer = new TiledMapTileLayer(x,y,1,1);
     }
 
     // Check if player is positioned on the map
