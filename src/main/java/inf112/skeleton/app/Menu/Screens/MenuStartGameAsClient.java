@@ -34,13 +34,26 @@ public class MenuStartGameAsClient implements Screen {
         game = aGame;
         stage = new Stage(new ScreenViewport());
 
-
         Label title = new Label("Start game as client, type hosts IP-adress", GameMenu.gameSkin,"default");
         title.setAlignment(Align.center);
         title.setY(Gdx.graphics.getHeight()*2/3);
         title.setWidth(Gdx.graphics.getWidth());
         title.setFontScale(2, 2);
         stage.addActor(title);
+
+        Label subTitle = new Label("Type host ip-adress, if you want to run two instances", GameMenu.gameSkin,"default");
+        subTitle.setAlignment(Align.center);
+        subTitle.setY(Gdx.graphics.getHeight()*2/3 - 50);
+        subTitle.setWidth(Gdx.graphics.getWidth());
+        subTitle.setFontScale(2, 2);
+        stage.addActor(subTitle);
+
+        Label subTitle2 = new Label("on one computer, the ip-adress is: 127.0.0.1", GameMenu.gameSkin,"default");
+        subTitle2.setAlignment(Align.center);
+        subTitle2.setY(Gdx.graphics.getHeight()*2/3 - 100);
+        subTitle2.setWidth(Gdx.graphics.getWidth());
+        subTitle2.setFontScale(2, 2);
+        stage.addActor(subTitle2);
 
         TextField ipAdress = new TextField("",GameMenu.gameSkin);
         ipAdress.setWidth(Gdx.graphics.getWidth()/2);
