@@ -33,59 +33,10 @@ public class MenuTestAsSingleplayer implements Screen {
         game = aGame;
         stage = new Stage(new ScreenViewport());
 
-        Label title = new Label("Test as single player", GameMenu.gameSkin,"default");
-        title.setAlignment(Align.center);
-        title.setY(Gdx.graphics.getHeight()*2/3);
-        title.setWidth(Gdx.graphics.getWidth());
-        title.setFontScale(2, 2);
-        stage.addActor(title);
-
-        TextButton singleStep = new TextButton("Single-step",GameMenu.gameSkin);
-        singleStep.setWidth(Gdx.graphics.getWidth()/2);
-        singleStep.setPosition(Gdx.graphics.getWidth()/2-singleStep.getWidth()/2,Gdx.graphics.getHeight()/2-singleStep.getHeight()/2);
-        singleStep.addListener(new InputListener(){
-            @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-                cfg.setTitle("RobotRally");
-                new Lwjgl3Application(new RenderSinglePlayer(), cfg);
-            }
-            @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }
-        });
-        stage.addActor(singleStep);
-
-        TextButton roundBased = new TextButton("Round-based",GameMenu.gameSkin);
-        roundBased.setWidth(Gdx.graphics.getWidth()/2);
-        roundBased.setPosition(Gdx.graphics.getWidth()/2-roundBased.getWidth()/2,325);
-        roundBased.addListener(new InputListener(){
-            @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                game.setScreen(new MenuStartGameAsServer(aGame));
-            }
-            @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }
-        });
-        stage.addActor(roundBased);
-
-        TextButton backButton = new TextButton("Back",GameMenu.gameSkin);
-        backButton.setWidth(Gdx.graphics.getWidth()/2);
-        backButton.setPosition(Gdx.graphics.getWidth()/2-backButton.getWidth()/2,Gdx.graphics.getHeight()/4-backButton.getHeight()/2);
-        backButton.addListener(new InputListener(){
-            @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                game.setScreen(new MainMenu(aGame));
-            }
-            @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }
-        });
-        stage.addActor(backButton);
+        mainTitle();
+        singleStepButton();
+        roundBasedButton(aGame);
+        backButton(aGame);
     }
 
     @Override
@@ -125,4 +76,67 @@ public class MenuTestAsSingleplayer implements Screen {
     public void dispose() {
         stage.dispose();
     }
+
+    private void mainTitle() {
+        Label title = new Label("Test as single player", GameMenu.gameSkin,"default");
+        title.setAlignment(Align.center);
+        title.setY(Gdx.graphics.getHeight()*2/3);
+        title.setWidth(Gdx.graphics.getWidth());
+        title.setFontScale(2, 2);
+        stage.addActor(title);
+    }
+
+    private void singleStepButton() {
+        TextButton singleStep = new TextButton("Single-step",GameMenu.gameSkin);
+        singleStep.setWidth(Gdx.graphics.getWidth()/2);
+        singleStep.setPosition(Gdx.graphics.getWidth()/2-singleStep.getWidth()/2,Gdx.graphics.getHeight()/2-singleStep.getHeight()/2);
+        singleStep.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+                cfg.setTitle("RobotRally");
+                new Lwjgl3Application(new RenderSinglePlayer(), cfg);
+            }
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+        stage.addActor(singleStep);
+    }
+
+    private void roundBasedButton(Game aGame) {
+        TextButton roundBased = new TextButton("Round-based",GameMenu.gameSkin);
+        roundBased.setWidth(Gdx.graphics.getWidth()/2);
+        roundBased.setPosition(Gdx.graphics.getWidth()/2-roundBased.getWidth()/2,325);
+        roundBased.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                game.setScreen(new MenuStartGameAsServer(aGame));
+            }
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+        stage.addActor(roundBased);
+    }
+
+    private void backButton(Game aGame) {
+        TextButton backButton = new TextButton("Back",GameMenu.gameSkin);
+        backButton.setWidth(Gdx.graphics.getWidth()/2);
+        backButton.setPosition(Gdx.graphics.getWidth()/2-backButton.getWidth()/2,Gdx.graphics.getHeight()/4-backButton.getHeight()/2);
+        backButton.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                game.setScreen(new MainMenu(aGame));
+            }
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+        stage.addActor(backButton);
+    }
+
 }

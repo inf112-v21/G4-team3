@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static boolean debugmode;
+    public static boolean debugmode = false;
     public static final int boardSizeX = 13;
     public static final int boardSizeY = 10;
 
