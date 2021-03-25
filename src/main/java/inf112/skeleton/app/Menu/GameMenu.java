@@ -14,7 +14,6 @@ public class GameMenu extends Game {
     public void create() {
         gameSkin = new Skin(Gdx.files.internal("assets/MenuSkins/glassy/skin/glassy-ui.json"));
         this.setScreen(new MainMenu(this));
-
     }
 
     @Override

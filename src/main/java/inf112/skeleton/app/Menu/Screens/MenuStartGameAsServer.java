@@ -33,59 +33,11 @@ public class MenuStartGameAsServer implements Screen {
         game = aGame;
         stage = new Stage(new ScreenViewport());
 
-        Label title = new Label("Start game as server", GameMenu.gameSkin,"default");
-        title.setAlignment(Align.center);
-        title.setY(Gdx.graphics.getHeight()*2/3);
-        title.setWidth(Gdx.graphics.getWidth());
-        title.setFontScale(2, 2);
-        stage.addActor(title);
+        mainTitle();
 
-        TextButton waitForIp = new TextButton("Start",GameMenu.gameSkin);
-        waitForIp.setWidth(Gdx.graphics.getWidth()/2);
-        waitForIp.setPosition(Gdx.graphics.getWidth()/2-waitForIp.getWidth()/2,Gdx.graphics.getHeight()/2-waitForIp.getHeight()/2);
-        waitForIp.addListener(new InputListener(){
-            @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-                cfg.setTitle("RobotRally");
-                new Lwjgl3Application(new RenderServer(), cfg);
-            }
-            @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }
-        });
-        stage.addActor(waitForIp);
-
-        TextButton debugMode = new TextButton("Debug mode",GameMenu.gameSkin);
-        debugMode.setWidth(Gdx.graphics.getWidth()/2);
-        debugMode.setPosition(Gdx.graphics.getWidth()/2-debugMode.getWidth()/2,Gdx.graphics.getHeight()/4-debugMode.getHeight()/2);
-        debugMode.addListener(new InputListener(){
-            @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                Main.debugmode = true;
-            }
-            @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }
-        });
-        stage.addActor(debugMode);
-
-        TextButton backButton = new TextButton("Back",GameMenu.gameSkin);
-        backButton.setWidth(Gdx.graphics.getWidth()/2);
-        backButton.setPosition(Gdx.graphics.getWidth()/2-backButton.getWidth()/2,75);
-        backButton.addListener(new InputListener(){
-            @Override
-            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                game.setScreen(new MainMenu(aGame));
-            }
-            @Override
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                return true;
-            }
-        });
-        stage.addActor(backButton);
+        startButton();
+        debugButton();
+        backButton(aGame);
     }
 
     @Override
@@ -125,4 +77,68 @@ public class MenuStartGameAsServer implements Screen {
     public void dispose() {
         stage.dispose();
     }
+
+    private void mainTitle() {
+        Label title = new Label("Start game as server", GameMenu.gameSkin,"default");
+        title.setAlignment(Align.center);
+        title.setY(Gdx.graphics.getHeight()*2/3);
+        title.setWidth(Gdx.graphics.getWidth());
+        title.setFontScale(2, 2);
+        stage.addActor(title);
+    }
+
+    private void startButton() {TextButton waitForIp = new TextButton("Start",GameMenu.gameSkin);
+        waitForIp.setWidth(Gdx.graphics.getWidth()/2);
+        waitForIp.setPosition(Gdx.graphics.getWidth()/2-waitForIp.getWidth()/2,Gdx.graphics.getHeight()/2-waitForIp.getHeight()/2);
+        waitForIp.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+                cfg.setTitle("RobotRally");
+                new Lwjgl3Application(new RenderServer(), cfg);
+            }
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+        stage.addActor(waitForIp);
+    }
+
+    private void debugButton() {TextButton debugMode = new TextButton("Debug mode",GameMenu.gameSkin);
+        debugMode.setWidth(Gdx.graphics.getWidth()/2);
+        debugMode.setPosition(Gdx.graphics.getWidth()/2-debugMode.getWidth()/2,Gdx.graphics.getHeight()/4-debugMode.getHeight()/2);
+        debugMode.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+                cfg.setTitle("RobotRally");
+                new Lwjgl3Application(new RenderServer(), cfg);
+                Main.debugmode = true;
+            }
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+        stage.addActor(debugMode);
+    }
+
+    private void backButton(Game aGame) {
+        TextButton backButton = new TextButton("Back",GameMenu.gameSkin);
+        backButton.setWidth(Gdx.graphics.getWidth()/2);
+        backButton.setPosition(Gdx.graphics.getWidth()/2-backButton.getWidth()/2,75);
+        backButton.addListener(new InputListener(){
+            @Override
+            public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                game.setScreen(new MainMenu(aGame));
+            }
+            @Override
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+        stage.addActor(backButton);
+    }
+
 }
