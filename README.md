@@ -46,7 +46,7 @@ Deretter kan spillet spilles ved å følge teksten i «run» vinduet i bunnen av
 ##Manuelle tester utførelse
 ### Manuell test for at fem kort blir valgt.
 - Hvordan testen utføres:
-   - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode, etter det kan man se kortene i terminalen og velge.
+   - Kjør main så skriv 3 i terminalen for test mode client eller server "1/2" etter det skriv "true" for debug mode, etter det kan man se kortene i terminalen og velge.
    - Velg 5 kort fra de 9 som blir vist i terminal gjennom nummer taster på tastatur(1-9) der de
       valgte blir fjernet for hvert valg
 
