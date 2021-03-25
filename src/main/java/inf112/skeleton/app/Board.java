@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Board {
 
@@ -137,14 +138,13 @@ public class Board {
         this.player = player;
 
         // Do something depending on what tile the player is on
-        // Order:
+        // Game order:
         // 1. Player action
         updatePlayer();
 
         // 2. Board movement
         checkBeltMovement();
         checkPlayerOnMapOrInHole();
-        //updatePlayer();
 
         // 3. Laser
         checkLaser();
@@ -156,9 +156,8 @@ public class Board {
         checkForCheckPoints();
         checkIfPlayerLost();
 
-        //System.out.println(player.getCurrentHP());
-        //System.out.println(player.getLife());
-        //System.out.println(player.getCheckPoint());
+        System.out.println("Current HP: "+player.getCurrentHP());
+        System.out.println("Lives: "+player.getLife());
     }
 
     public int getRotation(){
@@ -177,7 +176,13 @@ public class Board {
     }
 
     private void updatePlayer() {
-        //TimeUnit.SECONDS.sleep(1);
+        if (player.playerTexture != null) {
+            try {
+                TimeUnit.SECONDS.sleep((long)0.8);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         // Rotate player sprite
         int rotation = getRotation();
         if (player.playerTexture != null) {

@@ -95,6 +95,7 @@ public class MenuStartGameAsServer implements Screen {
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
                 cfg.setTitle("RobotRally");
+                cfg.setWindowedMode(Main.finalWidth, Main.finalHeight);
                 new Lwjgl3Application(new RenderServer(), cfg);
             }
             @Override
@@ -113,6 +114,7 @@ public class MenuStartGameAsServer implements Screen {
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
                 cfg.setTitle("RobotRally");
+                cfg.setWindowedMode(Main.finalWidth, Main.finalHeight);
                 new Lwjgl3Application(new RenderServer(), cfg);
                 Main.debugmode = true;
             }

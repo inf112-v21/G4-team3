@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 public class GameLogic {
 
-    //public ArrayList<Enum> pickedCards = new ArrayList<>();
     public ArrayList<Enum> receivedCards = new ArrayList<>();
     public ArrayList<Enum> savedCards = new ArrayList<>();
     public ArrayList<Enum> startCards = new ArrayList<>();
@@ -28,21 +27,6 @@ public class GameLogic {
         this.board = board;
     }
 
-    // One round starts with picking cards or powering down, then does five turns
-    public void doRound() throws IOException, ClassNotFoundException, InterruptedException {
-        if (pickingCards){
-            getCardsFromOtherPlayer();
-            pickCards();
-        }
-        if (player1.pickedCards.size()==nCards) {
-            sendCardsToOtherPlayer();
-            readyTurn = true;
-        }
-        if (readyTurn){
-            simulateTurns();
-        }
-    }
-
     public void getCardsFromOtherPlayer() throws IOException, ClassNotFoundException {
         // Wait for client input
         System.out.println("\n-Wait to receive the other player's cards-");
@@ -62,7 +46,11 @@ public class GameLogic {
         // Do turns for the players
         System.out.println("Doing turn");
         turn(player1, player1.pickedCards);
-        turn(player2, receivedCards);
+        System.out.println(player1.getCurrentCards());
+        System.out.println(savedCards);
+        if (player2 != null) {
+            turn(player2, receivedCards);
+        }
         TimeUnit.SECONDS.sleep(1);
         if (player1.pickedCards.size() == 0) {
             pickingCards = true;
@@ -71,6 +59,21 @@ public class GameLogic {
         }
     }
 
+    // One round starts with picking cards or powering down, then does five turns
+    public void doRound() throws IOException, ClassNotFoundException, InterruptedException {
+        if (pickingCards){
+            getCardsFromOtherPlayer();
+            pickCards();
+        }
+        if (player1.pickedCards.size()==nCards) {
+            sendCardsToOtherPlayer();
+            savedCards= (ArrayList<Enum>) player1.getCurrentCards().clone();
+            readyTurn = true;
+        }
+        if (readyTurn){
+            simulateTurns();
+        }
+    }
     public void doRoundClient() throws IOException, ClassNotFoundException, InterruptedException {
         if (pickingCards) {
             pickCards();
@@ -78,7 +81,22 @@ public class GameLogic {
         if (player1.getCurrentCards().size()==nCards) {
             sendCardsToOtherPlayer();
             getCardsFromOtherPlayer();
-            savedCards=player1.getCurrentCards();
+            savedCards= (ArrayList<Enum>) player1.getCurrentCards().clone();
+            readyTurn = true;
+        }
+        if (readyTurn){
+            simulateTurns();
+        }
+    }
+
+    public void doRoundTesting() throws InterruptedException {
+        if (pickingCards) {
+            pickCards();
+        }
+        if (player1.getCurrentCards().size()==nCards) {
+            savedCards= (ArrayList<Enum>) player1.getCurrentCards().clone();
+            System.out.println(player1.getCurrentCards());
+            System.out.println(savedCards);
             readyTurn = true;
         }
         if (readyTurn){
@@ -101,7 +119,8 @@ public class GameLogic {
 
     private void lockCardsBasedOnHP(Player player){
         int diffHP = player.getMaxHP() - player.getCurrentHP();
-        nCards = nCards - diffHP;
+        System.out.println(nCards);
+        System.out.println(savedCards);
         for (int i=0; i<diffHP; i++){
             startCards.add(savedCards.get(i));
         }
@@ -111,10 +130,9 @@ public class GameLogic {
     public void pickCards(){
         System.out.println("\nYour turn to pick cards");
         System.out.println("Use numbers 1 to 9 to pick cards");
-        System.out.println("The player that is hosting the game is the black character");
+        System.out.println("The host is the black character");
         CardDeck fullDeck = new CardDeck();
         cardsToPickFrom.clear();
-        //player1.getCurrentCards().clear();
         player1.pickedCards = startCards;
         pickingCards = false;
 
@@ -122,17 +140,9 @@ public class GameLogic {
             Enum draw = fullDeck.deck.get(i);
             cardsToPickFrom.add(draw);
         }
-        if(Main.debugmode)
-            System.out.println("1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN");
-        else{
-            System.out.println("Available cards:");
-            System.out.println(cardsToPickFrom);
-        }
     }
 
     public Enum debugMovement(int keyCode){
-       //& !readyTurn) {
-        // p = 44
         Enum card = null;
         if (keyCode == 8) {
             card = CardMovement.Movement.MOVE1;
@@ -157,14 +167,11 @@ public class GameLogic {
         }else if (keyCode == 20) { //Down
             card = CardMovement.Movement.BACKUP;
         }
-
-        //System.out.println("1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN");
-
         return card;
     }
 
     public void selectCardsFromKeyboardInput(int keyCode) {
-        if (Main.debugmode)
+        if (!Main.debugmode)
             player1.getCurrentCards().add(debugMovement(keyCode));
         else {
             if (player1.getCurrentCards().size() < nCards && !readyTurn) {

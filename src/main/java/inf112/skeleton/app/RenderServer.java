@@ -63,7 +63,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         player1.setPlayerState();
         player2.setPlayerState();
 
-
         // Setup server/ client
         setUpGame();
 
@@ -104,18 +103,20 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     }
 
     public void showCardsOnScreen(){
-        batch.begin();
-        font.getData().setScale((float)1.2, (float)1.2);
-        font.draw(batch, "Available cards:", 0, 120);
-        font.getData().setScale((float)0.8, (float)0.8);
-        if(Main.debugmode) {
-            font.draw(batch, "1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN", 0, 100);
-            font.draw(batch, "Left arrowkey: ROTATELEFT; Up arrowkey: MOVE1; Right arrowkey: ROTATERIGHT; Down arrowkey: BACKUP", 0, 75);
-        }else{
-            font.draw(batch, cardsToPickFrom.toString(), 0, 100);
-            font.draw(batch,"Your picked cards: " + player1.getCurrentCards(),0, 50 );
+        if (!gameLogic.pickingCards && !pause) {
+            batch.begin();
+            font.getData().setScale((float) 1.2, (float) 1.2);
+            font.draw(batch, "Available cards:", 0, 120);
+            font.getData().setScale((float) 0.8, (float) 0.8);
+            if (Main.debugmode) {
+                font.draw(batch, "1 : MOVE1; 2 : MOVE2; 3 : MOVE3; 4 : BACKUP; 5 : ROTATELEFT; 6 : ROTATERIGHT; 7 : UTURN", 0, 100);
+                font.draw(batch, "Left arrowkey: ROTATELEFT; Up arrowkey: MOVE1; Right arrowkey: ROTATERIGHT; Down arrowkey: BACKUP", 0, 75);
+            } else {
+                font.draw(batch, cardsToPickFrom.toString(), 0, 100);
+            }
+            font.draw(batch, "Picked cards: " + player1.getCurrentCards(), 0, 50);
+            batch.end();
         }
-        batch.end();
     }
 
     @Override
@@ -131,11 +132,8 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
         renderer.render();
         simulateRound();
-        if (!gameLogic.pickingCards && !pause || Main.debugmode) {
-            showCardsOnScreen();
-        }
+        showCardsOnScreen();
         checkWinCondition();
-        resize(board.MAP_SIZE_X, board.MAP_SIZE_Y);
     }
 
     public void simulateRound(){
