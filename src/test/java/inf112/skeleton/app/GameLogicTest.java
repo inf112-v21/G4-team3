@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 public class GameLogicTest {
 
@@ -26,19 +28,18 @@ public class GameLogicTest {
 
 
 
+    @Before
     public void setUp(){
         player1.playerPos = new Vector2(0,0);
         player2.playerPos = new Vector2(0,0);
         player1.dir = 0;
         player2.dir = 0;
         gameLogic = new GameLogic(null, player1, player2, board);
+        board.setSize(20, 20);
     }
 
     @Test
     public void testSimulateTurns() throws InterruptedException {
-
-        setUp();
-
         // Player 1 cards
         player1.pickedCards.add(move1);
         player1.pickedCards.add(move2);
@@ -69,5 +70,35 @@ public class GameLogicTest {
         assertEquals(expectedDirPlayer2, player2.dir);
         assertEquals(expectedPosPlayer1, player1.playerPos);
         assertEquals(expectedPosPlayer2, player2.playerPos);
+    }
+
+    @Test
+    public void testLockedCardsWhenLostHP() throws InterruptedException {
+        // Player 1 cards
+        player1.pickedCards.add(move1);
+        player1.pickedCards.add(move2);
+        player1.pickedCards.add(rotateRight);
+        player1.pickedCards.add(uturn);
+        player1.pickedCards.add(backUp);
+        ArrayList<Enum> expectedCards1 = new ArrayList<>();
+        expectedCards1.add(player1.pickedCards.get(0));
+        expectedCards1.add(player1.pickedCards.get(1));
+
+        gameLogic.savedCards = (ArrayList<Enum>) player1.getCurrentCards().clone();
+
+        // Player 2 cards
+        gameLogic.receivedCards.add(rotateRight);
+        gameLogic.receivedCards.add(move2);
+        gameLogic.receivedCards.add(rotateLeft);
+        gameLogic.receivedCards.add(move3);
+        gameLogic.receivedCards.add(rotateRight);
+
+        int nCards = player1.pickedCards.size();
+        player1.addHP(-2);
+        for (int i=0; i<nCards; i++){
+            gameLogic.simulateTurns();
+        }
+
+        assertEquals(expectedCards1, gameLogic.startCards);
     }
 }

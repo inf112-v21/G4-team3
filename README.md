@@ -2,7 +2,7 @@
 
 
 
-1. Pulle programmet fra github til din IDE.
+### 1. Pulle programmet fra github til din IDE.
    
    Til å begynne med må programmet pulles fra github til Java IDE’en som du bruker. 
    IDE’en som brukes i denne guiden er IntelliJ.  IntelliJ kan lastes ned her: https://www.jetbrains.com/idea/
@@ -16,29 +16,53 @@
 
 ![img_9.png](assets/images/img_9.png)
 
-2. Kjøre programmet fra IDE’en:
+### 2. Kjøre programmet fra IDE’en:
    
    Applikasjonen kjøres ved å høyreklikke på main funksjonen under src/main/java/inf112.skeleton.app i prosjektet ditt og å trykke på «run» ved den grønne pilen.
 
 ![img_10.png](assets/images/img_10.png)
 
-3. Bruke applikasjonen
+### 3. Bruke applikasjonen
    
-   Siden spillet nå har multiplayer trengs to versjoner av prosjektet fra github for å kjøre applikasjonen. 
+   For å spille multiplayer trengs to versjoner av prosjektet fra github for å kjøre applikasjonen. 
    For øyeblikket støttes bare multiplayer over lokalt nettverk, 
    derfor for å kjøre programmet må du pulle to prosjekt versjoner på den samme datamaskinen 
    eller pulle prosjektet til en annen datamaskin på samme nettverk.
    Når du har to versjoner av prosjektet oppe, enten på samme datamaskin eller på to ulike datamaskiner, 
-   kan begge Main funksjonene kjøres som vist i punkt 2. Når programmet kjøres vil du få muligheten 
-   til å velge mellom å være en server som venter på kontakt fra en klient eller en klient som skal sette 
-   opp en tilknytning til serveren. Hvis du bruker to datamaskiner må IP-adressen til datamaskinen som 
-   er valgt som server skrives inn på klient datamaskinen. Du kan finne IP-adressen din her https://www.med.unc.edu/it/guide/operating-systems/how-do-i-find-the-host-name-ip-address-or-physical-address-of-my-machine/. 
-   Hvis du skal kjøre på bare en datamaskin må du skrive inn «127.0.0.1» som er localhost adressen til maskinen din. 
-   
-   
-Deretter kan spillet spilles ved å følge teksten i «run» vinduet i bunnen av IDE’en. Trykk på applikasjons vinduet for at applikasjonen skal registrere keyboard input. Klient versjonen velger kort først. 
+   kan begge Main funksjonene kjøres som vist i punkt 2. 
 
-##Aoutomatiske tester utførelse
+
+### 4. Ulike spill typer
+   Det kan velges mellom tre ulike spill typer når applikasjonen starter:
+   
+- "Play as server":
+        Spill sammen på to datamaskiner eller på to instanser av IDE’en på en datamaskin. Må starte opp serveren før klienten.
+  
+  
+- "Play as server" med debug:
+        Likt som uten debug, men lar deg velge hvilke kort du vil bruke.
+  
+
+- "Play as client":
+Spill sammen på to datamaskiner eller på to instanser av IDE’en på en datamaskin. Klienten må vente med å starte før serveren er satt opp.
+For å spille på en datamaskin må 127.0.0.1 brukes som IP adresse.
+For å spille på to maskiner må IP adresse til serveren skrives inn. Du kan finne din IP adresse her: https://www.med.unc.edu/it/guide/operating-systems/how-do-i-find-the-host-name-ip-address-or-physical-address-of-my-machine/.
+
+
+- "Play as client" med debug:
+Likt som uten debug, men lar deg velge hvilke kort du vil bruke.
+  
+
+- "Test game": TA'ene sin favoritt. Starter spillet opp som enkelt spiller, brukt til testing av spill funksjoner.
+
+-  Test game -> Single-step:
+Bruk piltastene eller kortene på skjermen til å styre roboten ett steg av gangen.
+
+-  Test game -> Round-based:
+Beveg roboten ved bruk av runde systemet. Når fem kort er valgt beveger roboten på seg.
+
+   
+##Automatiske tester utførelse
 - høgre klikk på den klassen i src/test/java/inf112.skeleton.app du ønsker å kjøre og klikk kjør. 
   dem som gjek gjenom og får grønn "kjek-mark"
   og er godkjent

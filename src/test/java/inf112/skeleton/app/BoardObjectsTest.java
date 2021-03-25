@@ -117,8 +117,6 @@ public class BoardObjectsTest {
         assertEquals(expectedPos, player.getPosition());
     }
 
-
-
     @Test
     public void testLoseAllLifePoints(){
         //setUp();
@@ -212,5 +210,16 @@ public class BoardObjectsTest {
         board.updateBoard(player);
 
         assertEquals(true, player.playerWon());
+    }
+
+    @Test
+    public void testFixerRestoreFullHealth(){
+        Cell fixer = new Cell();
+        board.holeLayer.setCell(2,1, fixer);
+        player.setHP(1);
+        board.updateBoard(player);
+        player.move(2,1);
+        board.updateBoard(player);
+        assertEquals(player.getMaxHP(), player.getCurrentHP());
     }
 }
