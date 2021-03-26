@@ -1,5 +1,7 @@
 package inf112.skeleton.app;
 
+import inf112.skeleton.app.Menu.Screens.MenuStartGameAsClient;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -22,7 +24,7 @@ public class Networking {
 
     public void setUpClient() throws IOException {
         // Connecting to the ServerSocket at port 4000
-        socket = new Socket(RenderClient.hostIP, 4000); // 127.0.0.1 is localhost
+        socket = new Socket(MenuStartGameAsClient.ip, 4000); // 127.0.0.1 is localhost
         System.out.println("Connected");
     }
 

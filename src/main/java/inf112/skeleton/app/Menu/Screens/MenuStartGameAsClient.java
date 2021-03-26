@@ -21,9 +21,7 @@ import inf112.skeleton.app.RenderClient;
 public class MenuStartGameAsClient implements Screen {
     private Stage stage;
     private Game game;
-    public String ip;
-
-
+    public static String ip;
 
     MenuStartGameAsClient(Game aGame) {
         game = aGame;

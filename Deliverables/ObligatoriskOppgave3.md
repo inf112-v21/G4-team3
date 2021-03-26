@@ -32,6 +32,12 @@
   voice call sammen under møtene/arbeidstimer. Utenfor møter/arbeidstimer sender vi meldinger på discord
   i gruppechatten om spørsmål, oppfølging eller generell diskusjon.
   
+- Prioritering av oppgaver fremover:
+  - Implementasjon av flere objekter på brettet som vegger og rotasjonsrute.
+  - Implementere en power-down funksjon.
+  - Finpusse brukergrensesnitt.
+  - Refaktorere kode.
+
 - Oppfølging av sist retrospektiv forbedringspunkt:
   - Utdyping av rollebeskrivelser, som nevnet tidligere har vi bestemt oss for å holde 
   de tildelte rollene for struktur slev om disse er veldig felksibel.
@@ -41,9 +47,26 @@
   Vi kan gi credit for arbeid på andre måter og balansen av commits kan lett forklares.
   - Bruk av project board, vi har blitt bedre med bruken av project board i forhold til arbeidsfordeling, men vi kan 
   bli berde på å holde det oppdatert utover sprinten.
-- Retrospektiv 
+    
+- Retrospektiv: 
+  - Fortsatt fornøyd med rollefordeling, metodikk og kommunikasjon.
+  - Gruppedynamikken har god flyt og fungerer bra.
+- Forbedringspunkter
+  - Regelmessig oppdatering av progresjon på project board.
+  - Sette opp flere tester av god kvalitet før programmering av arbeidsoppgaven begynner(Test-driven development)
+
+
 
 ### Deloppgave 2: Krav 
+- Alle viste brukerhistorier har blitt implementert og fungerer som ønsket.
+- Prioritering av krav:
+  - Første prioritet var å lage ferdig en debug modus som lar oss teste spillet og kommende funksjoner
+    mer effektivt.
+  - Deretter prioriterte vi å få implementert et HP/liv -system ettersom det må være på plass for
+    å kunne teste lasere.
+  - De resterende kravene ble gjennomført uten en spesifikk prioritering.
+
+
 #### Brukerhistorier
 Transportbånd
 Brukerhistorie:
@@ -135,16 +158,105 @@ Round-based
 - Akseptansekrav:
   - Gitt at bruker starter round-based modus skal:
   - Bruker kunne gjøre fem handlinger før de gjennomføres for å teste funksjoner i spillet mens ett runde-system er aktivt.
+  
+###Bugs:
+- Spillere kan bevege seg over hull/flagg uten å avslutte spillet midt i en runde hvis spilleren beveger seg 2 eller 3 felt fremover på en turn.
+- Applikasjonsvinduet «fryser» mens den andre spilleren velger kort. Ikke noe problem egentlig.
+- Hvis en trykker på et tall på tastaturet høyere enn det er tilgjengelige kort krasjer programmet. For eksempel, det er 8 kort å velge mellom og brukeren trykker på 9.
+- Godtar feil input men setter verdi til null. (Et valg utenfor 1-9)
+- Knapper i GUI mister posisjon avhenging av operativsystem eller skjermstørrelse.
+- Multiplayer fungerer ikke for øyeblikket mellom .
 
-
-
-
-### Deloppgave 3: Produktleveranse og kodekvalitet 
-
-
+### Deloppgave 3: Produktleveranse og kodekvalitet
 
 ### Credits
 - Ressurser for utseendet av menyen er ikke laget selv. 
 - GlassyUI:
   - Created by Raymond "Raeleus" Buckley 
   - Visit ray3k.wordpress.com for games, tutorials, and much more!
+
+##Meetingminutes
+
+### Mandag 08.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Sprint-planlegging møte på Discord 12-13
+- Fordeling av arbeidsoppgaver:
+  - 
+
+### Onsdag 10.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord Møte - oppfølging av utdelte arbeidsopppgaver 12-12:15
+- Konklusjon:
+  - 
+- Gjenstående:
+  - 
+
+### Discord gruppetime fellesarbeid - med tilgang til TA. 12:15-14
+- Konklusjon:
+  - 
+
+### Fredag 12.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - Sprint review og retrospektiv
+-Scrum review konklusjon:
+- Fullførte oppsatte arbeidsoppgaver.
+- 
+- Scrum review retrospektiv konklusjon:
+  -
+
+### Mandag 15.03.2021
+### Deltakere: Eivind, Sigurd, Malte(Daan manglet grunnet annet obligatorisk oppmøte)
+### Discord møte - Sprint-planlegging 12-13
+- Sprint planning: 
+- Fordeling av arbeidsoppgaver:
+  - 
+
+### Onsdag 17.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - Oppfølging av utdelte arbeidsoppgaver 12-12:15
+- Konklusjon:
+  - 
+- Gjenstående:
+  - 
+
+### Discord gruppetime fellesarbeid - med tilgang til TA 12:15-14
+### Deltakere: Daan, Eivind, Sigurd, Malte
+- Konklusjon:
+  - 
+
+### Fredag 19.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - Sprint review og retrospektiv
+- Sprint review konklusjon:
+  - 
+-Sprint retrospektiv konklusjon:
+  - 
+
+### Mandag 22.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - Sprint-planlegging 12-13
+- Sprint planlegging:
+  - 
+- Arbeidsfordeling:
+  - 
+
+### Onsdag 24.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - oppfølging av arbeid.
+- Konklusjon:
+  - 
+- Gjenstående:
+  - 
+
+### Discord gruppetime fellesarbeid - med tilgang til TA 12:15-14
+### Deltakere: Daan, Eivind, Sigurd, Malte
+- Konklusjon:
+  - 
+
+### Fredag 26.03.2021
+### Deltakere: Daan, Eivind, Sigurd, Malte
+### Discord møte - Sprint review og retrospektiv
+- Sprint review konklusjon:
+  -
+-Sprint retrospektiv konklusjon:
+  - 
