@@ -1,4 +1,4 @@
-#Step by step guide - starte programmet
+# Step by step guide - starte programmet
 
 
 
@@ -33,7 +33,7 @@
 
 
 ### 4. Ulike spill typer
-   Det kan velges mellom tre ulike spill typer når applikasjonen starter:
+   Det kan velges mellom fem ulike spilltyper når applikasjonen starter:
    
 - "Play as server":
         Spill sammen på to datamaskiner eller på to instanser av IDE’en på en datamaskin. Må starte opp serveren før klienten.
@@ -53,7 +53,7 @@ For å spille på to maskiner må IP adresse til serveren skrives inn. Du kan fi
 Likt som uten debug, men lar deg velge hvilke kort du vil bruke.
   
 
-- "Test game": TA'ene sin favoritt. Starter spillet opp som enkelt spiller, brukt til testing av spill funksjoner.
+--- "Test game": TA'ene sin favoritt. Starter spillet opp som enkelt spiller, brukt til testing av spill funksjoner.
 
 -  Test game -> Single-step:
 Bruk piltastene eller kortene på skjermen til å styre roboten ett steg av gangen.

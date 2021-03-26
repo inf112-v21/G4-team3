@@ -133,6 +133,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         renderer.render();
         simulateRound();
         showCardsOnScreen();
+        showHPandLives(player1);
         checkWinCondition();
     }
 
@@ -196,11 +197,13 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         }
         return true;
     }
-/*
-    public void showHPandLive(Player player, int i){
+
+    public void showHPandLives(Player player) {
         batch.begin();
-        font.getData().setScale(4, 4);
-        font.draw(batch, "Player 1 HP: " + player.getCurrentHP() +"   Live:" + player.getLife() , 20, 125);
+        font.getData().setScale(2, 2);
+        font.draw(batch, "Player 1 ", 900, 150);
+        font.draw(batch, "HP: " + player.getCurrentHP(), 900, 100);
+        font.draw(batch, "Lives:" + player.getLife(), 900, 50);
         batch.end();
-    }*/
+    }
 }
