@@ -70,57 +70,48 @@ Beveg roboten ved bruk av runde systemet. Når fem kort er valgt beveger roboten
 ##Manuelle tester utførelse
 ### Manuell test for at fem kort blir valgt.
 - Hvordan testen utføres:
-   - Kjør main så skriv 3 i terminalen for test mode client eller server "1/2" etter det skriv "true" for debug mode, etter det kan man se kortene i terminalen og velge.
-   - Velg 5 kort fra de 9 som blir vist i terminal gjennom nummer taster på tastatur(1-9) der de
-      valgte blir fjernet for hvert valg
+   - Kjør main så velg "Test game" og deretter "Round-based", etter det kan man se kortene på skjermen og velge.
+   - Velg 5 kort fra de som blir vist i terminal gjennom nummer taster på tastatur(1-7) 
 
 	- Kriterier for at testen blir godkjent:
 		- Velge fem kort.
-		- De fem valgte kortene vises i spillet.
+		- Roboten utfører de fem valgte kortene i rekkefølge.
 
 ### Manuell test for winCondition.
 -Hvordan testen utføres:
-   - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode, etter det kan man se kortene i terminalen og velge.
-   - Etter det velg kort og naviger til et flagg. Da skal spillet fryse og en tekst skal si hvem som vant.
+   - Kjør main så velg "Test game" og deretter "Single-step", etter det kan man se kortene på skjermen og velge.
+   - Etter det velg kort og naviger til et flagg1, flagg2 og flagg3 i den rekkefølgen. Da skal spillet fryse og en tekst skal si at du vant.
    
 - Kriterer for at testen blir godkjent:
    - Når en wincondition blir triggeret fryser spillet og det står hvem som har vunnet
 
 ### Manuell test for nettverk.
 - Hvordan testen utføres:
-   - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode, sjekk deretter at begge instansene av spillet får valgt kort og gjennomført
-      handlinger og den andre mottar/får sett handlingene gjort av den andre spilleren.
+   - Kjør main så velg enten client eller server, sjekk deretter at begge instansene av spillet får valgt kort og gjennomført
+      handlinger og den andre mottar/får sett handlingene gjort av den andre spilleren. Kan gjøres med eller uten debugmode.
 
 - Kriterier for at testen blir godkjent:
     - De to instansene av spillet skal kommunisere med hverandre og får sett hverandres handlinger på spillbrett.
 
 ### Manuell test for loseCondition.
 - Hvordan testen utføres:
-    - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode, etter det kan man se kortene i terminalen og velge.
-    - Etter det velg kort og naviger utenfor kartet eller til et hull. Da skal spillet fryse og en tekst skal si hvem som tapte.
+    - Kjør main så velg "Test game" og deretter "Single-step", etter det kan man se kortene på skjermen og velge.
+    - Etter det naviger utenfor kartet eller til et hull 3 ganger. Da skal spillet fryse og en tekst skal si du tapte.
 - Kriterer for at testen blir godkjent:
     - Når en losecondition blir triggeret fryser spillet og det står hvem som har tapt
     
 ### Manuell test for Laser
 - Hvordan testen utføres:
-   - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode. 
-   - Naviger robot frem til en laser og så inn i laseren enten ved bruk av kort eller piltaster. Da skal det vises at at HP blir redusert med -1
+   - Kjør main så velg "Test game" og deretter "Single-step", etter det kan man se kortene på skjermen og velge.
+   - Naviger robot frem til en laser og så inn i laseren enten ved bruk av kort eller piltaster. Da skal det vises at at HP blir redusert med -1.
 - Kriterer for at testen skal godkjennes: 
     - Når robot blir beveget gjennom en laser skal HP bli redusert med -1. 
     
-### Manuell test for Wall 
-- Hvordan testen utføres: 
-    - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode.
-    - Naviger robot frem til en wall ved bruk av enten kort eller piltaster, etter det prøv å gjennomføre en bevegelse som vil bevege robot gjennom en wall.
-    Då skal robot ikke bevege seg fra orginal posisjon foran wall.
-- Kriterier for at testen skal godkjennes:
-    Når en bevegelses-input styrer gjennom en wall skal inputen ikke gjennomføres og roboten deremed ikke beveges.
-  
 ### Manuell test for Belt 
 - Hvordan testen utføres: 
-    - Kjør main så velg enten client eller server "1/2" etter det skriv "true" for debug mode.
-    - Naviger robot frem til starten av et belt ved bruk av enten kort eller piltaster, etter det beveg robot på starten av belt indikert av en pil på brettet. 
-    Då skal robot beveges helt fra starten av belt frem til slutten av belt.
+    - Kjør main så velg "Test game" og deretter "Single-step", etter det kan man se kortene på skjermen og velge.
+    - Naviger robot frem til starten av et transportbånd ved bruk av enten kort eller piltaster, etter det beveg robot på starten av transportbåndet indikert av en pil på brettet. 
+    Da skal roboten beveges fra transportbånd ruten til ruten transportbåndet peker på.
 - Kriterier for at testen skal godkjennes:
-    Når robot beveges opp på starten av et belt skal robot beveges frem til slutten av belt. 
+    Når robot beveges på et trasporbånd skal roboten flyttes til ruten transporbåndet peker på. 
 -
