@@ -32,8 +32,15 @@
   voice call sammen under møtene/arbeidstimer. Utenfor møter/arbeidstimer sender vi meldinger på discord
   i gruppechatten om spørsmål, oppfølging eller generell diskusjon.
   
-- Oppfølging av sist retrospektiv forbedringspunkt. 
-Utdyping av rollebeskrivelser  
+- Oppfølging av sist retrospektiv forbedringspunkt:
+  - Utdyping av rollebeskrivelser, som nevnet tidligere har vi bestemt oss for å holde 
+  de tildelte rollene for struktur slev om disse er veldig felksibel.
+  - Forbedre commits, vi har vert veldig fornøyd med commits med tanken på commit meldinger og å ungå merge-conflict.
+  Fordelig av commits er fremdeles relativt ujevnt grunnet bruk av CodeWithMe og generell sammarbeid som fører til at en commit kan inneholde arbeid av flere medlem.
+  Dette er vanskelig å ungå og vi foretrekker å holde godt sammarbeid over balanserte commits. 
+  Vi kan gi credit for arbeid på andre måter og balansen av commits kan lett forklares.
+  - Bruk av project board, vi har blitt bedre med bruken av project board i forhold til arbeidsfordeling, men vi kan 
+  bli berde på å holde det oppdatert utover sprinten.
 - Retrospektiv 
 
 ### Deloppgave 2: Krav 
@@ -99,6 +106,36 @@ Akseptansekriterier:
   - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
 - Gitt at brukeren trykker på “Exit” skal:
   - Spillet avsluttes.
+
+Debug mode client/server
+- Brukerhistorie:
+  - Som tester vil jeg ha en effektiv og enkel måte å teste spillfunksjoner manuelt på.
+- Arbeidsoppgaver:
+  - Lage en funksjon i klassen “GameLogic”som lar spilleren velge kort uten rng. Deretter, erstatt den vanlige kort velge funksjonen med denne.
+- Akseptansekrav:
+- Gitt at debug mode er valgt skal:
+  - Man kunne bevege seg fritt for å kunne teste mer effektivt.
+
+
+Single step
+- Brukerhistorie:
+  - Som tester vil jeg kunne bevege meg steg-for-steg for mer effektiv testing av programmet.
+- Arbeidsoppgaver:
+  - Lag ny funksjoner i GameLogic som lar spilleren bevege seg en handling av gangen. Lage en ny klasse “RenderTesting” som arver fra “RenderServer” og lag nye funksjoner for simulateRound() og keyUp() som kaller på de nye funksjonene i GameLogic.
+- Akseptansekrav:
+  - Gitt at bruker starter single-step modus skal:
+    - Bruker kunne bevege seg med piltastene steg-for-steg for å teste funksjoner i spillet.  
+    - Bruker kunne bevege seg med ett og ett kort for å teste funksjoner i spillet.
+
+Round-based
+- Brukerhistorie:
+  - Som tester vil jeg kunne bevege meg og gjennomføre handlingene i en rundebasert modus.
+- Arbeidsoppgaver:
+  - Lag ny funksjoner i GameLogic som lar spilleren velge n handlinger før den starter runden. Lage en ny klasse “RenderTesting” som arver fra “RenderServer” og lag nye funksjoner for simulateRound() og keyUp() som kaller på de nye funksjonen i GameLogic.
+- Akseptansekrav:
+  - Gitt at bruker starter round-based modus skal:
+  - Bruker kunne gjøre fem handlinger før de gjennomføres for å teste funksjoner i spillet mens ett runde-system er aktivt.
+
 
 
 
