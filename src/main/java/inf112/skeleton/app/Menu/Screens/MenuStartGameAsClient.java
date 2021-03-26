@@ -107,7 +107,7 @@ public class MenuStartGameAsClient implements Screen {
         ipAdress.setWidth(Gdx.graphics.getWidth()/2);
         ipAdress.setPosition(Gdx.graphics.getWidth()/2-ipAdress.getWidth()/2,Gdx.graphics.getHeight()/2-ipAdress.getHeight()/2);
 
-        ip = ipAdress.getText();
+        this.ip = ipAdress.getText();
         stage.addActor(ipAdress);
         Gdx.input.setInputProcessor(stage);
     }
