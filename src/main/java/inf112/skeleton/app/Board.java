@@ -136,8 +136,8 @@ public class Board {
 
     public void updateBoard(Player player){
         this.player = player;
-
         // Do something depending on what tile the player is on
+
         // Game order:
         // 1. Player action
         updatePlayer();
@@ -151,7 +151,7 @@ public class Board {
 
         // 4. Rest of board elements
         checkFixer();
-        checkExtraLife();
+        //checkExtraLife();
         checkLoseLifeIfNoHP();
         checkForCheckPoints();
         checkIfPlayerLost();
@@ -272,6 +272,7 @@ public class Board {
     }
 
     private void checkExtraLife(){
+        //Cell extraLife = extraLifeLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
         Cell extraLife = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
         if (extraLife != null){
             player.setLife(player.getLife() + 1);

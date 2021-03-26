@@ -112,6 +112,7 @@ public class MenuStartGameAsServer implements Screen {
         debugMode.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                Main.debugmode = true;
                 Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
                 cfg.setTitle("RobotRally");
                 cfg.setWindowedMode(Main.finalWidth, Main.finalHeight);

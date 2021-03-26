@@ -67,7 +67,7 @@ public class GameLogic {
         }
         if (player1.pickedCards.size()==nCards) {
             sendCardsToOtherPlayer();
-            savedCards= (ArrayList<Enum>) player1.getCurrentCards().clone();
+            savedCards = (ArrayList<Enum>) player1.getCurrentCards().clone();
             readyTurn = true;
         }
         if (readyTurn){
@@ -81,7 +81,7 @@ public class GameLogic {
         if (player1.getCurrentCards().size()==nCards) {
             sendCardsToOtherPlayer();
             getCardsFromOtherPlayer();
-            savedCards= (ArrayList<Enum>) player1.getCurrentCards().clone();
+            savedCards = (ArrayList<Enum>) player1.getCurrentCards().clone();
             readyTurn = true;
         }
         if (readyTurn){
@@ -94,9 +94,7 @@ public class GameLogic {
             pickCards();
         }
         if (player1.getCurrentCards().size()==nCards) {
-            savedCards= (ArrayList<Enum>) player1.getCurrentCards().clone();
-            System.out.println(player1.getCurrentCards());
-            System.out.println(savedCards);
+            savedCards = (ArrayList<Enum>) player1.getCurrentCards().clone();
             readyTurn = true;
         }
         if (readyTurn){
@@ -119,8 +117,6 @@ public class GameLogic {
 
     private void lockCardsBasedOnHP(Player player){
         int diffHP = player.getMaxHP() - player.getCurrentHP();
-        System.out.println(nCards);
-        System.out.println(savedCards);
         for (int i=0; i<diffHP; i++){
             startCards.add(savedCards.get(i));
         }
@@ -171,7 +167,7 @@ public class GameLogic {
     }
 
     public void selectCardsFromKeyboardInput(int keyCode) {
-        if (!Main.debugmode)
+        if (Main.debugmode)
             player1.getCurrentCards().add(debugMovement(keyCode));
         else {
             if (player1.getCurrentCards().size() < nCards && !readyTurn) {
