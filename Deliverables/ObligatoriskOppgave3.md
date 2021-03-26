@@ -103,3 +103,11 @@ Akseptansekriterier:
 
 
 ### Deloppgave 3: Produktleveranse og kodekvalitet 
+
+
+
+### Credits
+- Ressurser for utseendet av menyen er ikke laget selv. 
+- GlassyUI:
+  - Created by Raymond "Raeleus" Buckley 
+  - Visit ray3k.wordpress.com for games, tutorials, and much more!
