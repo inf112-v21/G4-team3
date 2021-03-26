@@ -138,9 +138,9 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     }
 
     public void simulateRound(){
-        n++;
-        if (n>4) {
-            n=0;
+        //n++;
+        //if (n>4) {
+            //n=0;
             try {
                 gameLogic.doRound();
                 cardsToPickFrom = gameLogic.cardsToPickFrom;
@@ -151,7 +151,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        //}
     }
 
     public void checkWinCondition() {

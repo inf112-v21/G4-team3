@@ -155,9 +155,6 @@ public class Board {
         checkLoseLifeIfNoHP();
         checkForCheckPoints();
         checkIfPlayerLost();
-
-        System.out.println("Current HP: "+player.getCurrentHP());
-        System.out.println("Lives: "+player.getLife());
     }
 
     public int getRotation(){

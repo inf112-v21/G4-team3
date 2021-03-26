@@ -69,66 +69,90 @@
 
 #### Brukerhistorier
 Transportbånd
-Brukerhistorie:
-- Som spiller skal brikken min bevege seg i retningen pilen på transportbåndet peker. Bevegelsen skal skje etter brikken har gjort en handling.
-  Arbeidsoppgave:
-- Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på et transportbånd, hvilken retning transportbåndet peker og flytter spilleren i retningen til transportbåndet.
-  Akseptansekriterier:
-- Gitt at spilleren står på et transportbånd så skal:
-  - Spilleren bli flyttet en rute i retningen til transportbåndet.
+- Brukerhistorie:
+  - Som spiller skal brikken min bevege seg i retningen pilen på transportbåndet peker. Bevegelsen skal skje etter brikken har gjort en handling.
+- Arbeidsoppgave:
+  - Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på et transportbånd, hvilken retning transportbåndet peker og flytter spilleren i retningen til transportbåndet.
+- Akseptansekriterier:
+  - Gitt at spilleren står på et transportbånd så skal:
+    - Spilleren bli flyttet en rute i retningen til transportbåndet.
+
+Health Points
+- Brukerhistorie:
+  - Som spiller skal roboten min ha HP.
+- Arbeidsoppgave:
+  - Legge inn variabler i «Player» klassen som lagrer nåværende HP og maksimum HP.
+- Akseptansekriterier:
+  - Gitt at spilleren starter et spill:
+    - Spilleren skal ha maks HP
+  - Gitt at spilleren mister et liv:
+    - Spilleren skal starte med maks HP
+
+Liv 
+- Brukerhistorie:
+  - Som spiller skal roboten min ha liv.
+- Arbeidsoppgave:
+  - Legge inn variable i «Player» klassen som lagrer nåværende mengde liv.
+- Akseptansekriterier:
+  - Gitt at spilleren starter et spill:
+    i. Spilleren skal ha n liv
+  - Gitt at spilleren har null HP:
+    - Spilleren skal miste ett liv
+    - Spilleren skal bli flyttet til sitt check point
+
 
 Fikser rute
-Brukerhistorie:
-- Som spiller skal roboten min få sine livspoeng satt til det den originalt starter med (maks liv), når den beveger seg på en rute med en fikser.
-  Arbeidsoppgave:
-- Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på en fikser og setter livet til spilleren til den originalt startet med.
-  Akseptansekriterier:
-- Gitt at spilleren står på en fikser så skal:
-  - Spilleren få satt sine livspoeng til det den starter med.
+- Brukerhistorie:
+  - Som spiller skal roboten min få sine livspoeng satt til det den originalt starter med (maks liv), når den beveger seg på en rute med en fikser.
+- Arbeidsoppgave:
+  - Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på en fikser og setter livet til spilleren til den originalt startet med.
+- Akseptansekriterier:
+  - Gitt at spilleren står på en fikser så skal:
+    - Spilleren få satt sine livspoeng til det den starter med.
 
 Laser
-Brukerhistorie:
-- Som spiller skal roboten min miste et liv når den avslutter en fase på rute med en laser.
-  Arbeidsoppgave:
-- Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på en laser rute og redusere livspoenget til spilleren med 1 poeng.
-  Akseptansekriterier:
-- Gitt at spilleren avslutter en fase på står på en laser rute så skal:
-  - Spilleren miste et livspoeng
+- Brukerhistorie:
+  - Som spiller skal roboten min miste et liv når den avslutter en fase på rute med en laser.
+- Arbeidsoppgave:
+  - Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på en laser rute og redusere livspoenget til spilleren med 1 poeng.
+- Akseptansekriterier:
+  - Gitt at spilleren avslutter en fase på står på en laser rute så skal:
+    - Spilleren miste et livspoeng
 
 Flag
-Brukerhistorie:
-- Som spiller skal roboten min få et checkpoint når den har besøkt et flagg i riktig rekkefølge. I tillegg, hvis roboten min er først til å besøke alle flagg i riktig rekkefølge skal roboten min vinne spillet.
-  Arbeidsoppgave:
-- Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på et flagg, og hvor i rekkefølgen dette flagget ligger, og deretter setter nytt checkpoint til spilleren og lar spilleren vinne hvis den har besøkt alle flaggene.
-  Akseptansekriterier:
-- Gitt at spilleren besøker neste flagg i rekkefølgen:
-  - Få et nytt checkpoint
-  - La spilleren få besøke neste flagg
-- Gitt at spilleren besøker et flagg som ikke er neste i rekkefølgen:
-  - Ingen ting skal skje
-- Gitt at spilleren besøker det siste flagget i rekkefølgen etter å besøkt de før i riktig rekkefølge:
-  - Spilleren skal vinne
+- Brukerhistorie:
+  - Som spiller skal roboten min få et checkpoint når den har besøkt et flagg i riktig rekkefølge. I tillegg, hvis roboten min er først til å besøke alle flagg i riktig rekkefølge skal roboten min vinne spillet.
+- Arbeidsoppgave:
+  - Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på et flagg, og hvor i rekkefølgen dette flagget ligger, og deretter setter nytt checkpoint til spilleren og lar spilleren vinne hvis den har besøkt alle flaggene.
+- Akseptansekriterier:
+  - Gitt at spilleren besøker neste flagg i rekkefølgen:
+    - Få et nytt checkpoint
+    - La spilleren få besøke neste flagg
+  - Gitt at spilleren besøker et flagg som ikke er neste i rekkefølgen:
+    - Ingen ting skal skje
+  - Gitt at spilleren besøker det siste flagget i rekkefølgen etter å besøkt de før i riktig rekkefølge:
+    - Spilleren skal vinne
 
 Spill meny
-Brukerhistorie:
-Som spiller vil jeg ha en intuitiv måte å kjøre spillet på og kunne lett navigere gjennom de forskjellige valgmuligheter som påvirker hvilken modus spillet kjører i. Dette skal bli representert grafisk som en spillmeny.
-Arbeidsoppgave:
-- Lage en klasse for hver skjerm og en som samler de og implementere grafikk i hver klasse for så å koble sammen koden fra Main og kunne kjøre spillet kun gjennom menyen.
-Akseptansekriterier:
-- Gitt at brukeren trykker på “Play as client” skal:
-  - Brukeren tas videre til en ny skjerm hvor de kan skrive inn ip-adresse og så starte spillet.
-  - Brukeren kunne starte spillet i debug mode.
-  - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
-- Gitt at brukeren trykker på ”Play as server” skal:
-  - Brukeren kunne starte spillet gjennom “Start”-knappen og vente på at den på klient-siden skal koble seg på.
-  - Brukeren kunne starte spillet i debug mode.
-  - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
-- Gitt at brukeren trykker på “Test game” skal:
-  - Brukeren kunne starte og teste spillet gjennom å trykke på “Single-step” metoden.
-  - Brukeren kunne starte og teste spillet gjennom å trykke på “Round-based” metoden.
-  - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
-- Gitt at brukeren trykker på “Exit” skal:
-  - Spillet avsluttes.
+- Brukerhistorie:
+  - Som spiller vil jeg ha en intuitiv måte å kjøre spillet på og kunne lett navigere gjennom de forskjellige valgmuligheter som påvirker hvilken modus spillet kjører i. Dette skal bli representert grafisk som en spillmeny.
+- Arbeidsoppgave:
+  - Lage en klasse for hver skjerm og en som samler de og implementere grafikk i hver klasse for så å koble sammen koden fra Main og kunne kjøre spillet kun gjennom menyen.
+- Akseptansekriterier:
+  - Gitt at brukeren trykker på “Play as client” skal:
+    - Brukeren tas videre til en ny skjerm hvor de kan skrive inn ip-adresse og så starte spillet.
+    - Brukeren kunne starte spillet i debug mode.
+    - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
+  - Gitt at brukeren trykker på ”Play as server” skal:
+    - Brukeren kunne starte spillet gjennom “Start”-knappen og vente på at den på klient-siden skal koble seg på.
+    - Brukeren kunne starte spillet i debug mode.
+    - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
+  - Gitt at brukeren trykker på “Test game” skal:
+    - Brukeren kunne starte og teste spillet gjennom å trykke på “Single-step” metoden.
+    - Brukeren kunne starte og teste spillet gjennom å trykke på “Round-based” metoden.
+    - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
+  - Gitt at brukeren trykker på “Exit” skal:
+    - Spillet avsluttes.
 
 Debug mode client/server
 - Brukerhistorie:
@@ -138,8 +162,7 @@ Debug mode client/server
 - Akseptansekrav:
 - Gitt at debug mode er valgt skal:
   - Man kunne bevege seg fritt for å kunne teste mer effektivt.
-
-
+  
 Single step
 - Brukerhistorie:
   - Som tester vil jeg kunne bevege meg steg-for-steg for mer effektiv testing av programmet.
