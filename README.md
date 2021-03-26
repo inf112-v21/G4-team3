@@ -46,7 +46,8 @@
 - "Play as client":
 Spill sammen på to datamaskiner eller på to instanser av IDE’en på en datamaskin. Klienten må vente med å starte før serveren er satt opp.
 For å spille på en datamaskin må 127.0.0.1 brukes som IP adresse.
-For å spille på to maskiner må IP adresse til serveren skrives inn. Du kan finne din IP adresse her: https://www.med.unc.edu/it/guide/operating-systems/how-do-i-find-the-host-name-ip-address-or-physical-address-of-my-machine/.
+For å spille på to maskiner må IP adresse til serveren skrives inn. Du kan finne din IP adresse her:https://vitux.com/how-to-find-your-ip-address-in-linux/
+  https://www.avast.com/c-how-to-find-ip-address?v=b
 
 
 - "Play as client" med debug:
