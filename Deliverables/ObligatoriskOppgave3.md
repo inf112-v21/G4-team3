@@ -52,7 +52,7 @@ Brukerhistorie:
 - Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på et transportbånd, hvilken retning transportbåndet peker og flytter spilleren i retningen til transportbåndet.
   Akseptansekriterier:
 - Gitt at spilleren står på et transportbånd så skal:
-  i. Spilleren bli flyttet en rute i retningen til transportbåndet.
+  - Spilleren bli flyttet en rute i retningen til transportbåndet.
 
 Fikser rute
 Brukerhistorie:
@@ -61,7 +61,7 @@ Brukerhistorie:
 - Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på en fikser og setter livet til spilleren til den originalt startet med.
   Akseptansekriterier:
 - Gitt at spilleren står på en fikser så skal:
-  i. Spilleren få satt sine livspoeng til det den starter med.
+  - Spilleren få satt sine livspoeng til det den starter med.
 
 Laser
 Brukerhistorie:
@@ -70,7 +70,7 @@ Brukerhistorie:
 - Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på en laser rute og redusere livspoenget til spilleren med 1 poeng.
   Akseptansekriterier:
 - Gitt at spilleren avslutter en fase på står på en laser rute så skal:
-  i. Spilleren miste et livspoeng
+  - Spilleren miste et livspoeng
 
 Flag
 Brukerhistorie:
@@ -79,12 +79,12 @@ Brukerhistorie:
 - Legge inn en funksjon i «Board» klassen som sjekker om spilleren står på et flagg, og hvor i rekkefølgen dette flagget ligger, og deretter setter nytt checkpoint til spilleren og lar spilleren vinne hvis den har besøkt alle flaggene.
   Akseptansekriterier:
 - Gitt at spilleren besøker neste flagg i rekkefølgen:
-  i. Få et nytt checkpoint
-  ii. La spilleren få besøke neste flagg
+  - Få et nytt checkpoint
+  - La spilleren få besøke neste flagg
 - Gitt at spilleren besøker et flagg som ikke er neste i rekkefølgen:
-  i. Ingen ting skal skje
+  - Ingen ting skal skje
 - Gitt at spilleren besøker det siste flagget i rekkefølgen etter å besøkt de før i riktig rekkefølge:
-  i. Spilleren skal vinne
+  - Spilleren skal vinne
 
 Spill meny
 Brukerhistorie:
@@ -93,20 +93,28 @@ Arbeidsoppgave:
 - Lage en klasse for hver skjerm og en som samler de og implementere grafikk i hver klasse for så å koble sammen koden fra Main og kunne kjøre spillet kun gjennom menyen.
 Akseptansekriterier:
 - Gitt at brukeren trykker på “Play as client” skal:
-i. Brukeren tas videre til en ny skjerm hvor de kan skrive inn ip-adresse og så starte spillet.
-ii. Brukeren kunne starte spillet i debug mode.
-iii. Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
+  - Brukeren tas videre til en ny skjerm hvor de kan skrive inn ip-adresse og så starte spillet.
+  - Brukeren kunne starte spillet i debug mode.
+  - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
 - Gitt at brukeren trykker på ”Play as server” skal:
-i. Brukeren kunne starte spillet gjennom “Start”-knappen og vente på at den på klient-siden skal koble seg på.
-ii. Brukeren kunne starte spillet i debug mode.
-iii. Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
+  - Brukeren kunne starte spillet gjennom “Start”-knappen og vente på at den på klient-siden skal koble seg på.
+  - Brukeren kunne starte spillet i debug mode.
+  - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
 - Gitt at brukeren trykker på “Test game” skal:
-i. Brukeren kunne starte og teste spillet gjennom å trykke på “Single-step” metoden.
-ii. Brukeren kunne starte og teste spillet gjennom å trykke på “Round-based” metoden.
-iii. Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
+  - Brukeren kunne starte og teste spillet gjennom å trykke på “Single-step” metoden.
+  - Brukeren kunne starte og teste spillet gjennom å trykke på “Round-based” metoden.
+  - Brukeren kunne trykke på “Back” og tas tilbake til hovedmenyen.
 - Gitt at brukeren trykker på “Exit” skal:
-i. Spillet avsluttes.
+  - Spillet avsluttes.
 
 
 
 ### Deloppgave 3: Produktleveranse og kodekvalitet 
+
+
+
+### Credits
+- Ressurser for utseendet av menyen er ikke laget selv. 
+- GlassyUI:
+  - Created by Raymond "Raeleus" Buckley 
+  - Visit ray3k.wordpress.com for games, tutorials, and much more!

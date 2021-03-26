@@ -1,28 +1,21 @@
 package inf112.skeleton.app.Menu.Screens;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import inf112.skeleton.app.Main;
 import inf112.skeleton.app.Menu.GameMenu;
-import inf112.skeleton.app.RenderClient;
-import inf112.skeleton.app.RenderSinglePlayer;
+import inf112.skeleton.app.RenderTesting;
 
 public class MenuTestAsSingleplayer implements Screen {
 
@@ -95,7 +88,9 @@ public class MenuTestAsSingleplayer implements Screen {
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
                 Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
                 cfg.setTitle("RobotRally");
-                new Lwjgl3Application(new RenderSinglePlayer(), cfg);
+                cfg.setWindowedMode(Main.finalWidth, Main.finalHeight);
+                Main.debugmode = true;
+                new Lwjgl3Application(new RenderTesting(), cfg);
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
@@ -112,7 +107,10 @@ public class MenuTestAsSingleplayer implements Screen {
         roundBased.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                game.setScreen(new MenuStartGameAsServer(aGame));
+                Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+                cfg.setTitle("RobotRally");
+                cfg.setWindowedMode(Main.finalWidth, Main.finalHeight);
+                new Lwjgl3Application(new RenderTesting(), cfg);
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
