@@ -132,7 +132,16 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
         renderer.render();
         simulateRound();
+
         showCardsOnScreen();
+
+        if (!gameLogic.pickingCards && !pause || Main.debugmode) {
+            showCardsOnScreen();
+        }
+        showHPandLive(player1, 1);
+        if(!(Main.mode == 3))
+            showHPandLive(player2, 2);
+
         checkWinCondition();
     }
 
@@ -196,11 +205,11 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         }
         return true;
     }
-/*
+
     public void showHPandLive(Player player, int i){
         batch.begin();
-        font.getData().setScale(4, 4);
-        font.draw(batch, "Player 1 HP: " + player.getCurrentHP() +"   Live:" + player.getLife() , 20, 125);
+        font.getData().setScale(2, 2);
+        font.draw(batch, "Player"+ (i) + " HP: " + player.getCurrentHP() +"   Live:" + player.getLife() , 20 + ((i-1) *400), 150);
         batch.end();
-    }*/
+    }
 }

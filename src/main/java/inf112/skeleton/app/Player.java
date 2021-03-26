@@ -152,28 +152,49 @@ public class Player {
     }
 
     public void relocation(Enum ChosenMovement){
-        int move = 0;
+
         if (ChosenMovement == CardMovement.Movement.MOVE1) {
-            move = 1;
+            move1();
         } else if (ChosenMovement == CardMovement.Movement.MOVE2) {
-            move = 2;
+            move1();
+            move1();
         } else if (ChosenMovement == CardMovement.Movement.MOVE3) {
-            move = 3;
+            move1();
+            move1();
+            move1();
         } else if (ChosenMovement == CardMovement.Movement.BACKUP) {
-            move = -1;
+            moveBack1();
         }
 
-        if(dir == 0){
-            playerPos.y = playerPos.y + move;
+    }
+    public void move1(){
+        Board board = new Board();
+        if(dir == 0 && board.canGo(this)){
+            playerPos.y = playerPos.y + 1;
         }
-        else if(dir == 90){
-            playerPos.x = playerPos.x + move;
+        else if(dir == 90 && board.canGo(this)){
+            playerPos.x = playerPos.x + 1;
         }
-        else if(dir == 180){
-            playerPos.y = playerPos.y - move;
+        else if(dir == 180 && board.canGo(this)){
+            playerPos.y = playerPos.y - 1;
         }
-        else if(dir == 270){
-            playerPos.x = playerPos.x - move;
+        else if(dir == 270 && board.canGo(this)){
+            playerPos.x = playerPos.x - 1;
+        }
+    }
+    public void moveBack1(){
+        Board board = new Board();
+        if(dir == 0 && board.canGo(this)){
+            playerPos.y = playerPos.y - 1;
+        }
+        else if(dir == 90 && board.canGo(this)){
+            playerPos.x = playerPos.x - 1;
+        }
+        else if(dir == 180 && board.canGo(this)){
+            playerPos.y = playerPos.y + 1;
+        }
+        else if(dir == 270 && board.canGo(this)){
+            playerPos.x = playerPos.x + 1;
         }
     }
 }
