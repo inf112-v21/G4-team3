@@ -187,8 +187,9 @@ Round-based
 - Applikasjonsvinduet «fryser» mens den andre spilleren velger kort. Ikke noe problem egentlig.
 - Hvis en trykker på et tall på tastaturet høyere enn det er tilgjengelige kort krasjer programmet. For eksempel, det er 8 kort å velge mellom og brukeren trykker på 9.
 - Godtar feil input men setter verdi til null. (Et valg utenfor 1-9)
-- Knapper i GUI mister posisjon avhenging av operativsystem eller skjermstørrelse.
-- Multiplayer fungerer ikke for øyeblikket mellom .
+- Knapper i GUI mister posisjon avhenging av operativsystem.
+- I runde baserte moduser (Klient/Server, Test game: Round-based) vil kort velge systemet tulle hvis det blir valgt kort for fort.
+- Noen ganger oppdateres ikke teksten på skjermen før første fase i neste runde.
 
 ### Deloppgave 3: Produktleveranse og kodekvalitet
 
@@ -198,88 +199,115 @@ Round-based
   - Created by Raymond "Raeleus" Buckley 
   - Visit ray3k.wordpress.com for games, tutorials, and much more!
 
-##Meetingminutes
+## Meetingminutes
 
 ### Mandag 08.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 ### Sprint-planlegging møte på Discord 12-13
 - Fordeling av arbeidsoppgaver:
-  - 
+  - Skrive brukerhistorier for det vi vil implementere iløpet av sprint.
+  
 
 ### Onsdag 10.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 ### Discord Møte - oppfølging av utdelte arbeidsopppgaver 12-12:15
 - Konklusjon:
-  - 
+  - Brukerhistorie for testmodus
+  - Brukerhistorie for hp
 - Gjenstående:
-  - 
+  - Implementasjon av brukerhistoriene
 
 ### Discord gruppetime fellesarbeid - med tilgang til TA. 12:15-14
 - Konklusjon:
-  - 
+  - Fullført testmodus
 
 ### Fredag 12.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 ### Discord møte - Sprint review og retrospektiv
--Scrum review konklusjon:
-- Fullførte oppsatte arbeidsoppgaver.
-- 
+- Scrum review konklusjon:
+  - Ferdig med implementasjon av testmodus
+  - Ferdig med brukerhistorie
+  - Ferdig med implementasjon med hp
 - Scrum review retrospektiv konklusjon:
-  -
+  - Sette opp flere oppgpaver for medlemmene for neste uke
 
 ### Mandag 15.03.2021
 ### Deltakere: Eivind, Sigurd, Malte(Daan manglet grunnet annet obligatorisk oppmøte)
 ### Discord møte - Sprint-planlegging 12-13
 - Sprint planning: 
+  - Brukerhistorie for liv
+  - Brukerhistorie for fikser rute
+  - Brukerhistorie for laser
+  - Implementasjona av brukerhistoriene
 - Fordeling av arbeidsoppgaver:
-  - 
+  - Liv: Eivind
+  - fikser rute : Daan
+  - Brukerhistorie for laser: Malte, Sigurd
+  - Implementasjon av brukerhistoriene: (alle)
 
 ### Onsdag 17.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 ### Discord møte - Oppfølging av utdelte arbeidsoppgaver 12-12:15
 - Konklusjon:
-  - 
+  - Ferdig med brukerhistorier
+  - Implementert HP
 - Gjenstående:
-  - 
+  - Implementere resterende brukerhistorier
 
 ### Discord gruppetime fellesarbeid - med tilgang til TA 12:15-14
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 - Konklusjon:
-  - 
+  - Mangler å lage tester for laser, transportbånd og flagg.
 
 ### Fredag 19.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 ### Discord møte - Sprint review og retrospektiv
 - Sprint review konklusjon:
-  - 
+  - Ferdig med tester for laser, transportbånd og flagg.
+  - Oppdatere project board
 -Sprint retrospektiv konklusjon:
-  - 
+  - Sette opp arbeidsoppgaver på mandagen
+  - God arbeidsmengde hittil.
 
 ### Mandag 22.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 ### Discord møte - Sprint-planlegging 12-13
 - Sprint planlegging:
-  - 
+  - Implementere laser
+  - Implementere transportbånd
+  - Implementere flagg
+  - Legge til GUI
+  
 - Arbeidsfordeling:
-  - 
+  - Laser - Eivind
+  - Transportbånd - Malte
+  - Flagg - Daan
+  - GUI - Sigurd
 
 ### Onsdag 24.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 ### Discord møte - oppfølging av arbeid.
 - Konklusjon:
-  - 
+  - Må fikse noen små bugs med transportbånd og flagg
+  - Litt igjen på GUI
 - Gjenstående:
-  - 
+  - Implementere ferdig laser
+  - Fikse finpuss GUI
 
 ### Discord gruppetime fellesarbeid - med tilgang til TA 12:15-14
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 - Konklusjon:
-  - 
+  - Fant et problem med å kjøre programmet på ulike datamaskiner
+  - Fikset problemet litt senere
 
 ### Fredag 26.03.2021
 ### Deltakere: Daan, Eivind, Sigurd, Malte
 ### Discord møte - Sprint review og retrospektiv
 - Sprint review konklusjon:
-  -
+  - Sett gjennom ukens arbeid
 -Sprint retrospektiv konklusjon:
-  - 
+    - Fikk gjort mye denne uken
+    - Alt ser bra ut
+
+### Project Board
+![projectboard.png](projectboard.png)

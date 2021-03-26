@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class RenderClient extends RenderServer {
 
-    public static String hostIP;
+    public String hostIP;
 
     public RenderClient(String hostIP) {
         this.hostIP = hostIP;
@@ -19,7 +19,7 @@ public class RenderClient extends RenderServer {
         player2 = temp;
 
         try {
-            connection.setUpClient();
+            connection.setUpClient(hostIP);
         } catch (IOException e) {
             e.printStackTrace();
         }

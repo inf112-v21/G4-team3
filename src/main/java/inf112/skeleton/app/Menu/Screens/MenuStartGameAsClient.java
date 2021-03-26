@@ -21,7 +21,8 @@ import inf112.skeleton.app.RenderClient;
 public class MenuStartGameAsClient implements Screen {
     private Stage stage;
     private Game game;
-    public static String ip;
+    public String ip;
+    public TextField ipField;
 
     MenuStartGameAsClient(Game aGame) {
         game = aGame;
@@ -35,6 +36,7 @@ public class MenuStartGameAsClient implements Screen {
         startButton();
         debugButton();
         backButton(aGame);
+
     }
 
     @Override
@@ -106,8 +108,7 @@ public class MenuStartGameAsClient implements Screen {
         TextField ipAdress = new TextField("",GameMenu.gameSkin);
         ipAdress.setWidth(Gdx.graphics.getWidth()/2);
         ipAdress.setPosition(Gdx.graphics.getWidth()/2-ipAdress.getWidth()/2,Gdx.graphics.getHeight()/2-ipAdress.getHeight()/2);
-
-        this.ip = ipAdress.getText();
+        ipField = ipAdress;
         stage.addActor(ipAdress);
         Gdx.input.setInputProcessor(stage);
     }
@@ -119,6 +120,7 @@ public class MenuStartGameAsClient implements Screen {
         startClient.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                ip = ipField.getText();
                 Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
                 cfg.setTitle("RobotRally");
                 cfg.setWindowedMode(Main.finalWidth, Main.finalHeight);
@@ -139,6 +141,7 @@ public class MenuStartGameAsClient implements Screen {
         debugMode.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
+                ip = ipField.getText();
                 Main.debugmode = true;
                 Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
                 cfg.setTitle("RobotRally");
