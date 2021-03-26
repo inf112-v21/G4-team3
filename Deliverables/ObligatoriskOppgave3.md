@@ -32,8 +32,15 @@
   voice call sammen under møtene/arbeidstimer. Utenfor møter/arbeidstimer sender vi meldinger på discord
   i gruppechatten om spørsmål, oppfølging eller generell diskusjon.
   
-- Oppfølging av sist retrospektiv forbedringspunkt. 
-Utdyping av rollebeskrivelser  
+- Oppfølging av sist retrospektiv forbedringspunkt:
+  - Utdyping av rollebeskrivelser, som nevnet tidligere har vi bestemt oss for å holde 
+  de tildelte rollene for struktur slev om disse er veldig felksibel.
+  - Forbedre commits, vi har vert veldig fornøyd med commits med tanken på commit meldinger og å ungå merge-conflict.
+  Fordelig av commits er fremdeles relativt ujevnt grunnet bruk av CodeWithMe og generell sammarbeid som fører til at en commit kan inneholde arbeid av flere medlem.
+  Dette er vanskelig å ungå og vi foretrekker å holde godt sammarbeid over balanserte commits. 
+  Vi kan gi credit for arbeid på andre måter og balansen av commits kan lett forklares.
+  - Bruk av project board, vi har blitt bedre med bruken av project board i forhold til arbeidsfordeling, men vi kan 
+  bli berde på å holde det oppdatert utover sprinten.
 - Retrospektiv 
 
 ### Deloppgave 2: Krav 
