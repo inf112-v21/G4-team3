@@ -27,9 +27,6 @@ public class Player {
     public ArrayList<Vector2> visitedCheckPoints = new ArrayList<>();
     public ArrayList<Enum> pickedCards = new ArrayList<>();
 
-    // How many cards each player can pick (based on player health)
-    public int nCards = 5;
-
     public Player(Vector2 pos, int dir, String texture){
         this.playerPos = pos;
         this.checkPoint = new Vector2(pos.x,pos.y);
@@ -79,10 +76,6 @@ public class Player {
 
     public Vector2 getCheckPoint(){
         return checkPoint;
-    }
-
-    public void setCheckPoint(Vector2 checkPoint){
-        this.checkPoint = checkPoint;
     }
 
     public Vector2 getPosition(){
