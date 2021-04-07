@@ -105,13 +105,13 @@ public class GameLogic {
     // Do one turn of player actions
     public void turn(Player player, ArrayList<Enum> cards){
         board.deletePlayerTexture(player);
-        player.move(cards.remove(0));
+        player.move(cards.remove(0), board);
         board.updateBoard(player);
     }
 
     public void moveAndUpdate(Player player, int keyCode){
         board.deletePlayerTexture(player);
-        player.move(debugMovement(keyCode));
+        player.move(debugMovement(keyCode), board);
         board.updateBoard(player);
     }
 

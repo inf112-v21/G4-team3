@@ -139,7 +139,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         if (!gameLogic.pickingCards && !pause || Main.debugmode) {
             showCardsOnScreen();
         }
-        
+
         showHPandLives(player1);
 
         checkWinCondition();

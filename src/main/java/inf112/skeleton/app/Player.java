@@ -118,13 +118,13 @@ public class Player {
         this.playerPos = new Vector2(x,y);
     }
 
-    public void move(Enum ChosenMovement) {
+    public void move(Enum ChosenMovement, Board board) {
 
         if(ChosenMovement == CardMovement.Movement.MOVE1
                 || ChosenMovement == CardMovement.Movement.MOVE2
                 || ChosenMovement == CardMovement.Movement.MOVE3
                 || ChosenMovement == CardMovement.Movement.BACKUP){
-            relocation(ChosenMovement);
+            relocation(ChosenMovement, board);
         }
         else if(ChosenMovement == CardRotation.Rotation.ROTATERIGHT
                 || ChosenMovement == CardRotation.Rotation.ROTATELEFT
@@ -144,24 +144,24 @@ public class Player {
         dir = (dir % 360 + 360) % 360;
     }
 
-    public void relocation(Enum ChosenMovement){
+    public void relocation(Enum ChosenMovement, Board board){
 
         if (ChosenMovement == CardMovement.Movement.MOVE1) {
-            move1();
+            move1(board);
         } else if (ChosenMovement == CardMovement.Movement.MOVE2) {
-            move1();
-            move1();
+            move1(board);
+            move1(board);
         } else if (ChosenMovement == CardMovement.Movement.MOVE3) {
-            move1();
-            move1();
-            move1();
+            move1(board);
+            move1(board);
+            move1(board);
         } else if (ChosenMovement == CardMovement.Movement.BACKUP) {
             moveBack1();
         }
 
     }
-    public void move1(){
-        Board board = new Board();
+
+    public void move1(Board board){
         if(dir == 0 && board.canGo(this)){
             playerPos.y = playerPos.y + 1;
         }
