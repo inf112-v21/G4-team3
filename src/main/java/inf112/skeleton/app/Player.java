@@ -35,10 +35,6 @@ public class Player {
         this.playerTexture = texture;
     }
 
-    public ArrayList<Enum> getCurrentCards(){
-        return pickedCards;
-    }
-
     public void setPlayerState(){
         if(!(playerTexture==null)) {
             // Split player.png into 3 textures
@@ -57,6 +53,11 @@ public class Player {
             playerWonCell = new TiledMapTileLayer.Cell().setTile(playerWonTile);
         }
     }
+
+    public ArrayList<Enum> getCurrentCards(){
+        return pickedCards;
+    }
+
     public void setTexture(String textureName){
         this.playerTexture = textureName;
     }

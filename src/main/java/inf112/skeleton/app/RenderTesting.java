@@ -42,9 +42,9 @@ public class RenderTesting extends RenderServer{
     public boolean keyUp(int keyCode){
         if(!pause) {
             if (!Main.debugmode) {
-                gameLogic.moveAndUpdate(player1, keyCode);
+                gameLogic.moveAndUpdate(player1, keyCode);              // Single step game
             }else{
-                gameLogic.selectCardsFromKeyboardInput(keyCode);
+                gameLogic.selectCardsFromKeyboardInput(keyCode);        // Round based game
             }
         }
         return false;
