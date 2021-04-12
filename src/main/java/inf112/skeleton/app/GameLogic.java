@@ -15,7 +15,7 @@ public class GameLogic {
     public Networking connection;
     public Player player1;
     public Player player2;
-    public Board board;
+    public static Board board;
 
     // How many cards each player can pick
     public int nCards = 5;

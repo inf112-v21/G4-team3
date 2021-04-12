@@ -156,7 +156,7 @@ public class Player {
             move1(board);
             move1(board);
         } else if (ChosenMovement == CardMovement.Movement.BACKUP) {
-            moveBack1();
+            moveBack1(board);
         }
 
     }
@@ -175,18 +175,18 @@ public class Player {
             playerPos.x = playerPos.x - 1;
         }
     }
-    public void moveBack1(){
-        Board board = new Board();
-        if(dir == 0 && board.canGo(this)){
+    public void moveBack1(Board board){
+
+        if(dir == 0 && board.canGoBackwards(this)){
             playerPos.y = playerPos.y - 1;
         }
-        else if(dir == 90 && board.canGo(this)){
+        else if(dir == 90 && board.canGoBackwards(this)){
             playerPos.x = playerPos.x - 1;
         }
-        else if(dir == 180 && board.canGo(this)){
+        else if(dir == 180 && board.canGoBackwards(this)){
             playerPos.y = playerPos.y + 1;
         }
-        else if(dir == 270 && board.canGo(this)){
+        else if(dir == 270 && board.canGoBackwards(this)){
             playerPos.x = playerPos.x + 1;
         }
     }
