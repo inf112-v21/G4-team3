@@ -209,9 +209,11 @@ public class Board {
         }
     }
 
+    // Reset player after death
     private void playerLostLifeActions(){
         deletePlayerTexture(player);
         setRestOfCardsToNull();
+        // Move player to checkpoint
         player.move((int)player.getCheckPoint().x, (int)player.getCheckPoint().y);
         player.setHP(player.getMaxHP());
         player.dir = player.orgDir;
