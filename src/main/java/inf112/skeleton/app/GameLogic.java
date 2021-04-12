@@ -162,11 +162,13 @@ public class GameLogic {
                 } else{
                     card = cardActions(keyCode);
                 }
-                player1.pickedCards.add(card);
-                firstTurn = false;
-                if (Main.debugmode) {
-                    System.out.println("Available cards:");
-                    System.out.println(cardsToPickFrom);
+                if (card != null) {
+                    player1.pickedCards.add(card);
+                    firstTurn = false;
+                    if (Main.debugmode) {
+                        System.out.println("Available cards:");
+                        System.out.println(cardsToPickFrom);
+                    }
                 }
             }
         }
