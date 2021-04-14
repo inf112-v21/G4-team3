@@ -1,5 +1,8 @@
 package inf112.skeleton.app;
 
+import inf112.skeleton.app.Network.Networking;
+import inf112.skeleton.app.Network.WaitThread;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +19,9 @@ public class GameLogic {
     public Player player1;
     public Player player2;
     public static Board board;
-
+    public boolean pause = false;
+    private WaitThread thread1;
+    private boolean startThread = true;
     // How many cards each player can pick
     public int nCards = 5;
     private boolean firstTurn = true;
@@ -26,14 +31,6 @@ public class GameLogic {
         this.player1 = player1;
         this.player2 = player2;
         this.board = board;
-    }
-
-    public void getCardsFromOtherPlayer() throws IOException, ClassNotFoundException {
-        // Wait for client input
-        System.out.println("\n-Wait to receive the other player's cards-");
-        receivedCards = (ArrayList<Enum>) connection.receiveCards();
-        System.out.println("\nYour opponent picked the cards:");
-        System.out.println(receivedCards);
     }
 
     public void sendCardsToOtherPlayer() throws IOException {
@@ -56,34 +53,32 @@ public class GameLogic {
         if (player1.pickedCards.size() == 0) {
             pickingCards = true;
             readyTurn = false;
+            startThread = true;
             lockCardsBasedOnHP(player1);
         }
     }
 
+
     // One round starts with picking cards or powering down, then does five turns
     public void doRound() throws IOException, ClassNotFoundException, InterruptedException {
-        if (pickingCards){
-            getCardsFromOtherPlayer();
-            pickCards();
-        }
-        if (player1.pickedCards.size()==nCards) {
-            sendCardsToOtherPlayer();
-            savedCards = (ArrayList<Enum>) player1.getCurrentCards().clone();
-            readyTurn = true;
-        }
-        if (readyTurn){
-            simulateTurns();
-        }
-    }
-    public void doRoundClient() throws IOException, ClassNotFoundException, InterruptedException {
         if (pickingCards) {
             pickCards();
         }
-        if (player1.getCurrentCards().size()==nCards) {
-            sendCardsToOtherPlayer();
-            getCardsFromOtherPlayer();
-            savedCards = (ArrayList<Enum>) player1.getCurrentCards().clone();
-            readyTurn = true;
+        if (player1.getCurrentCards().size()==nCards && readyTurn == false) {
+
+            // Wait for cards in one thread
+            if(startThread) {
+                thread1 = new WaitThread("thread-1", connection);
+                sendCardsToOtherPlayer();
+                savedCards = (ArrayList<Enum>) player1.getCurrentCards().clone();
+                thread1.start();
+                startThread = false;
+            }
+            receivedCards = thread1.cards;
+            if(receivedCards.size() > 1){
+                System.out.println("Received cards now");
+                readyTurn = true;
+            }
         }
         if (readyTurn){
             simulateTurns();
@@ -114,7 +109,6 @@ public class GameLogic {
         board.deletePlayerTexture(player);
         player.move(debugMovement(keyCode), board);
         board.updateBoard(player);
-        //nPickedCard++;
     }
 
     private void lockCardsBasedOnHP(Player player){

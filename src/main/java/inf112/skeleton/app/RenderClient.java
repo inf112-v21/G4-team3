@@ -17,18 +17,14 @@ public class RenderClient extends RenderServer {
         Player temp = player1;
         player1 = player2;
         player2 = temp;
-
-        try {
-            connection.setUpClient(hostIP);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        connection.connectIP(hostIP, 4001);
+        connection.start();
     }
 
     @Override
     public void simulateRound() {
         try {
-            gameLogic.doRoundClient();
+            gameLogic.doRound();
             cardsToPickFrom = gameLogic.cardsToPickFrom;
         } catch (IOException e) {
             e.printStackTrace();

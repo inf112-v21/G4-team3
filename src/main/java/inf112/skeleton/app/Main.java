@@ -32,5 +32,8 @@ public class Main {
 
         cfg.setWindowedMode(finalWidth, finalHeight);
         new Lwjgl3Application(new GameMenu(), cfg);
+
+        //new Lwjgl3Application(new Server(), cfg);
+        //new Lwjgl3Application(new Server(), cfg);
     }
 }

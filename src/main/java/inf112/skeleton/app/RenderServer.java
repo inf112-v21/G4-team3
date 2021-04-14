@@ -10,9 +10,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.Network.Networking;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 
 public class RenderServer extends InputAdapter implements ApplicationListener {
@@ -35,7 +37,8 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
     private boolean pickingCards = true;
     public ArrayList<Enum> cardsToPickFrom;
-    public Networking connection = new Networking();
+    public Networking server = new Networking("Server");
+    public Networking connection = new Networking("Client");
     public GameLogic gameLogic;
     public Integer n = 0;
 
@@ -74,13 +77,15 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     }
 
     public void setUpGame() {
+        server.start();
+        System.out.println("Server online");
         try {
-            connection.setUpServer();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        connection.connectIP("127.0.0.1", 4000);
+        connection.start();
     }
 
     public void setUpCamera(){
@@ -131,35 +136,29 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         renderer.render();
-        simulateRound();
-
+        pause = gameLogic.pause;
+        if (pause == false){
+            simulateRound();
+        }
         showCardsOnScreen();
-
-
         if (!gameLogic.pickingCards && !pause || Main.debugmode) {
             showCardsOnScreen();
         }
-
         showHPandLives(player1);
-
         checkWinCondition();
     }
 
     public void simulateRound(){
-        //n++;
-        //if (n>4) {
-            //n=0;
-            try {
-                gameLogic.doRound();
-                cardsToPickFrom = gameLogic.cardsToPickFrom;
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        //}
+        try {
+            gameLogic.doRound();
+            cardsToPickFrom = gameLogic.cardsToPickFrom;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void checkWinCondition() {
@@ -215,4 +214,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         font.draw(batch, "Lives:" + player.getLife(), 900, 50);
         batch.end();
     }
+
+
 }
