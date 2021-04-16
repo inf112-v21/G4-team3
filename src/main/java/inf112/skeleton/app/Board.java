@@ -337,7 +337,6 @@ public class Board {
     public boolean canGo(Player player, int dir){
         //int dir = player.dir;
         boolean cango = true;
-        //Vector2 playerpos = player.playerPos;
 
         if(dir == 0){
             Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
@@ -409,8 +408,6 @@ public class Board {
     public boolean canGoBackwards(Player player){
         int dir = player.dir;
         boolean cango = true;
-        //Vector2 playerpos = player.playerPos;
-
         if(dir == 180){
             Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
             Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
@@ -480,7 +477,6 @@ public class Board {
 
     public boolean beltCanGo(int dir){
         boolean cango = true;
-        //Board board = GameLogic.board;
         if(dir == 0){
             Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
             Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
