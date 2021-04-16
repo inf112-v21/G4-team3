@@ -119,6 +119,21 @@ public class Player {
         this.playerPos = new Vector2(x,y);
     }
 
+    public void moveInDir(int dir, int dist, Board board){
+        if(dir == 0 && board.canGo(this, dir)){
+            playerPos.y = playerPos.y + dist;
+        }
+        else if(dir == 90 && board.canGo(this, dir)){
+            playerPos.x = playerPos.x + dist;
+        }
+        else if(dir == 180 && board.canGo(this, dir)){
+            playerPos.y = playerPos.y - dist;
+        }
+        else if(dir == 270 && board.canGo(this, dir)){
+            playerPos.x = playerPos.x - dist;
+        }
+    }
+
     public void move(Enum ChosenMovement, Board board) {
 
         if(ChosenMovement == CardMovement.Movement.MOVE1
@@ -163,16 +178,16 @@ public class Player {
     }
 
     public void move1(Board board){
-        if(dir == 0 && board.canGo(this)){
+        if(dir == 0 && board.canGo(this, dir)){
             playerPos.y = playerPos.y + 1;
         }
-        else if(dir == 90 && board.canGo(this)){
+        else if(dir == 90 && board.canGo(this, dir)){
             playerPos.x = playerPos.x + 1;
         }
-        else if(dir == 180 && board.canGo(this)){
+        else if(dir == 180 && board.canGo(this, dir)){
             playerPos.y = playerPos.y - 1;
         }
-        else if(dir == 270 && board.canGo(this)){
+        else if(dir == 270 && board.canGo(this, dir)){
             playerPos.x = playerPos.x - 1;
         }
     }
@@ -188,6 +203,22 @@ public class Player {
             playerPos.y = playerPos.y + 1;
         }
         else if(dir == 270 && board.canGoBackwards(this)){
+            playerPos.x = playerPos.x + 1;
+        }
+    }
+
+    public void moveBack1(){
+
+        if(dir == 0){
+            playerPos.y = playerPos.y - 1;
+        }
+        else if(dir == 90){
+            playerPos.x = playerPos.x - 1;
+        }
+        else if(dir == 180){
+            playerPos.y = playerPos.y + 1;
+        }
+        else if(dir == 270){
             playerPos.x = playerPos.x + 1;
         }
     }

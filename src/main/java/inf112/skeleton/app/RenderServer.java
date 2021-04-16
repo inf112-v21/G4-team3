@@ -205,7 +205,6 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         return true;
     }
 
-
     public void showHPandLives(Player player) {
         batch.begin();
         font.getData().setScale(2, 2);

@@ -136,6 +136,10 @@ public class Board {
         return checkX && checkY;
     }
 
+    public void setPlayer(Player player){
+        this.player = player;
+    }
+
     public void updateBoard(Player player){
         this.player = player;
         // Do something depending on what tile the player is on
@@ -330,8 +334,8 @@ public class Board {
         player.winCondition = true;
     }
 
-    public boolean canGo(Player player){
-        int dir = player.dir;
+    public boolean canGo(Player player, int dir){
+        //int dir = player.dir;
         boolean cango = true;
         //Vector2 playerpos = player.playerPos;
 
@@ -474,9 +478,9 @@ public class Board {
         return cango;
     }
 
-    private boolean beltCanGo(int dir){
+    public boolean beltCanGo(int dir){
         boolean cango = true;
-        Board board = GameLogic.board;
+        //Board board = GameLogic.board;
         if(dir == 0){
             Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
             Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);

@@ -5,6 +5,7 @@ import inf112.skeleton.app.Network.WaitThread;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class GameLogic {
@@ -18,13 +19,16 @@ public class GameLogic {
     public Networking connection;
     public Player player1;
     public Player player2;
-    public static Board board;
+    public Board board;
     public boolean pause = false;
     private WaitThread thread1;
     private boolean startThread = true;
     // How many cards each player can pick
     public int nCards = 5;
+    private int nTurn = 5;
     private boolean firstTurn = true;
+    public boolean random = true;
+    public boolean wait = true;
 
     public GameLogic(Networking connection, Player player1, Player player2, Board board){
         this.connection = connection;
@@ -39,25 +43,6 @@ public class GameLogic {
         System.out.println("\n-Sending cards-\n");
         connection.sendCards(player1.getCurrentCards());
     }
-
-    public void simulateTurns() throws InterruptedException {
-        // Do turns for the players
-        System.out.println("Doing turn");
-        turn(player1, player1.pickedCards);
-        System.out.println(player1.getCurrentCards());
-        System.out.println(savedCards);
-        if (player2 != null) {
-            turn(player2, receivedCards);
-        }
-        TimeUnit.SECONDS.sleep(1);
-        if (player1.pickedCards.size() == 0) {
-            pickingCards = true;
-            readyTurn = false;
-            startThread = true;
-            lockCardsBasedOnHP(player1);
-        }
-    }
-
 
     // One round starts with picking cards or powering down, then does five turns
     public void doRound() throws IOException, ClassNotFoundException, InterruptedException {
@@ -89,7 +74,7 @@ public class GameLogic {
         if (pickingCards) {
             pickCards();
         }
-        if (player1.getCurrentCards().size()==nCards) {
+        if (player1.getCurrentCards().size()>=nCards) {
             savedCards = (ArrayList<Enum>) player1.getCurrentCards().clone();
             readyTurn = true;
         }
@@ -98,12 +83,61 @@ public class GameLogic {
         }
     }
 
-    // Do one turn of player actions
-    public void turn(Player player, ArrayList<Enum> cards){
-        board.deletePlayerTexture(player);
-        player.move(cards.remove(0), board);
-        board.updateBoard(player);
+    public void simulateTurns() throws InterruptedException {
+        // Do turns for the players
+        nTurn--;
+        if (player2 != null) {
+            player2.pickedCards = receivedCards;
+            // Chose who goes first at random
+            Random rand = new Random();
+            int upperLim = 2;
+            int rand_int;
+            if (random) {
+                rand_int = rand.nextInt(upperLim);
+            }else {
+                rand_int = 1;
+            }
+            if (rand_int == 1) {
+                turn(player1, player2);
+                turn(player2, player1);
+            } else {
+                turn(player2, player1);
+                turn(player1, player2);
+            }
+            board.updateBoard(player2);
+        }else{
+            turn(player1, null);
+        }
+        board.updateBoard(player1);
+        System.out.println(player1.getCurrentCards());
+        System.out.println(savedCards);
+        if (wait) {
+            TimeUnit.SECONDS.sleep(1);
+        }
+        if (nTurn == 0) {
+            pickingCards = true;
+            readyTurn = false;
+            startThread = true;
+            nTurn = 5;
+            lockCardsBasedOnHP(player1);
+        }
     }
+
+    // Do one turn of player actions
+    public void turn(Player player1, Player player2){
+        board.deletePlayerTexture(player1);
+        player1.move(player1.pickedCards.remove(0), board);
+        // Check for collision
+        if(player2 != null && player1.playerPos.equals(player2.playerPos)){
+            board.setPlayer(player2);
+            player2.moveInDir(player1.dir, 1, board);
+            if(player1.playerPos.equals(player2.playerPos)){
+                board.setPlayer(player1);
+                player1.moveBack1();
+            }
+        }
+    }
+
 
     public void moveAndUpdate(Player player, int keyCode){
         board.deletePlayerTexture(player);

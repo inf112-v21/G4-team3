@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,111 @@ public class GameLogicTest {
         player2.dir = 0;
         gameLogic = new GameLogic(null, player1, player2, board);
         board.setSize(20, 20);
+        gameLogic.wait = false;
+        gameLogic.random = false;
+    }
+
+    @Test
+    public void testCollisionTwoRobotsMovingToSameTile() throws InterruptedException {
+        gameLogic.nCards = 2;
+        player1.playerPos = new Vector2(0,1);
+        player2.playerPos = new Vector2(1,0);
+        player1.dir = 90;
+        player2.dir = 0;
+        gameLogic.random = false;
+
+        // Player 1 cards
+        player1.pickedCards.add(move1);
+        player1.pickedCards.add(move1);
+
+        // Player 2 cards
+        gameLogic.receivedCards.add(move1);
+        gameLogic.receivedCards.add(move1);
+
+        int nCards = player1.pickedCards.size();
+        for (int i=0; i<nCards; i++){
+            gameLogic.simulateTurns();
+        }
+
+        Vector2 expectedPosPlayer1 = new Vector2(2,2);
+        int expectedDirPlayer1 = 90;
+        Vector2 expectedPosPlayer2 = new Vector2(1,2);
+        int expectedDirPlayer2 = 0;
+
+        assertEquals(expectedDirPlayer1, player1.dir);
+        assertEquals(expectedDirPlayer2, player2.dir);
+        assertEquals(expectedPosPlayer1, player1.playerPos);
+        assertEquals(expectedPosPlayer2, player2.playerPos);
+    }
+
+    @Test
+    public void testCollisionTwoRobotsMovingAgainstEachOther() throws InterruptedException {
+        gameLogic.nCards = 2;
+        player1.playerPos = new Vector2(1,0);
+        player2.playerPos = new Vector2(1,1);
+        player1.dir = 0;
+        player2.dir = 180;
+        gameLogic.random = false;
+
+        // Player 1 cards
+        player1.pickedCards.add(move1);
+        player1.pickedCards.add(move1);
+
+        // Player 2 cards
+        gameLogic.receivedCards.add(move1);
+        gameLogic.receivedCards.add(move1);
+
+        int nCards = player1.pickedCards.size();
+        for (int i=0; i<nCards; i++){
+            gameLogic.simulateTurns();
+        }
+
+        Vector2 expectedPosPlayer1 = new Vector2(1,0);
+        int expectedDirPlayer1 = 0;
+        Vector2 expectedPosPlayer2 = new Vector2(1,1);
+        int expectedDirPlayer2 = 180;
+
+        assertEquals(expectedDirPlayer1, player1.dir);
+        assertEquals(expectedDirPlayer2, player2.dir);
+        assertEquals(expectedPosPlayer1, player1.playerPos);
+        assertEquals(expectedPosPlayer2, player2.playerPos);
+    }
+
+    @Test
+    public void testCollisionPushingRobotIntoWall() throws InterruptedException {
+        gameLogic.nCards = 2;
+        player1.playerPos = new Vector2(1,0);
+        player2.playerPos = new Vector2(1,1);
+        player1.dir = 0;
+        player2.dir = 0;
+        gameLogic.random = false;
+
+        // Set wall behind player 2
+        Cell wallSouth = new Cell();
+        board.wallSouthLayer.setCell(1, 2, wallSouth);
+
+        // Player 1 cards
+        player1.pickedCards.add(move1);
+        player1.pickedCards.add(move1);
+
+        // Player 2 cards
+        gameLogic.receivedCards.add(move1);
+        gameLogic.receivedCards.add(move1);
+
+        int nCards = player1.pickedCards.size();
+        for (int i=0; i<nCards; i++){
+            gameLogic.simulateTurns();
+        }
+
+        Vector2 expectedPosPlayer1 = new Vector2(1,0);
+        int expectedDirPlayer1 = 0;
+        Vector2 expectedPosPlayer2 = new Vector2(1,1);
+        int expectedDirPlayer2 = 0;
+
+        assertEquals(expectedDirPlayer1, player1.dir);
+        assertEquals(expectedDirPlayer2, player2.dir);
+        assertEquals(expectedPosPlayer1, player1.playerPos);
+        assertEquals(expectedPosPlayer2, player2.playerPos);
     }
 
     @Test
@@ -56,7 +162,6 @@ public class GameLogicTest {
 
 
         int nCards = player1.pickedCards.size();
-        System.out.println(nCards);
         for (int i=0; i<nCards; i++){
             gameLogic.simulateTurns();
         }

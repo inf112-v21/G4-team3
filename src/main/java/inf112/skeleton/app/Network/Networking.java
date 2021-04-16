@@ -24,6 +24,10 @@ public class Networking implements Runnable{
         netType = type;
     }
 
+    public void connectIP(String ip, int port){
+        this.ip = ip;
+        this.port = port;
+    }
     @Override
     public void run() {
 
@@ -68,10 +72,7 @@ public class Networking implements Runnable{
         System.out.println("Received a connection from " + socket);
     }
 
-    public void connectIP(String ip, int port){
-        this.ip = ip;
-        this.port = port;
-    }
+
 
     public void setUpClient() throws IOException {
         // Connecting to the ServerSocket at port 4000
