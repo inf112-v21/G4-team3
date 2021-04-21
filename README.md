@@ -114,5 +114,29 @@ Beveg roboten ved bruk av runde systemet. Når fem kort er valgt beveger roboten
     - Naviger robot frem til starten av et transportbånd ved bruk av enten kort eller piltaster, etter det beveg robot på starten av transportbåndet indikert av en pil på brettet. 
     Da skal roboten beveges fra transportbånd ruten til ruten transportbåndet peker på.
 - Kriterier for at testen skal godkjennes:
-    Når robot beveges på et trasporbånd skal roboten flyttes til ruten transporbåndet peker på. 
--
+     - Når robot beveges på et trasporbånd skal roboten flyttes til ruten transporbåndet peker på. 
+
+ ### Manuell test for Wall 
+- Hvordan testen utføres:
+    - Kjør main så velg "Test game" og deretter "Single-step", etter det kan man se kortene på skjermen og velge.
+    - Naviger robot frem til en vegg ved bruk av enten kort eller piltaster,
+      etter det prøv å gjennomføre en beveglse som vil bevege robot gjennom veggen, da skal roboten ikke bevege seg fra sin posisjon.
+      
+- Kriterier for at testen skal godkjennes:
+    - Robot skal ikke bevege seg om en bevegelses-input går gjennom en vegg.
+ 
+### Manuell test for Power Down  
+- Hvordan testen utføres:
+    - Kjør main så velg "Test game" og deretter "Single-step", etter det kan man se kortene på skjermen og velge.
+    - Naviger robot frem til en laser ved bruk av enten kort eller piltaster, etter det beveg robot inn i laser for å miste hp.
+      Deretter trykk på Power Down kanppen. Power Down skal regenerere liv men på bekostning av beveglsene du kunne utført den runden.
+- Kriterier for at testen skal godkjennes:
+    - Når Power Down aktiveres skal hp regenereres og skippe turen til robot. 
+
+### Manuell test for Collision
+- Hvordan testen utføres:
+    - Kjør main så velg "Test game" og deretter "Single-step", etter det kan man se kortene på skjermen og velge.
+    - Naviger en robot slik at den beveger seg gjennom en posisjoion til en annen robot ved bruk av enten kort eller piltaster.
+      Da skal roboten som beveger seg gjennom den andre skubbe den andre roboten en rute i retning av beveglsen. 
+- Kriterier for at testen skal godkjennes:
+    - Når en robot beveger seg over en posisjoin til en annen skal den bli skubbet i retningen av beveglsen.
