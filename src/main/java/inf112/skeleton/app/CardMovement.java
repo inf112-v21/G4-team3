@@ -20,5 +20,9 @@ public class CardMovement{
         Movement(int value){
             this.value = value;
         }
+
+
     }
+
+
 }

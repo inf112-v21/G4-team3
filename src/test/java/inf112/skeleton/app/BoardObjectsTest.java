@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 
-
 import static org.junit.Assert.assertEquals;
 
 public class BoardObjectsTest {

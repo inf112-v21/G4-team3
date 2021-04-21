@@ -21,6 +21,8 @@ public class CardRotation {
             this.value = value;
         }
     }
-}
+
+
+    }
 
 

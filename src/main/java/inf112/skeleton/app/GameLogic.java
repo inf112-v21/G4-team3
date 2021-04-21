@@ -23,7 +23,8 @@ public class GameLogic {
     public boolean pause = false;
     private WaitThread thread1;
     private boolean startThread = true;
-    public int nCards = 5; // How many cards each player can pick
+    // How many cards each player can pick
+    public int nCards = 5;
     private int nTurn = 5;
     private boolean firstTurn = true;
     public boolean random = true;
@@ -126,7 +127,6 @@ public class GameLogic {
     public void turn(Player player1, Player player2){
         board.deletePlayerTexture(player1);
         player1.move(player1.pickedCards.remove(0), board);
-
         // Check for collision
         if(player2 != null && player1.playerPos.equals(player2.playerPos)){
             board.setPlayer(player2);
@@ -137,6 +137,7 @@ public class GameLogic {
             }
         }
     }
+
 
     public void moveAndUpdate(Player player, int keyCode){
         board.deletePlayerTexture(player);
