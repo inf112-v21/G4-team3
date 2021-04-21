@@ -24,6 +24,7 @@ public class Player {
     public int maxHP = 5;
     public int HP = maxHP;
     public int life = 3;
+    public String name;
     public ArrayList<Vector2> visitedCheckPoints = new ArrayList<>();
     public ArrayList<Enum> pickedCards = new ArrayList<>();
 
@@ -56,10 +57,6 @@ public class Player {
 
     public ArrayList<Enum> getCurrentCards(){
         return pickedCards;
-    }
-
-    public void setTexture(String textureName){
-        this.playerTexture = textureName;
     }
 
     public boolean playerLost(){
@@ -109,6 +106,14 @@ public class Player {
 
     public void setLife(int life){
         this.life=life;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public void move(Vector2 newPos){
@@ -161,7 +166,6 @@ public class Player {
     }
 
     public void relocation(Enum ChosenMovement, Board board){
-
         if (ChosenMovement == CardMovement.Movement.MOVE1) {
             move1(board);
         } else if (ChosenMovement == CardMovement.Movement.MOVE2) {
@@ -191,8 +195,8 @@ public class Player {
             playerPos.x = playerPos.x - 1;
         }
     }
-    public void moveBack1(Board board){
 
+    public void moveBack1(Board board){
         if(dir == 0 && board.canGoBackwards(this)){
             playerPos.y = playerPos.y - 1;
         }
@@ -208,7 +212,6 @@ public class Player {
     }
 
     public void moveBack1(){
-
         if(dir == 0){
             playerPos.y = playerPos.y - 1;
         }

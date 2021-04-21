@@ -23,8 +23,7 @@ public class GameLogic {
     public boolean pause = false;
     private WaitThread thread1;
     private boolean startThread = true;
-    // How many cards each player can pick
-    public int nCards = 5;
+    public int nCards = 5;  // How many cards each player can pick
     private int nTurn = 5;
     private boolean firstTurn = true;
     public boolean random = true;
@@ -58,6 +57,7 @@ public class GameLogic {
                 savedCards = (ArrayList<Enum>) player1.getCurrentCards().clone();
                 thread1.start();
                 startThread = false;
+                System.out.println("Waiting on cards from other player");
             }
             receivedCards = thread1.cards;
             if(receivedCards.size() > 1){
@@ -109,8 +109,8 @@ public class GameLogic {
             turn(player1, null);
         }
         board.updateBoard(player1);
-        System.out.println(player1.getCurrentCards());
-        System.out.println(savedCards);
+
+        // Wait in order to show the robots actions round by round
         if (wait) {
             TimeUnit.SECONDS.sleep(1);
         }
@@ -127,7 +127,10 @@ public class GameLogic {
     public void turn(Player player1, Player player2){
         board.deletePlayerTexture(player1);
         player1.move(player1.pickedCards.remove(0), board);
-        // Check for collision
+        checkCollision(player1, player2);
+    }
+
+    private void checkCollision(Player player1, Player player2){
         if(player2 != null && player1.playerPos.equals(player2.playerPos)){
             board.setPlayer(player2);
             player2.moveInDir(player1.dir, 1, board);
@@ -137,7 +140,6 @@ public class GameLogic {
             }
         }
     }
-
 
     public void moveAndUpdate(Player player, int keyCode){
         board.deletePlayerTexture(player);

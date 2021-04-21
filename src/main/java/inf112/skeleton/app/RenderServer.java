@@ -31,16 +31,14 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public boolean pause = false;
 
     // Players start position
-    public Player player1 = new Player(new Vector2(1,6), 90,"assets/player.png");
-    public Player player2 = new Player(new Vector2(1,3), 90,"assets/player2.png");
+    public Player player1 = new Player(new Vector2(1,8), 90,"assets/player_new1.png");
+    public Player player2 = new Player(new Vector2(1,3), 90,"assets/player_new2.png");
     public Board board = new Board();
 
-    private boolean pickingCards = true;
     public ArrayList<Enum> cardsToPickFrom;
     public Networking server = new Networking("Server");
     public Networking connection = new Networking("Client");
     public GameLogic gameLogic;
-    public Integer n = 0;
 
     @Override
     public void create() {
@@ -61,10 +59,10 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
 
     public void createGame(){
         // Setup player cell states, including textures
-        player1.setTexture("assets/player.png");
-        player2.setTexture("assets/player2.png");
         player1.setPlayerState();
         player2.setPlayerState();
+        player1.setName("Player 1");
+        player2.setName("Player 2");
 
         // Setup server/ client
         setUpGame();
@@ -144,7 +142,10 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         if (!gameLogic.pickingCards && !pause || Main.debugmode) {
             showCardsOnScreen();
         }
-        showHPandLives(player1);
+        showHPandLives(player1, 750);
+        if (player2 != null){
+            showHPandLives(player2, 900);
+        }
         checkWinCondition();
     }
 
@@ -167,7 +168,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             // End win screen
             batch.begin();
             font.getData().setScale(4, 4);
-            font.draw(batch, "You won", 240, 250);
+            font.draw(batch, "You won", 350, 250);
             batch.end();
         }
         else if (player2.winCondition || player1.loseCondition){
@@ -175,7 +176,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             // End win screen
             batch.begin();
             font.getData().setScale(4, 4);
-            font.draw(batch, "You lost", 240, 250);
+            font.draw(batch, "You lost", 350, 250);
             batch.end();
         }
     }
@@ -205,14 +206,12 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         return true;
     }
 
-    public void showHPandLives(Player player) {
+    public void showHPandLives(Player player, int xCoord) {
         batch.begin();
         font.getData().setScale(2, 2);
-        font.draw(batch, "Player 1 ", 900, 150);
-        font.draw(batch, "HP: " + player.getCurrentHP(), 900, 100);
-        font.draw(batch, "Lives:" + player.getLife(), 900, 50);
+        font.draw(batch, player.getName()+": ", xCoord, 140);
+        font.draw(batch, "HP: " + player.getCurrentHP(), xCoord, 90);
+        font.draw(batch, "Lives:" + player.getLife(), xCoord, 40);
         batch.end();
     }
-
-
 }

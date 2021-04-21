@@ -28,6 +28,8 @@ public class Networking implements Runnable{
         this.ip = ip;
         this.port = port;
     }
+
+    // For multithreading
     @Override
     public void run() {
 
@@ -49,6 +51,7 @@ public class Networking implements Runnable{
         }
     }
 
+    // For multithreading
     public void start(){
         if (thread == null){
             thread = new Thread(this, netType);
@@ -61,7 +64,6 @@ public class Networking implements Runnable{
         server.serverConnect();
         while(true) {
             server.serverActions();
-            System.out.println("Round is over");
         }
     }
 

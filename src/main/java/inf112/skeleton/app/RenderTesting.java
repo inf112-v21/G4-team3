@@ -5,8 +5,8 @@ public class RenderTesting extends RenderServer{
     @Override
     public void createGame(){
         // Setup player cell states, including textures
-        player1.setTexture("assets/player.png");
         player1.setPlayerState();
+        player1.setName("Player 1");
 
         // Game logic
         gameLogic = new GameLogic(null, player1, null, board);

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 public class GameLogicTest {
 
-
     // Initiate class instances
     public Player player1 = new Player(new Vector2(1,1), 0, null);
     public Player player2 = new Player(new Vector2(1,1), 0, null);
@@ -25,8 +24,6 @@ public class GameLogicTest {
     public Enum rotateRight = CardRotation.Rotation.ROTATERIGHT;
     public Enum rotateLeft = CardRotation.Rotation.ROTATELEFT;
     public Enum uturn = CardRotation.Rotation.UTURN;
-
-
 
     @Before
     public void setUp(){

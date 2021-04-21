@@ -6,8 +6,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Board {
@@ -26,7 +24,6 @@ public class Board {
     public TiledMapTileLayer beltSouthLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer beltEastLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer fixLayer = new TiledMapTileLayer(1,1,1,1);
-    public TiledMapTileLayer extraLifeLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer wallNorthLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer wallWestLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer wallEastLayer = new TiledMapTileLayer(1,1,1,1);
@@ -35,8 +32,6 @@ public class Board {
     public TiledMapTileLayer wallNorthWestLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer wallSouthEastLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer wallSouthWestLayer = new TiledMapTileLayer(1,1,1,1);
-    public List<String> layerNames;
-    public List<TiledMapTileLayer> layerObjects;
 
     // Map size
     public int MAP_SIZE_X;
@@ -44,37 +39,9 @@ public class Board {
 
     public Player player;
 
-
-
-    public void addLayers(){
-        layerNames = Arrays.asList("Board", "Player", "Hole", "Flag1", "Flag2", "Flag3", "Laser",
-                "BeltNorth", "BeltWest", "BeltSouth", "BeltEast", "Fix", "ExtraLife");
-        layerObjects = Arrays.asList(boardLayer, playerLayer, holeLayer, flag1Layer, flag2Layer,
-                flag3Layer, laserLayer, beltNorthLayer, beltWestLayer, beltSouthLayer, beltEastLayer,
-                fixLayer, extraLifeLayer);
-    }
-
     // Create map layers
     public void createMap(){
-        map = new TmxMapLoader().load("assets/Testmap4.tmx");
-
-        /*
-        addLayers();
-        int nLayers = layerObjects.size();
-        //TiledMapTileLayer layer2;
-        for (int i=0; i<nLayers; i++){
-        //for(TiledMapTileLayer layer : layerObjects)
-            TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
-            TiledMapTileLayer layer2 = layerObjects.get(i);
-            //layerObjects.set(i, layer);
-            layer2 = layer;
-            //layerNames.get(i) = "das";
-            //layerObjects.get(i) = new TiledMapTileLayer(1,1,1,1);
-            System.out.println(layerObjects.get(i));
-            //layerObjects.get(i) = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
-            //layer = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
-        }
-         */
+        map = new TmxMapLoader().load("assets/FinalMap.tmx");
 
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
@@ -88,7 +55,6 @@ public class Board {
         beltSouthLayer = (TiledMapTileLayer) map.getLayers().get("BeltSouth");
         beltEastLayer = (TiledMapTileLayer) map.getLayers().get("BeltEast");
         fixLayer = (TiledMapTileLayer) map.getLayers().get("Fix");
-        extraLifeLayer = (TiledMapTileLayer) map.getLayers().get("ExtraLife");
         wallNorthLayer = (TiledMapTileLayer) map.getLayers().get("WallNorth");
         wallWestLayer = (TiledMapTileLayer) map.getLayers().get("WallWest");
         wallSouthLayer = (TiledMapTileLayer) map.getLayers().get("WallSouth");
@@ -118,7 +84,6 @@ public class Board {
         beltSouthLayer = new TiledMapTileLayer(x,y,1,1);
         beltEastLayer = new TiledMapTileLayer(x,y,1,1);
         fixLayer = new TiledMapTileLayer(x,y,1,1);
-        extraLifeLayer = new TiledMapTileLayer(x,y,1,1);
         wallNorthLayer = new TiledMapTileLayer(x,y,1,1);
         wallWestLayer = new TiledMapTileLayer(x,y,1,1);
         wallEastLayer = new TiledMapTileLayer(x,y,1,1);
@@ -157,7 +122,6 @@ public class Board {
 
         // 4. Rest of board elements
         checkFixer();
-        //checkExtraLife();
         checkLoseLifeIfNoHP();
         checkForCheckPoints();
         checkIfPlayerLost();
@@ -276,13 +240,6 @@ public class Board {
         }
     }
 
-    private void checkExtraLife(){
-        //Cell extraLife = extraLifeLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        Cell extraLife = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        if (extraLife != null){
-            player.setLife(player.getLife() + 1);
-        }
-    }
 
     private void checkLoseLifeIfNoHP(){
         if (player.getCurrentHP() == 0){
