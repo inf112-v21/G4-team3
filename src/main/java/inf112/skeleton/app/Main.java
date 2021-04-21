@@ -23,7 +23,6 @@ public class Main {
         int k = height / boardSizeY;
         int width = boardSizeX * k;
 
-
         finalHeight = 1000;
         finalWidth = width;
 

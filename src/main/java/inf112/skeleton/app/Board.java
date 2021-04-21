@@ -35,8 +35,7 @@ public class Board {
     public TiledMapTileLayer wallNorthWestLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer wallSouthEastLayer = new TiledMapTileLayer(1,1,1,1);
     public TiledMapTileLayer wallSouthWestLayer = new TiledMapTileLayer(1,1,1,1);
-    public List<String> layerNames;
-    public List<TiledMapTileLayer> layerObjects;
+
 
     // Map size
     public int MAP_SIZE_X;
@@ -44,37 +43,9 @@ public class Board {
 
     public Player player;
 
-
-
-    public void addLayers(){
-        layerNames = Arrays.asList("Board", "Player", "Hole", "Flag1", "Flag2", "Flag3", "Laser",
-                "BeltNorth", "BeltWest", "BeltSouth", "BeltEast", "Fix", "ExtraLife");
-        layerObjects = Arrays.asList(boardLayer, playerLayer, holeLayer, flag1Layer, flag2Layer,
-                flag3Layer, laserLayer, beltNorthLayer, beltWestLayer, beltSouthLayer, beltEastLayer,
-                fixLayer, extraLifeLayer);
-    }
-
     // Create map layers
     public void createMap(){
-        map = new TmxMapLoader().load("assets/Testmap4.tmx");
-
-        /*
-        addLayers();
-        int nLayers = layerObjects.size();
-        //TiledMapTileLayer layer2;
-        for (int i=0; i<nLayers; i++){
-        //for(TiledMapTileLayer layer : layerObjects)
-            TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
-            TiledMapTileLayer layer2 = layerObjects.get(i);
-            //layerObjects.set(i, layer);
-            layer2 = layer;
-            //layerNames.get(i) = "das";
-            //layerObjects.get(i) = new TiledMapTileLayer(1,1,1,1);
-            System.out.println(layerObjects.get(i));
-            //layerObjects.get(i) = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
-            //layer = (TiledMapTileLayer) map.getLayers().get(layerNames.get(i));
-        }
-         */
+        map = new TmxMapLoader().load("assets/FinalMap.tmx");
 
         boardLayer = (TiledMapTileLayer) map.getLayers().get("Board");
         playerLayer = (TiledMapTileLayer) map.getLayers().get("Player");
@@ -273,14 +244,6 @@ public class Board {
         Cell fix = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
         if (fix != null){
             player.setHP(player.getMaxHP());
-        }
-    }
-
-    private void checkExtraLife(){
-        //Cell extraLife = extraLifeLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        Cell extraLife = fixLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-        if (extraLife != null){
-            player.setLife(player.getLife() + 1);
         }
     }
 

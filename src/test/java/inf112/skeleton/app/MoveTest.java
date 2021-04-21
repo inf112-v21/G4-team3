@@ -14,7 +14,7 @@ public class MoveTest{
         player.playerPos = new Vector2(0,0);
         player.dir = 0;
     }
-/*
+
     @Test
     public void testMovement1UpInnNordenDir() {
         Vector2 expectedPosition = new Vector2(0,1);
@@ -32,7 +32,7 @@ public class MoveTest{
     @Test
     public void testMovement3UpInnNordenDir() {
         Vector2 expectedPosition = new Vector2(0,3);
-        player.move(CardMovement.Movement.MOVE3, baord);
+        player.move(CardMovement.Movement.MOVE3, board);
         assertEquals(expectedPosition, player.playerPos);
     }
 
@@ -87,14 +87,4 @@ public class MoveTest{
         player.move(CardRotation.Rotation.UTURN, board);
         assertEquals(expectedDir, player.dir);
     }
-
-    // Open application for testing purposes. my be needed for future
-    public static void openApplication() {
-        Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
-        cfg.setTitle("Lukk vinduet for at testen skal kjøre");
-        cfg.setWindowedMode(500, 500);
-        new Lwjgl3Application(new RenderServer(), cfg);
-    }
-
- */
 }

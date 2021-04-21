@@ -205,4 +205,5 @@ public class GameLogicTest {
 
         assertEquals(expectedCards1, gameLogic.startCards);
     }
+
 }
