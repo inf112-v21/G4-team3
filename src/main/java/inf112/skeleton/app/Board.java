@@ -56,7 +56,7 @@ public class Board {
 
     // Create map layers
     public void createMap(){
-        map = new TmxMapLoader().load("assets/Testmap4.tmx");
+        map = new TmxMapLoader().load("assets/FinalMap.tmx");
 
         /*
         addLayers();
@@ -339,68 +339,16 @@ public class Board {
         boolean cango = true;
 
         if(dir == 0){
-            Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouth = wallSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
-            if(wallSouthWest != null ||
-                    wallNorth != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallSouth != null){
-                cango = false;
-            }
+            cango = canNorth(player);
         }
         else if(dir == 90){
-            Cell wallEast = wallEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x + 1 , (int) player.playerPos.y);
-            Cell wallWest = wallWestLayer.getCell((int) player.playerPos.x + 1, (int) player.playerPos.y);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x + 1, (int) player.playerPos.y);
-            if(wallSouthWest != null ||
-                    wallEast != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallWest != null){
-                cango = false;
-            }
+            cango = canEast(player);
         }
         else if(dir == 180){
-            Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
-            Cell wallSouth = wallSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            if(wallSouthWest != null ||
-                    wallNorth != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallSouth != null){
-                cango = false;
-            }
+            cango = canSouth(player);
         }
         else if(dir == 270){
-            Cell wallEast = wallEastLayer.getCell((int) player.playerPos.x - 1 , (int) player.playerPos.y);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x - 1, (int) player.playerPos.y);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallWest = wallWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x - 1, (int) player.playerPos.y);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            if(wallSouthWest != null ||
-                    wallEast != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallWest != null){
-                cango = false;
-            }
+            cango = canWest(player);
         }
         return cango;
     }
@@ -409,68 +357,16 @@ public class Board {
         int dir = player.dir;
         boolean cango = true;
         if(dir == 180){
-            Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouth = wallSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
-            if(wallSouthWest != null ||
-                    wallNorth != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallSouth != null){
-                cango = false;
-            }
+            cango = canNorth(player);
         }
         else if(dir == 270){
-            Cell wallEast = wallEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x + 1 , (int) player.playerPos.y);
-            Cell wallWest = wallWestLayer.getCell((int) player.playerPos.x + 1, (int) player.playerPos.y);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x + 1, (int) player.playerPos.y);
-            if(wallSouthWest != null ||
-                    wallEast != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallWest != null){
-                cango = false;
-            }
+            cango = canEast(player);
         }
         else if(dir == 0){
-            Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
-            Cell wallSouth = wallSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            if(wallSouthWest != null ||
-                    wallNorth != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallSouth != null){
-                cango = false;
-            }
+            cango = canSouth(player);
         }
         else if(dir == 90){
-            Cell wallEast = wallEastLayer.getCell((int) player.playerPos.x - 1 , (int) player.playerPos.y);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x - 1, (int) player.playerPos.y);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallWest = wallWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x - 1, (int) player.playerPos.y);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            if(wallSouthWest != null ||
-                    wallEast != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallWest != null){
-                cango = false;
-            }
+            cango = canWest(player);
         }
         return cango;
     }
@@ -478,69 +374,91 @@ public class Board {
     public boolean beltCanGo(int dir){
         boolean cango = true;
         if(dir == 0){
-            Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouth = wallSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
-            if(wallSouthWest != null ||
-                    wallNorth != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallSouth != null){
-                cango = false;
-            }
+            cango = canNorth(player);
         }
         else if(dir == 90){
-            Cell wallEast = wallEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x + 1 , (int) player.playerPos.y);
-            Cell wallWest = wallWestLayer.getCell((int) player.playerPos.x + 1, (int) player.playerPos.y);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x + 1, (int) player.playerPos.y);
-            if(wallSouthWest != null ||
-                    wallEast != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallWest != null){
-                cango = false;
-            }
+            cango = canEast(player);
         }
         else if(dir == 180){
-            Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
-            Cell wallSouth = wallSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            if(wallSouthWest != null ||
-                    wallNorth != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallSouth != null){
-                cango = false;
-            }
+            cango = canSouth(player);
         }
-        else if(dir == 270){
-            Cell wallEast = wallEastLayer.getCell((int) player.playerPos.x - 1 , (int) player.playerPos.y);
-            Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x - 1, (int) player.playerPos.y);
-            Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallWest = wallWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x - 1, (int) player.playerPos.y);
-            Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
-            if(wallSouthWest != null ||
-                    wallEast != null ||
-                    wallNorthEast != null ||
-                    wallNorthWest != null ||
-                    wallSouthEast != null ||
-                    wallWest != null){
-                cango = false;
-            }
+        else if(dir == 270) {
+            cango = canWest(player);
         }
         return cango;
     }
+
+    public boolean canNorth(Player player){
+        Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallSouth = wallSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
+        Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
+        Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y + 1);
+        if(wallSouthWest != null ||
+                wallNorth != null ||
+                wallNorthEast != null ||
+                wallNorthWest != null ||
+                wallSouthEast != null ||
+                wallSouth != null){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean canEast(Player player){
+        Cell wallEast = wallEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x + 1 , (int) player.playerPos.y);
+        Cell wallWest = wallWestLayer.getCell((int) player.playerPos.x + 1, (int) player.playerPos.y);
+        Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x + 1, (int) player.playerPos.y);
+        if(wallSouthWest != null ||
+                wallEast != null ||
+                wallNorthEast != null ||
+                wallNorthWest != null ||
+                wallSouthEast != null ||
+                wallWest != null){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean canSouth(Player player){
+        Cell wallNorth = wallNorthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
+        Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
+        Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y - 1);
+        Cell wallSouth = wallSouthLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        if(wallSouthWest != null ||
+                wallNorth != null ||
+                wallNorthEast != null ||
+                wallNorthWest != null ||
+                wallSouthEast != null ||
+                wallSouth != null){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean canWest(Player player){
+        Cell wallEast = wallEastLayer.getCell((int) player.playerPos.x - 1 , (int) player.playerPos.y);
+        Cell wallNorthEast = wallNorthEastLayer.getCell((int) player.playerPos.x - 1, (int) player.playerPos.y);
+        Cell wallNorthWest = wallNorthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallWest = wallWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        Cell wallSouthEast = wallSouthEastLayer.getCell((int) player.playerPos.x - 1, (int) player.playerPos.y);
+        Cell wallSouthWest = wallSouthWestLayer.getCell((int) player.playerPos.x, (int) player.playerPos.y);
+        if(wallSouthWest != null ||
+                wallEast != null ||
+                wallNorthEast != null ||
+                wallNorthWest != null ||
+                wallSouthEast != null ||
+                wallWest != null){
+            return false;
+        }
+        return true;
+    }
+
+    //public void robotLazzer()
 }
