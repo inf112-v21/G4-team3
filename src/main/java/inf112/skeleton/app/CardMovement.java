@@ -10,22 +10,6 @@ public class CardMovement{
         this.MovementValue = MovementValue;
     }
 
-    public void setMovement(Movement movement){
-        this.movement = movement;
-    }
-
-    public Movement getMovement(){
-        return movement;
-    }
-
-    public void setMovementValue(Movement MovementValue) {
-        this.MovementValue = MovementValue;
-    }
-
-    public static Movement getMovementValue() {
-        return MovementValue;
-    }
-
     public enum Movement{
         MOVE1(1),
         MOVE2(2),
@@ -33,7 +17,7 @@ public class CardMovement{
         BACKUP(-1);
 
         private int value;
-        private Movement(int value){
+        Movement(int value){
             this.value = value;
         }
 

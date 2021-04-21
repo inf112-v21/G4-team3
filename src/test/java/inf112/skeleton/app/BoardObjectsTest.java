@@ -54,17 +54,6 @@ public class BoardObjectsTest {
         board.beltEastLayer.setCell(6,2,beltEast);
     }
 
-    public void setUpWalls(){
-        Cell wallNorth = new Cell();
-        Cell wallWest = new Cell();
-        Cell wallEast = new Cell();
-        Cell wallSouth = new Cell();
-        Cell wallNorthEast = new Cell();
-        Cell wallNorthWest = new Cell();
-        Cell wallSouthEast = new Cell();
-        Cell wallSouthWest = new Cell();
-
-    }
     // Example test
     @Test
     public void testLose1LifeWhenOnHole(){

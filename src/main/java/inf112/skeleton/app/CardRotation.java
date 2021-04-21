@@ -10,23 +10,6 @@ public class CardRotation {
         this.RotationValue = RotationValue;
     }
 
-    public void setRotation(Rotation rotation) {
-        this.rotation = rotation;
-    }
-
-    public Rotation getRotation(Rotation rotation) {
-        return rotation;
-    }
-
-    public void setRotationValue(Rotation RotationValue) {
-        this.RotationValue = RotationValue;
-    }
-
-    public Rotation getRotationValue(Rotation RotationValue) {
-        return RotationValue;
-    }
-
-
     public enum Rotation {
         ROTATERIGHT(90),
         ROTATELEFT(270),
@@ -34,7 +17,7 @@ public class CardRotation {
 
         private int value;
 
-        private Rotation(int value) {
+        Rotation(int value) {
             this.value = value;
         }
     }
