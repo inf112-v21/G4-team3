@@ -99,7 +99,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
     public void setUpText(){
         batch = new SpriteBatch();
         font = new BitmapFont();
-        font.setColor(Color.RED);
+        font.setColor(Color.BLACK);
     }
 
     public void setUpRender(){
