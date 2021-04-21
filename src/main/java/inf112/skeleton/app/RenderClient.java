@@ -1,6 +1,5 @@
 package inf112.skeleton.app;
 
-import java.io.IOException;
 
 
 public class RenderClient extends RenderServer {
