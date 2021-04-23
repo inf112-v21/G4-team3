@@ -1,4 +1,4 @@
-##Obligatorisk oppgave 4
+## Obligatorisk oppgave 4
 ### Deloppgave 1: team og prosjekt
 - Team roller som har blitt tildelt forsetter å fungere stort sett veldig bra.
   De individuelle medlemmene i teamet fyller rollene sine uten store problemer,
@@ -36,11 +36,11 @@
   I forhold til i starten fungerer kommunikasjonen stort sett på samme måte, bare litt bedre ettersom vi er blitt bedre kjent.
 
 
-- Prioritering av oppgaver fremover:
-    - Refaktorere kode.
+- Prioritering av oppgaver fremover(Ting vi hadde gjort hvis vi hadde tid):
+    - Refaktorere kode mer.
     - Vi har diskutert å implementere en 4-player modus, men det viste seg å ikke være tid til å få det gjort slik vi ønsket.
     - Bedre visuelle effekter.
-
+    
 
 - Oppfølging av sist retrospektiv forbedringspunkt:
     - Utdyping av rollebeskrivelser, som nevnet tidligere har vi bestemt oss for å holde
@@ -63,7 +63,15 @@
     - Bruke mer tid på å tyde oppgaveteksten ettersom vi hadde litt problemer med tolking av oppgaver de første innleveringene.
     - Bedre og hyppigere bruk av project board.
     - Kunne fulgt test-driven development strengere ettersom det ikke ble brukt på alt av programmet.
+    - Hatt et klarere overblikk over sluttprodukt, slik at vi kunne hatt en fastere plan fram til sluttproduktet. 
+    - Kunne gjerne hatt mer fysisk oppmøte, men det var ikke mulig mtp. epidemien. 
 
+
+- Hva er det viktigste vi har lært:
+    - Face-to-face kommunikasjon gir mindre rom for feil.
+    - Planlegging av kode før man setter i gang er viktig.
+    - Viktigheten av å tyde oppgavetekst ordentlig.
+    - 
 
 ### Deloppgave 2: Krav
 
@@ -124,7 +132,7 @@ Brukerhistorie:
 - Gitt at en spiller står på brettet med en vegg foran seg så skal:
   i. spilleren ikkje kunne bevege seg gjennom veggen.
 
-###Bugs:
+### Bugs:
 - Spillere kan bevege seg over hull uten å avslutte spillet midt i en runde hvis spilleren beveger seg 2 eller 3 felt fremover på en turn.
 - Hvis en trykker på et tall på tastaturet høyere enn det er tilgjengelige kort krasjer programmet. For eksempel, det er 8 kort å velge mellom og brukeren trykker på 9.
 - Knapper i GUI kan miste posisjon avhenging av operativsystem.
@@ -259,6 +267,7 @@ Brukerhistorie:
     - Samtlige fornøyd med innsats og utføring. 
     - I siste innleveringen har det ikke blitt implementert like mye som de tidligere, men det som ble implementert
       er mer tidkrevende og kompliserte oppgaver.
+    - Det er noen punkter fra project board vi ikke fikk implementert, grunnet prioritering av andre oppgaver.
       
 ### Project Board
-![projectboard.png](projectboard.png)
+![pb4.png](pb4.png)
