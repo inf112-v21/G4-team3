@@ -139,21 +139,20 @@ Vegger stopper spillere
     - spilleren ikke bevege seg gjennom veggen.
 
 ###Bugs:
-- Spillere kan bevege seg over hull/flagg uten å avslutte spillet midt i en runde hvis spilleren beveger seg 2 eller 3 felt fremover på en turn.
-- Applikasjonsvinduet «fryser» mens den andre spilleren velger kort. Ikke noe problem egentlig.
+- Spillere kan bevege seg over hull uten å avslutte spillet midt i en runde hvis spilleren beveger seg 2 eller 3 felt fremover på en turn.
 - Hvis en trykker på et tall på tastaturet høyere enn det er tilgjengelige kort krasjer programmet. For eksempel, det er 8 kort å velge mellom og brukeren trykker på 9.
-- Godtar feil input men setter verdi til null. (Et valg utenfor 1-9)
-- Knapper i GUI mister posisjon avhenging av operativsystem.
-- I runde baserte moduser (Klient/Server, Test game: Round-based) vil kort velge systemet tulle hvis det blir valgt kort for fort.
-- Noen ganger oppdateres ikke teksten på skjermen før første fase i neste runde.
+- Knapper i GUI kan miste posisjon avhenging av operativsystem.
 
 ### Deloppgave 3: Produktleveranse og kodekvalitet
 
 ### Credits
 - Ressurser for utseendet av menyen er ikke laget selv.
-- GlassyUI:
+  - GlassyUI:
     - Created by Raymond "Raeleus" Buckley
     - Visit ray3k.wordpress.com for games, tutorials, and much more!
+
+- Roborally grafikk:
+  - https://www.thealexandrian.net/creations/roborally/roborally-ultimate-collection-rulebook.pdf
 
 ## Meetingminutes
 
@@ -272,6 +271,8 @@ Vegger stopper spillere
 - Sprint retrospektiv konklusjon:
     - Fornøyd med siste uken av prosjektet
     - Samtlige fornøyd med innsats og utføring. 
-
+    - I siste innleveringen har det ikke blitt implementert like mye som de tidligere, men det som ble implementert
+      er mer tidkrevende og kompliserte oppgaver.
+      
 ### Project Board
 ![projectboard.png](projectboard.png)
