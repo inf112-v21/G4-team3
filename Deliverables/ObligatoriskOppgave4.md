@@ -115,8 +115,14 @@ Brukerhistorie:
   Akseptansekriterier:
 - Gitt at flere spillere spiller spillet, så skal:
   i. begge spillere kunne velge kort samtidig uten at programmet fryser.
-  ii. spillerne som er ferdig å velge kort skal vente helt til alle andre spillere har valgt kort.
-
+  ii. spillerne som er ferdig å velge kort skal vente helt til alle andre spillere har valgt kort. 
+vegger stopper spillere 
+Brukerhistorie:
+- Som vegg ønsker eg å ikkje la spillere gå gjennom meg, for å gjøre spille meir utfordrende.
+  Arbeidsoppgave:
+- Implementer en skjek som plir brukt i move() som skjekker om det eksisterer en veg som skal stoppe deg på ruten der du står eller en fram i forhold til den rettningen du står.
+- Gitt at en spiller står på brettet med en vegg foran seg så skal:
+  i. spilleren ikkje kunne bevege seg gjennom veggen.
 
 ###Bugs:
 - Spillere kan bevege seg over hull/flagg uten å avslutte spillet midt i en runde hvis spilleren beveger seg 2 eller 3 felt fremover på en turn.
