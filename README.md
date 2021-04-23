@@ -135,8 +135,8 @@ Beveg roboten ved bruk av runde systemet. Når fem kort er valgt beveger roboten
 
 ### Manuell test for Collision
 - Hvordan testen utføres:
-    - Kjør main så velg "Test game" og deretter "Single-step", etter det kan man se kortene på skjermen og velge.
-    - Naviger en robot slik at den beveger seg gjennom en posisjoion til en annen robot ved bruk av enten kort eller piltaster.
+    - Kjør main så velg en som "server" og en som "client" og deretter "debug mode", etter det kan man se kortene på skjermen og velge.
+    - Naviger en robot slik at den beveger seg gjennom en posisjoion til en annen robot ved bruk av enten kort eller piltaster for å velge eksakte kort.
       Da skal roboten som beveger seg gjennom den andre skubbe den andre roboten en rute i retning av beveglsen. 
 - Kriterier for at testen skal godkjennes:
     - Når en robot beveger seg over en posisjoin til en annen skal den bli skubbet i retningen av beveglsen.
