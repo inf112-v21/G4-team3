@@ -283,5 +283,7 @@ Vegger stopper spillere
       er mer tidkrevende og kompliserte oppgaver.
     - Det er noen punkter fra project board vi ikke fikk implementert, grunnet prioritering av andre oppgaver.
       
-### Project Board
+### Project Board og Klassediagram
 ![pb4.png](pb4.png)
+![klassediagramSiste.png](klassediagramSiste.png)
+
