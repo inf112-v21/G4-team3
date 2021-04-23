@@ -158,7 +158,7 @@ public class GameLogic {
     public void pickCards(){
         System.out.println("\nYour turn to pick cards");
         System.out.println("Use numbers 1 to 9 to pick cards");
-        System.out.println("The host is the black character");
+        System.out.println("The host is TV robot");
         CardDeck fullDeck = new CardDeck();
         cardsToPickFrom.clear();
         player1.pickedCards = startCards;
