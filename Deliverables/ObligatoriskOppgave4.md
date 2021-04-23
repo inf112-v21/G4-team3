@@ -70,59 +70,73 @@
 #### Brukerhistorier
 
 Powerdown
-
-Brukerhistorie:
-- Som spiller skal roboten min ha muligheten til å kunne bruke en runde til å «powerdown» for å få fullt liv.
-  Arbeidsoppgave:
-- Lag en «powerdown» funksjon i «GameLogic» som gir spilleren maks HP og lar ikke roboten velge kort denne runden.
-- Registre «p» som et keyboard input som tar i bruk «powerdown» funksjonen
+- Brukerhistorie:
+  - Som spiller skal roboten min ha muligheten til å kunne bruke en runde til å «powerdown» for å få fullt liv.
   
-Akseptansekriterier:
-- Gitt at spilleren trykker på «p» før hen velger kort, så skal:
-  i. Spilleren ikke gjøre noen egne handlinger den runden og få HP’en satt til fullt.
-- Gitt at spilleren trykker på «p» etter å ha et eller flere kort, så skal:
-  ingenting skje
+- Arbeidsoppgave:
+  - Lag en «powerdown» funksjon i «GameLogic» som gir spilleren maks HP og lar ikke roboten velge kort denne runden.
+  - Registre «p» som et keyboard input som tar i bruk «powerdown» funksjonen
+  
+- Akseptansekriterier:
+  - Gitt at spilleren trykker på «p» før hen velger kort, så skal:
+    - Spilleren ikke gjøre noen egne handlinger den runden og få HP’en satt til fullt.
+  - Gitt at spilleren trykker på «p» etter å ha et eller flere kort, så skal:
+    - ingenting skje
 
 Spiller kollisjon
-Brukerhistorie:
-- Som spiller skal roboten min kunne kollidere med andre roboter, og dytte de vekk eller bli dyttet selv.
-  Arbeidsoppgave:
-- Endre på «turn» i GameLogic til å la en av robotene bevege seg først. Roboter blir dyttet hvis de står på ruter hvor en annen robot beveger seg til. For øyeblikket skal det være tilfeldig hvilken robot som beveger seg først. Etter robotene har beveget seg skal brettet oppdateres for begge robotene.
-  Akseptansekriterier:
+- Brukerhistorie:
+  - Som spiller skal roboten min kunne kollidere med andre roboter, og dytte de vekk eller bli dyttet selv.
+  
+- Arbeidsoppgave:
+  - Endre på «turn» i GameLogic til å la en av robotene bevege seg først. Roboter blir dyttet hvis de står på ruter hvor en annen robot beveger seg til. For øyeblikket skal det være tilfeldig hvilken robot som beveger seg først. Etter robotene har beveget seg skal brettet oppdateres for begge robotene.
+  
+- Akseptansekriterier:
   Robot1(R1), Robot2(R2)
-- Hvis R1 står på en rute som R2 beveger seg til, så skal:
-  i. R1 bevege seg 1 rute i retningen til R2 fra ruten, og R2 skal flyttes oppå ruten
-- Hvis R1 står på en rute som R2 beveger seg til med en vegg i retningen til R2 fra ruten, så skal:
-  i. R1 ikke bevege seg og R2 skal ikke bevege seg.
-- Hvis R1 og R2 står på to sammenhengende ruter og beveger seg mot hverandre, så skal:
-  i. R1 og R2 ikke flytte seg
+  - Hvis R1 står på en rute som R2 beveger seg til, så skal:
+    - R1 bevege seg 1 rute i retningen til R2 fra ruten, og R2 skal flyttes oppå ruten
+  - Hvis R1 står på en rute som R2 beveger seg til med en vegg i retningen til R2 fra ruten, så skal:
+    - R1 ikke bevege seg og R2 skal ikke bevege seg.
+  - Hvis R1 og R2 står på to sammenhengende ruter og beveger seg mot hverandre, så skal:
+    - R1 og R2 ikke flytte seg
 
 Lås kort når spillerne mister liv
-Brukerhistorie:
-- Som spiller skal jeg miste muligheten til å velge 5 kort avhengig av hvor mye HP jeg har mistet. De første kortene jeg valgte runden jeg mistet HP skal være låst helt til jeg får fullt HP eller dør.
-  Arbeidsoppgave:
-- Lage en funksjon i GameLogic som leser hvor mye liv spilleren har mistet og bruker det til å låse kort.
-  Akseptansekriterier:
-- Gitt at spilleren har mistet 20%, 40%, 60%, 80% av HP’en sin, så skal:
-  i. Spilleren velge henholdsvis 1, 2, 3, 4 mindre kort og få låst henholdsvis 1, 2, 3, 4 av kortene sine fra runden spilleren mistet HP.
+- Brukerhistorie:
+  - Som spiller skal jeg miste muligheten til å velge 5 kort avhengig av hvor mye HP jeg har mistet. De første kortene jeg valgte runden jeg mistet HP skal være låst helt til jeg får fullt HP eller dør.
+  
+- Arbeidsoppgave:
+  - Lage en funksjon i GameLogic som leser hvor mye liv spilleren har mistet og bruker det til å låse kort.
+  
+- Akseptansekriterier:
+  - Gitt at spilleren har mistet 20%, 40%, 60%, 80% av HP’en sin, så skal:
+    - Spilleren velge henholdsvis 1, 2, 3, 4 mindre kort og få låst henholdsvis 1, 2, 3, 4 av kortene sine fra runden spilleren mistet HP.
 
 La spillere velge kort samtidig
-Brukerhistorie:
-- Som spiller vil jeg kunne velge kort samtidig som motspillerne mine.
-  Arbeidsoppgave:
-- Implementer multi-threading slik at en thread alltid lar render() funksjonen i ServerRender kjører og ungår at programmet fryser, og la en thread vente på å motta kortene fra motspillerne.
-- Implementer multi-threading slik at når spillet starter som en server skal det bli laget en thread som lagrer kortene som spillerne sender inn, for deretter å sende kort ut igjen til spillerne når alle spillerne er ferdige med å sende inn kortene sine, og la en thread knytte seg til serveren som en klient.
-  Akseptansekriterier:
-- Gitt at flere spillere spiller spillet, så skal:
-  i. begge spillere kunne velge kort samtidig uten at programmet fryser.
-  ii. spillerne som er ferdig å velge kort skal vente helt til alle andre spillere har valgt kort. 
-vegger stopper spillere 
-Brukerhistorie:
-- Som vegg ønsker eg å ikkje la spillere gå gjennom meg, for å gjøre spille meir utfordrende.
-  Arbeidsoppgave:
-- Implementer en skjek som plir brukt i move() som skjekker om det eksisterer en veg som skal stoppe deg på ruten der du står eller en fram i forhold til den rettningen du står.
-- Gitt at en spiller står på brettet med en vegg foran seg så skal:
-  i. spilleren ikkje kunne bevege seg gjennom veggen.
+- Brukerhistorie:
+  - Som spiller vil jeg kunne velge kort samtidig som motspillerne mine.
+  
+- Arbeidsoppgave:
+  - Implementer multi-threading slik at en thread alltid lar render() funksjonen i ServerRender kjører og ungår at programmet fryser, og la en thread vente på å motta kortene fra motspillerne.
+  - Implementer multi-threading slik at når spillet starter som en server skal det bli laget en thread som lagrer kortene som spillerne sender inn, for deretter å sende kort ut igjen til spillerne når alle spillerne er ferdige med å sende inn kortene sine, og la en thread knytte seg til serveren som en klient.
+    
+- Akseptansekriterier:
+  - Gitt at flere spillere spiller spillet, så skal:
+    - begge spillere kunne velge kort samtidig uten at programmet fryser.
+    - spillerne som er ferdig å velge kort skal vente helt til alle andre spillere har valgt kort.
+
+Vegger stopper spillere 
+- Brukerhistorie:
+  - Som vegg ønsker jeg å ikke la spillere gå gjennom meg, for å gjøre spillet meir utfordrende.
+  
+- Arbeidsoppgave:
+  - Implementer en sjekk som blir brukt i move() som sjekker om det eksisterer en vegg som skal stoppe deg på ruten der du står eller en fram i forhold til den rettningen du står.
+  
+- Akseptansekriterier:
+   - Gitt at en spiller står på brettet med en vegg foran seg og beveger seg fremmover så skal:
+      - spilleren ikke bevege seg gjennom veggen.
+  - Gitt at en spiller står på brettet med en vegg bak seg og beveger seg bakover så skal:
+    - spilleren ikke bevege seg gjennom veggen.
+  - Gitt at en spiller blir dyttet mot en vegg av et transportbånd, så skal:
+    - spilleren ikke bevege seg gjennom veggen.
 
 ###Bugs:
 - Spillere kan bevege seg over hull/flagg uten å avslutte spillet midt i en runde hvis spilleren beveger seg 2 eller 3 felt fremover på en turn.
