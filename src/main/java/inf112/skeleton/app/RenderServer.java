@@ -143,7 +143,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
             showCardsOnScreen();
         }
         showHPandLives(player1, 750);
-        if (player2 != null){
+        if (!player2.getName().equals("null")){
             showHPandLives(player2, 900);
         }
         checkWinCondition();
@@ -211,7 +211,7 @@ public class RenderServer extends InputAdapter implements ApplicationListener {
         font.getData().setScale(2, 2);
         font.draw(batch, player.getName()+": ", xCoord, 140);
         font.draw(batch, "HP: " + player.getCurrentHP(), xCoord, 90);
-        font.draw(batch, "Lives:" + player.getLife(), xCoord, 40);
+        font.draw(batch, "Lives: " + player.getLife(), xCoord, 40);
         batch.end();
     }
 }

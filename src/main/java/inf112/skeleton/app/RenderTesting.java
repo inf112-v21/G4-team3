@@ -7,6 +7,7 @@ public class RenderTesting extends RenderServer{
         // Setup player cell states, including textures
         player1.setPlayerState();
         player1.setName("Player 1");
+        player2.setName("null");
 
         // Game logic
         gameLogic = new GameLogic(null, player1, null, board);
