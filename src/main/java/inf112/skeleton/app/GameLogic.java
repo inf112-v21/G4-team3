@@ -149,6 +149,8 @@ public class GameLogic {
 
     private void lockCardsBasedOnHP(Player player){
         int diffHP = player.getMaxHP() - player.getCurrentHP();
+        System.out.println(player.getName());
+        System.out.println(diffHP);
         for (int i=0; i<diffHP; i++){
             startCards.add(savedCards.get(i));
         }
@@ -195,10 +197,6 @@ public class GameLogic {
                 if (card != null) {
                     player1.pickedCards.add(card);
                     firstTurn = false;
-                    if (Main.debugmode) {
-                        System.out.println("Available cards:");
-                        System.out.println(cardsToPickFrom);
-                    }
                 }
             }
         }
